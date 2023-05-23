@@ -5,13 +5,13 @@
         <img src="logo.png" alt="Logo">
       </div>
        <ul>
-        <li><router-link to="/accueil_Ens">profil</router-link></li>
+        <li><router-link to="/direct_accueil">profil</router-link></li>
       </ul>
       <ul>
-        <li><router-link to="/interv_Ens">liste interventions</router-link></li>
+        <li><router-link to="/list_enseignants_direct">liste enseignants</router-link></li>
         </ul>
         <ul>
-        <li><router-link to="/paiement_Ens">liste paiement</router-link></li>
+        <li><router-link to="/valid_interventions">valider les interventions</router-link></li>
         </ul>
         <ul>
         <li><router-link to="/loginView">logout</router-link></li> 
@@ -48,13 +48,13 @@
           <div class="info-value">1234567890</div>
         </div>
       </div>
+      <input type="submit"  class="fadeIn fourth"  value="modifier vos informations">
     </div>
-    
   </div>
 </template>
 <script>
 export default {
-    name: 'accueil_Ens',
+    name: 'direct_accueil',
    }
 </script>
 <style>
@@ -87,7 +87,7 @@ export default {
   }
   
   .sidebar {
-   background-color:rgba(255, 255, 255, 0.5);
+   background-color:#222;
     color: #fff;
     width: 250px;
     transition: width 0.3s;
@@ -132,7 +132,7 @@ export default {
   }
   
   .personal-data {
-    background-color: black;
+    background-color: #fff;
     border-radius: 5px;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);

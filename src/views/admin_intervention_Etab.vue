@@ -4,18 +4,21 @@
       <div class="logo">
         <img src="logo.png" alt="Logo">
       </div>
-       <ul>
-        <li><router-link to="/accueil_Ens">profil</router-link></li>
+        <ul>
+        <li><router-link to="/admin_etab_accueil">profil</router-link></li>
       </ul>
       <ul>
-        <li><router-link to="/interv_Ens">liste interventions</router-link></li>
-      </ul>
-      <ul>
-        <li><router-link to="/paiement_Ens">liste paiement</router-link></li>
-      </ul>
-      <ul>
+        <li><router-link to="/list_enseignants">liste enseignants</router-link></li>
+        </ul>
+        <ul>
+        <li><router-link to="/créat_etab">création</router-link></li>
+        </ul>
+        <ul>
+        <li><router-link to="/admin_intervention_Etab">interventions</router-link></li>
+        </ul>
+        <ul>
         <li><router-link to="/loginView">logout</router-link></li> 
-      </ul>
+    </ul>
     </div>
     
     <div class="content">
@@ -134,7 +137,7 @@ window.addEventListener('DOMContentLoaded', function() {
     // Ajoutez d'autres styles ici selon vos besoins
   });
   export default {
-    name:'interv_Ens',
+    name:'admin_intervention_Etab',
   }
 </script>
 <style>

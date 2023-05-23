@@ -22,9 +22,15 @@
           Gagnez du temps, optimisez vos ressources et assurez une rémunération
            équitable avec notre plateforme intuitive et efficace.
       </p>
+      <router-link to="/admin_etab_accueil">admin_Etab</router-link>
+      <br>
+      <router-link to="/direct_accueil">directeur_Etab</router-link>
+       <br>
+      <router-link to="/admin_univ_accueil">admin_univ</router-link>
+        <br>
+      <router-link to="/president_accueil">presid_univ</router-link>
     </footer>
   </div>
-
 
 </template>
 <script>

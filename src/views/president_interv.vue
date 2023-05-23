@@ -4,18 +4,15 @@
       <div class="logo">
         <img src="logo.png" alt="Logo">
       </div>
-       <ul>
-        <li><router-link to="/accueil_Ens">profil</router-link></li>
+         <ul>
+        <li><router-link to="/president_accueil">profil</router-link></li>
       </ul>
       <ul>
-        <li><router-link to="/interv_Ens">liste interventions</router-link></li>
-      </ul>
-      <ul>
-        <li><router-link to="/paiement_Ens">liste paiement</router-link></li>
-      </ul>
-      <ul>
+        <li><router-link to="/president_interv">valider les interventions</router-link></li>
+        </ul>
+        <ul>
         <li><router-link to="/loginView">logout</router-link></li> 
-      </ul>
+    </ul>
     </div>
     
     <div class="content">
@@ -125,16 +122,9 @@
   </div>
 </template>
 <script>
-window.addEventListener('DOMContentLoaded', function() {
-    var creationProfesseur = document.getElementById('creationProfesseur');
-    creationProfesseur.style.backgroundColor = '#f2f2f2';
-    creationProfesseur.style.padding = '20px';
-    creationProfesseur.style.marginTop = '20px';
-    creationProfesseur.style.borderRadius = '5px';
-    // Ajoutez d'autres styles ici selon vos besoins
-  });
+
   export default {
-    name:'interv_Ens',
+    name:'president_univ',
   }
 </script>
 <style>
@@ -254,7 +244,7 @@ body {
   width: 100%;
   max-width: 100%;
   white-space: nowrap;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.5);
   
 }
 
@@ -271,18 +261,18 @@ body {
 
 .fl-table thead th {
   color: #ffffff;
-  background: #7e968f;
+  background: #96c2dc;
   height: 50px;
 }
 
 
 .fl-table thead th:nth-child(odd) {
   color: #ffffff;
-  background: #465360;
+  background: #4485a5f2;
 }
 
 .fl-table tr:nth-child(even) {
-  background: #F8F8F8;
+  background: rgba(255, 255, 255, 0.5);
 }
 
 /* Responsive */

@@ -4,18 +4,18 @@
       <div class="logo">
         <img src="logo.png" alt="Logo">
       </div>
-       <ul>
-        <li><router-link to="/accueil_Ens">profil</router-link></li>
+        <ul>
+        <li><router-link to="/direct_accueil">profil</router-link></li>
       </ul>
       <ul>
-        <li><router-link to="/interv_Ens">liste interventions</router-link></li>
-      </ul>
-      <ul>
-        <li><router-link to="/paiement_Ens">liste paiement</router-link></li>
-      </ul>
-      <ul>
+        <li><router-link to="/list_enseignants">liste enseignants</router-link></li>
+        </ul>
+        <ul>
+        <li><router-link to="/valid_interventions">valider les interventions</router-link></li>
+        </ul>
+        <ul>
         <li><router-link to="/loginView">logout</router-link></li> 
-      </ul>
+    </ul>
     </div>
     
     <div class="content">
@@ -28,12 +28,12 @@
    
         <thead>
         <tr>
-            <th>ID_Intervention</th>
-            <th>Nom Ethablissement</th>
-            <th>Nombre heures</th>
-            <th>Date_début</th>
-            <th>Date_Fin</th>
-            <th>Etat</th>
+            <th>ID_enseignant</th>
+            <th>Nom </th>
+            <th>Prénom</th>
+            <th>email</th>
+            <th>Tel</th>
+            <th>Etablissement d'origine</th>
         </tr>
         </thead>
         <tbody>
@@ -134,7 +134,7 @@ window.addEventListener('DOMContentLoaded', function() {
     // Ajoutez d'autres styles ici selon vos besoins
   });
   export default {
-    name:'interv_Ens',
+    name:'list_enseignants_direct',
   }
 </script>
 <style>

@@ -19,9 +19,6 @@
     </div>
     
     <div class="content">
-      <div class="fonction">
-        <h1>Table paiement</h1>
-      </div>
       <div id="creationProfesseur">
         
 <div class="table-wrapper">
@@ -141,7 +138,7 @@ export default {
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
   }
-  .fonction h1{
+  .fonction {
     text-align: center;
     align-content: center;
     padding: 0;
@@ -234,7 +231,7 @@ export default {
   /* Table Styles */
   
   .table-wrapper{
-    
+     margin-top:20000px;
     box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
   }
   

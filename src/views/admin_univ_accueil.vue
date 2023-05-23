@@ -5,13 +5,13 @@
         <img src="logo.png" alt="Logo">
       </div>
        <ul>
-        <li><router-link to="/accueil_Ens">profil</router-link></li>
+        <li><router-link to="/admin_univ_accueil">profil</router-link></li>
       </ul>
       <ul>
-        <li><router-link to="/interv_Ens">liste interventions</router-link></li>
+        <li><router-link to="/créat_univ">création des comptes</router-link></li>
         </ul>
-        <ul>
-        <li><router-link to="/paiement_Ens">liste paiement</router-link></li>
+      <ul>
+        <li><router-link to="/admin_univ_interv">liste interventions</router-link></li>
         </ul>
         <ul>
         <li><router-link to="/loginView">logout</router-link></li> 
@@ -54,7 +54,7 @@
 </template>
 <script>
 export default {
-    name: 'accueil_Ens',
+    name: 'admin_univ_accueil',
    }
 </script>
 <style>
@@ -87,7 +87,7 @@ export default {
   }
   
   .sidebar {
-   background-color:rgba(255, 255, 255, 0.5);
+   background-color:#222;
     color: #fff;
     width: 250px;
     transition: width 0.3s;
@@ -132,7 +132,7 @@ export default {
   }
   
   .personal-data {
-    background-color: black;
+    background-color: #fff;
     border-radius: 5px;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);

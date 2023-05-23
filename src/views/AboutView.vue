@@ -1,5 +1,15 @@
 <template>
 <div class="background"></div>
+<nav>
+      
+      <div class="nav">
+        <router-link to="/loginView">login</router-link> 
+        <router-link :to="{ path: '/' }" :class="{ 'current': $route.path === '/', 'default': $route.path !== '/' }">Accueil</router-link> 
+        <router-link to="/AboutView">About</router-link>|
+       
+
+      </div>
+    </nav>
   <div class="about">
     <h1>This is an about page</h1>
   </div>
