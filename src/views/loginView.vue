@@ -142,7 +142,7 @@ export default {
   /* FORM TYPOGRAPHY*/
   
   input[type=submit], input[type=reset]  {
-    background-color: #56baed;
+    background-color: #3d525e;
     border: none;
     color: white;
     padding: 15px 15px ;

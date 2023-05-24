@@ -1,24 +1,24 @@
 <template>
   <div class="container">
-    <div class="sidebar">
+    <div class="sidebare">
       <div class="logo">
         <img src="logo.png" alt="Logo">
       </div>
-        <ul>
-        <li><router-link to="/admin_etab_accueil">profil</router-link></li>
-      </ul>
-      <ul>
-        <li><router-link to="/list_enseignants">liste enseignants</router-link></li>
-        </ul>
-        <ul>
-        <li><router-link to="/créat_etab">création</router-link></li>
-        </ul>
-        <ul>
-        <li><router-link to="/admin_intervention_Etab">interventions</router-link></li>
-        </ul>
-        <ul>
-        <li><router-link to="/loginView">logout</router-link></li> 
-    </ul>
+       <div class="element">
+        <router-link to="/admin_etab_accueil">profil</router-link>
+     </div>
+     <div class="element">
+        <router-link to="/list_enseignants">liste enseignants</router-link>
+        </div >
+        <div class="element">
+        <router-link to="/créat_etab">création</router-link>
+        </div>
+        <div class="element">
+        <router-link to="/admin_intervention_Etab">interventions</router-link>
+       </div>
+        <div class="element">
+        <router-link to="/loginView">logout</router-link>
+        </div>
     </div>
     
     <div class="content">

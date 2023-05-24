@@ -14,6 +14,7 @@ import admin_univ_accueil from '../views/admin_univ_accueil.vue';
 import admin_univ_interv from '../views/admin_univ_interv.vue';
 import president_interv from '../views/president_interv.vue';
 import president_accueil from '../views/president_accueil.vue';
+import create_president from '../views/create_president.vue';
 import Accueil from '@/components/Accueil.vue';
 
 

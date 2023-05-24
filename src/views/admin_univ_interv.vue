@@ -1,21 +1,21 @@
 <template>
   <div class="container">
-    <div class="sidebar">
+    <div class="sidebare">
       <div class="logo">
         <img src="logo.png" alt="Logo">
       </div>
-       <ul>
-        <li><router-link to="/admin_univ_accueil">profil</router-link></li>
-      </ul>
-      <ul>
-        <li><router-link to="/créat_univ">création des comptes</router-link></li>
-        </ul>
-      <ul>
-        <li><router-link to="/admin_univ_interv">liste interventions</router-link></li>
-        </ul>
-        <ul>
-        <li><router-link to="/loginView">logout</router-link></li> 
-    </ul>
+       <div class="element">
+        <router-link to="/admin_univ_accueil">profil</router-link>
+       </div>
+      <div class="element">
+       <router-link to="/créate_president">création des comptes</router-link>
+      </div>
+      <div class="element">
+        <router-link to="/admin_univ_interv">liste interventions</router-link>
+      </div>
+        <div class="element">
+        <router-link to="/loginView">logout</router-link>
+        </div>
     </div>
     
     <div class="content">

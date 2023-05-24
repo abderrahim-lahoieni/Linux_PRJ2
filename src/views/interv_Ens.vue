@@ -1,21 +1,21 @@
 <template>
   <div class="container">
-    <div class="sidebar">
+    <div class="sidebare">
       <div class="logo">
-        <img src="logo.png" alt="Logo">
+        <img src="logo_projet.png" alt="Logo">
       </div>
-       <ul>
-        <li><router-link to="/accueil_Ens">profil</router-link></li>
-      </ul>
-      <ul>
-        <li><router-link to="/interv_Ens">liste interventions</router-link></li>
-      </ul>
-      <ul>
-        <li><router-link to="/paiement_Ens">liste paiement</router-link></li>
-      </ul>
-      <ul>
-        <li><router-link to="/loginView">logout</router-link></li> 
-      </ul>
+       <div class="element">
+        <router-link to="/accueil_Ens">Profil</router-link>
+      </div>
+      <div class="element">
+       <router-link to="/interv_Ens">Liste interventions</router-link>
+      </div>
+      <div class="element">
+       <router-link to="/paiement_Ens">Liste paiement</router-link>
+      </div>
+        <div class="element">
+        <router-link to="/loginView">Logout</router-link>
+      </div>
     </div>
     
     <div class="content">
