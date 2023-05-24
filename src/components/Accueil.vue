@@ -3,9 +3,9 @@
 <nav>
       
       <div class="nav">
-        <router-link to="/loginView">login</router-link> 
-        <router-link :to="{ path: '/' }" :class="{ 'current': $route.path === '/', 'default': $route.path !== '/' }">Accueil</router-link> 
-        <router-link to="/AboutView">About</router-link>|
+        <router-link to="/loginView">login</router-link> |
+        <router-link :to="{ path: '/' }" :class="{ 'current': $route.path === '/', 'default': $route.path !== '/' }">Accueil</router-link> |
+        <router-link to="/AboutView">About</router-link>
        
 
       </div>
@@ -40,6 +40,35 @@ export default {
 }
 </script>
 <style>
+/* .Accueil{
+  
+  position: relative;
+-webkit-border-radius: 10px 10px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
+  background: #6a6af7;
+  opacity: 0.5;
+    
+    width:auto;
+
+  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  text-align: center;
+} */
+
+.current {
+color: #42b983;
+}
+
+.default {
+color: #2c3e50;
+}
+#app {
+font-family: Avenir, Helvetica, Arial, sans-serif;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+text-align: center;
+color: #2c3e50;  
+}
+
 
 .background{
   background: linear-gradient(
@@ -98,20 +127,20 @@ h1{
   font-size: 65px;
   -webkit-box-shadow: 0 30px 60px 0 rgba(210, 187, 187, 0.3);
 }
-.Accueil{
+/* .Accueil{
   
   position: relative;
   -webkit-border-radius: 10px 10px 10px 10px;
     border-radius: 10px 10px 10px 10px;
-    /* background: #6a6af7; */
+  
     background-color: rgba(72, 66, 240, 0.5);
-      /* padding: 30px; */
+      
       width:auto;
-    /* max-width: 450px; */
+   
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     text-align: center;
   
-}
+} */
 .text-container {
   top: 100px;
   position: relative;
@@ -212,4 +241,13 @@ h1{
     -moz-animation-delay: 1s;
     animation-delay: 1s;
   }
+  /* h1{
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    display:inline-block;
+    margin: 40px 8px 10px 8px; 
+    color: #cccccc;
+} */
 </style>

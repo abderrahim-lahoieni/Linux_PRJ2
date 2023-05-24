@@ -3,9 +3,9 @@
   <nav>
       
       <div class="nav">
-        <router-link to="/loginView">login</router-link> 
-        <router-link :to="{ path: '/' }" :class="{ 'current': $route.path === '/', 'default': $route.path !== '/' }">Accueil</router-link> 
-        <router-link to="/AboutView">About</router-link>|
+        <router-link to="/loginView">login</router-link> |
+        <router-link :to="{ path: '/' }" :class="{ 'current': $route.path === '/', 'default': $route.path !== '/' }">Accueil</router-link> |
+        <router-link to="/AboutView">About</router-link>
       </div>
     </nav>
     <div class="wrapper fadeInDown">
@@ -14,7 +14,7 @@
       <h2 class="inactive underlineHover">log in </h2> 
       <form>
         <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-        <input type="password" id="password" class="fadeIn third" name="login" placeholder="password">
+        <input type="password" id="password" class="fadeIn third" name="login" placeholder="Mot de passe">
         <input type="submit"  @click="accueil_page" class="fadeIn fourth"  value="Log In">
         <input type="submit" @click="login_page"  class="fadeIn fourth" value="Annuler">
 
@@ -25,8 +25,13 @@
   </template>
   
   <script>
+  import Accueil from '@/components/Accueil.vue';
+
 export default {
   name:"loginForm",
+  components :{
+    Accueil
+  },
   methods: {
     accueil_page(){
     this.$router.replace('/accueil_Ens');
@@ -42,35 +47,6 @@ export default {
   
   <style >
 
-
-.background{
-  background: linear-gradient(
-    rgba(60, 149, 244, 0.5),
-    rgba(120, 119, 130, 0.5)
-  ), url(../assets/2.jpg);
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    filter: blur(5px);
-  -webkit-filter: blur(5px);
-  -moz-filter: blur(5px);
-  -o-filter: blur(5px);
-  -ms-filter: blur(5px);
-  left:0;
-  right:0;
-  width:100%;
-  display:block;
-  position:absolute;
-  top:0;
-
-  } 
-
-
-
-
-
-  
   @import url('https://fonts.googleapis.com/css?family=Poppins');
   a {
     color: #92badd;
@@ -106,7 +82,7 @@ export default {
   #formContent {
     -webkit-border-radius: 10px 10px 10px 10px;
     border-radius: 10px 10px 10px 10px;
-    background: hsl(240, 84%, 76%);
+    background: hsl(240, 90%, 26%,0.5);
     padding: 30px;
     width: 95%;
     height: 400px; 
@@ -118,6 +94,7 @@ export default {
     text-align: center;
     margin-top:100px;
   }
+  
   
   #formFooter {
     background-color: #f6f6f6;
@@ -142,7 +119,7 @@ export default {
   /* FORM TYPOGRAPHY*/
   
   input[type=submit], input[type=reset]  {
-    background-color: #3d525e;
+    background-color: #7199ea;
     border: none;
     color: white;
     padding: 15px 15px ;
@@ -163,7 +140,6 @@ export default {
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
   }
-  
    input[type=submit]:hover, input[type=reset]:hover  {
     background-color: #39ace7;
   }

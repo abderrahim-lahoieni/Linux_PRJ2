@@ -14,7 +14,9 @@ import admin_univ_accueil from '../views/admin_univ_accueil.vue';
 import admin_univ_interv from '../views/admin_univ_interv.vue';
 import president_interv from '../views/president_interv.vue';
 import president_accueil from '../views/president_accueil.vue';
-import create_president from '../views/create_president.vue';
+import Create_Ens from '../views/Create_Ens.vue';
+import Create_President from '../views/Create_President.vue';
+import sidebar from '@/components/sidebar.vue';
 import Accueil from '@/components/Accueil.vue';
 
 
@@ -24,9 +26,24 @@ const routes = [
       component: Accueil
     },
     {
+      path: '/',
+      name: 'sidebar',
+      component: sidebar
+    },
+    {
       path: '/AboutView',
       name: 'AboutView',
       component: AboutView
+    },
+    {
+      path: '/Create_Ens',
+      name: 'Create_Ens',
+      component: Create_Ens
+    },
+    {
+      path: '/Create_President',
+      name: 'Create_President',
+      component: Create_President
     },
     {
       path: '/paiement_Ens',
