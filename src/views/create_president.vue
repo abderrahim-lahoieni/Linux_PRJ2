@@ -2,14 +2,19 @@
   <div class="container">
     <div class="sidebare">
       <div class="logo">
-        <img src="logo.png" alt="Logo">
+        <img src="../assets/logo_projet.png" alt="Logo">
       </div>
        <div class="element">
         <router-link to="/admin_univ_accueil">profil</router-link>
        </div>
       <div class="element">
-       <router-link to="/Create_President">création des comptes</router-link>
-      </div>
+         
+        <button class="dropdown-toggle" @click="toggleDropdown">Ajout</button>
+  <ul class="dropdown-menu">
+    <router-link to="/Create_President">Président</router-link>
+   <br> <router-link to="/Create_President">Directeur</router-link>
+   <br><router-link to="/Create_President">Admin_Etablissement</router-link>
+  </ul></div>
       <div class="element">
         <router-link to="/admin_univ_interv">liste interventions</router-link>
       </div>
@@ -45,6 +50,12 @@ export default {
     accueil_page(){
     this.$router.replace('/accueil_Ens');
     console.log('test')
+  },
+  
+    toggleDropdown(){
+      var dropdownMenu = document.querySelector('.dropdown-menu');
+  dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    
   }
    
   }
@@ -155,7 +166,7 @@ export default {
   /* FORM TYPOGRAPHY*/
   
   input[type=submit], input[type=reset]  {
-    background-color: #7199ea;
+    background-color: #3d525e;
     border: none;
     color: white;
     padding: 15px 15px ;

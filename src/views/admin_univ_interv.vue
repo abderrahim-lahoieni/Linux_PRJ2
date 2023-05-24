@@ -2,7 +2,7 @@
   <div class="container">
     <div class="sidebare">
       <div class="logo">
-        <img src="logo.png" alt="Logo">
+        <img src="../assets/logo_projet.png" alt="Logo">
       </div>
        <div class="element">
         <router-link to="/admin_univ_accueil">profil</router-link>
@@ -19,9 +19,6 @@
     </div>
     
     <div class="content">
-      
-      <div id="creationProfesseur">
-        
 <div class="table-wrapper">
 
     <table class="fl-table">
@@ -122,7 +119,7 @@
 </div>
       </div>
     </div>
-  </div>
+
 </template>
 <script>
 window.addEventListener('DOMContentLoaded', function() {

@@ -2,7 +2,7 @@
 <div class="container">
     <div class="sidebare">
       <div class="logo">
-        <img src="logo.png" alt="Logo">
+        <img src="../assets/logo_projet.png" alt="Logo">
       </div>
        <div class="element">
        <router-link to="/direct_accueil">profil</router-link>

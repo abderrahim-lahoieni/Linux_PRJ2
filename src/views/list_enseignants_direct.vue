@@ -2,7 +2,7 @@
   <div class="container">
     <div class="sidebare">
       <div class="logo">
-        <img src="logo.png" alt="Logo">
+        <img src="../assets/logo_projet.png" alt="Logo">
       </div>
        <div class="element">
        <router-link to="/direct_accueil">profil</router-link>
@@ -19,9 +19,7 @@
     </div>
     
     <div class="content">
-      
-      <div id="creationProfesseur">
-        
+      <h2>Liste des enseigants</h2> 
 <div class="table-wrapper">
 
     <table class="fl-table">
@@ -29,11 +27,11 @@
         <thead>
         <tr>
             <th>ID_enseignant</th>
-            <th>Nom </th>
-            <th>Prénom</th>
-            <th>email</th>
-            <th>Tel</th>
-            <th>Etablissement d'origine</th>
+            <th>ID_Intervention </th>
+            <th>Nbr d'heure</th>
+            <th>Année</th>
+            <th>Etat</th>
+            <th>Paiement</th>
         </tr>
         </thead>
         <tbody>
@@ -122,7 +120,7 @@
 </div>
       </div>
     </div>
-  </div>
+
 </template>
 <script>
 window.addEventListener('DOMContentLoaded', function() {

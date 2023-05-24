@@ -2,7 +2,7 @@
   <div class="container">
     <div class="sidebare">
       <div class="logo">
-        <img src="logo.png" alt="Logo">
+        <img src="../assets/logo_projet.png" alt="Logo">
       </div>
        <div class="element">
        <router-link to="/direct_accueil">profil</router-link>
@@ -19,9 +19,6 @@
     </div>
     
     <div class="content">
-      
-      <div id="creationProfesseur">
-        
 <div class="table-wrapper">
 
     <table class="fl-table">
@@ -43,7 +40,10 @@
             <td>Content 1</td>
             <td>Content 1</td>
             <td>Content 1</td>
-            <td>Content 1</td>
+            <td><label class="checkbox-container">
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label></td>
         </tr>
         <tr>
             <td>Content 2</td>
@@ -51,7 +51,10 @@
             <td>Content 2</td>
             <td>Content 2</td>
             <td>Content 2</td>
-            <td>Content 1</td>
+            <td><label class="checkbox-container">
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label></td>
         </tr>
         <tr>
             <td>Content 3</td>
@@ -59,7 +62,10 @@
             <td>Content 3</td>
             <td>Content 3</td>
             <td>Content 3</td>
-            <td>Content 1</td>
+            <td><label class="checkbox-container">
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label></td>
         </tr>
         <tr>
             <td>Content 4</td>
@@ -67,7 +73,10 @@
             <td>Content 4</td>
             <td>Content 4</td>
             <td>Content 4</td>
-            <td>Content 1</td>
+            <td><label class="checkbox-container">
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label></td>
         </tr>
         <tr>
             <td>Content 5</td>
@@ -75,7 +84,10 @@
             <td>Content 5</td>
             <td>Content 5</td>
             <td>Content 5</td>
-            <td>Content 1</td>
+            <td><label class="checkbox-container">
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label></td>
         </tr>
         <tr>
             <td>Content 6</td>
@@ -83,7 +95,10 @@
             <td>Content 6</td>
             <td>Content 6</td>
             <td>Content 6</td>
-            <td>Content 1</td>
+            <td><label class="checkbox-container">
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label></td>
         </tr>
         <tr>
             <td>Content 7</td>
@@ -91,7 +106,10 @@
             <td>Content 7</td>
             <td>Content 7</td>
             <td>Content 7</td>
-            <td>Content 1</td>
+            <td><label class="checkbox-container">
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label></td>
         </tr>
         <tr>
             <td>Content 8</td>
@@ -99,7 +117,10 @@
             <td>Content 8</td>
             <td>Content 8</td>
             <td>Content 8</td>
-            <td>Content 1</td>
+            <td><label class="checkbox-container">
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label></td>
         </tr>
         <tr>
             <td>Content 9</td>
@@ -107,7 +128,10 @@
             <td>Content 9</td>
             <td>Content 9</td>
             <td>Content 9</td>
-            <td>Content 1</td>
+            <td><label class="checkbox-container">
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label></td>
         </tr>
         <tr>
             <td>Content 10</td>
@@ -115,14 +139,17 @@
             <td>Content 10</td>
             <td>Content 10</td>
             <td>Content 10</td>
-            <td>Content 1</td>
+            <td><label class="checkbox-container">
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label></td>
         </tr>
         </tbody>
     </table>
 </div>
       </div>
     </div>
-  </div>
+ 
 </template>
 <script>
 window.addEventListener('DOMContentLoaded', function() {
@@ -138,6 +165,58 @@ window.addEventListener('DOMContentLoaded', function() {
   }
 </script>
 <style>
+
+.checkbox-container {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
+
+.checkbox-container input[type="checkbox"] {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #eee;
+}
+
+.checkbox-container input[type="checkbox"]:checked + .checkmark {
+  background-color: #2196F3; /* Couleur de fond lorsque la case est cochée */
+}
+
+.checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox-container input[type="checkbox"]:checked + .checkmark::after {
+  display: block;
+}
+
+.checkbox-container .checkmark::after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+
+
+
 * {
   box-sizing: border-box;
 }

@@ -2,7 +2,7 @@
   <div class="container">
     <div class="sidebare">
       <div class="logo">
-        <img src="logo_projet.png" alt="Logo">
+        <img src="../assets/logo_projet.png" alt="Logo">
       </div>
        <div class="element">
         <router-link to="/accueil_Ens">Profil</router-link>
@@ -19,8 +19,6 @@
     </div>
     
     <div class="content">
-      <div id="creationProfesseur">
-        
 <div class="table-wrapper">
     <table class="fl-table">
         <thead>
@@ -120,7 +118,7 @@
       </div>
     </div>
   
-  </div>
+ 
 </template>
 <script>
 export default {

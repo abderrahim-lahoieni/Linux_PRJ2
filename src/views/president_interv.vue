@@ -2,7 +2,7 @@
   <div class="container">
     <div class="sidebare">
       <div class="logo">
-        <img src="logo.png" alt="Logo">
+        <img src="../assets/logo_projet.png" alt="Logo">
       </div>
        <div class="element">
         <router-link to="/president_accueil">profil</router-link>
@@ -16,9 +16,6 @@
     </div>
     
     <div class="content">
-      
-      <div id="creationProfesseur">
-        
 <div class="table-wrapper">
 
     <table class="fl-table">
@@ -40,7 +37,10 @@
             <td>Content 1</td>
             <td>Content 1</td>
             <td>Content 1</td>
-            <td>Content 1</td>
+            <td><label class="checkbox-container">
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label></td>
         </tr>
         <tr>
             <td>Content 2</td>
@@ -48,7 +48,10 @@
             <td>Content 2</td>
             <td>Content 2</td>
             <td>Content 2</td>
-            <td>Content 1</td>
+            <td><label class="checkbox-container">
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label></td>
         </tr>
         <tr>
             <td>Content 3</td>
@@ -56,7 +59,10 @@
             <td>Content 3</td>
             <td>Content 3</td>
             <td>Content 3</td>
-            <td>Content 1</td>
+            <td><label class="checkbox-container">
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label></td>
         </tr>
         <tr>
             <td>Content 4</td>
@@ -64,7 +70,10 @@
             <td>Content 4</td>
             <td>Content 4</td>
             <td>Content 4</td>
-            <td>Content 1</td>
+            <td><label class="checkbox-container">
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label></td>
         </tr>
         <tr>
             <td>Content 5</td>
@@ -72,7 +81,10 @@
             <td>Content 5</td>
             <td>Content 5</td>
             <td>Content 5</td>
-            <td>Content 1</td>
+            <td><label class="checkbox-container">
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label></td>
         </tr>
         <tr>
             <td>Content 6</td>
@@ -80,7 +92,10 @@
             <td>Content 6</td>
             <td>Content 6</td>
             <td>Content 6</td>
-            <td>Content 1</td>
+            <td><label class="checkbox-container">
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label></td>
         </tr>
         <tr>
             <td>Content 7</td>
@@ -88,7 +103,10 @@
             <td>Content 7</td>
             <td>Content 7</td>
             <td>Content 7</td>
-            <td>Content 1</td>
+            <td><label class="checkbox-container">
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label></td>
         </tr>
         <tr>
             <td>Content 8</td>
@@ -96,7 +114,10 @@
             <td>Content 8</td>
             <td>Content 8</td>
             <td>Content 8</td>
-            <td>Content 1</td>
+            <td><label class="checkbox-container">
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label></td>
         </tr>
         <tr>
             <td>Content 9</td>
@@ -104,7 +125,10 @@
             <td>Content 9</td>
             <td>Content 9</td>
             <td>Content 9</td>
-            <td>Content 1</td>
+            <td><label class="checkbox-container">
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label></td>
         </tr>
         <tr>
             <td>Content 10</td>
@@ -112,14 +136,17 @@
             <td>Content 10</td>
             <td>Content 10</td>
             <td>Content 10</td>
-            <td>Content 1</td>
+            <td><label class="checkbox-container">
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label></td>
         </tr>
         </tbody>
     </table>
 </div>
       </div>
     </div>
-  </div>
+
 </template>
 <script>
 

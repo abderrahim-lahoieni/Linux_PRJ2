@@ -2,14 +2,20 @@
 <div class="container">
     <div class="sidebare">
       <div class="logo">
-        <img src="logo.png" alt="Logo">
+        <img src="../assets/logo_projet.png" alt="Logo">
       </div>
        <div class="element">
         <router-link to="/admin_univ_accueil">profil</router-link>
        </div>
       <div class="element">
-       <router-link to="/Create_President">création des comptes</router-link>
-      </div>
+       
+       <button class="dropdown-toggle" @click="toggleDropdown">Ajout</button>
+  <ul class="dropdown-menu">
+    <router-link to="/Create_President">Président</router-link>
+   <br> <router-link to="/Create_President">Directeur</router-link>
+   <br><router-link to="/Create_President">Admin_Etablissement</router-link>
+  </ul>
+</div>
       <div class="element">
         <router-link to="/admin_univ_interv">liste interventions</router-link>
       </div>
@@ -62,12 +68,40 @@ export default {
   components: {
     Sidebar,
     content
-
   },
+  methods:{
+    toggleDropdown(){
+      var dropdownMenu = document.querySelector('.dropdown-menu');
+  dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    }
+  }
  
 }
    
 </script>
 <style>
+ button{
+    color:#92badd;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size:30px; 
+  }
+  
+
+.dropdown-toggle {
+  padding: 5px;
+  background-color:#3d525e;
+  border:none;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  position: absolute;
+  display: none;
+  background-color: #627885;
+  padding: 10px;
+  list-style-type: none;
+}
+
+
 
 </style>

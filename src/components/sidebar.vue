@@ -18,9 +18,10 @@
   }
   
   .logo {
-    padding: 20px;
+   
     text-align: center;
-    margin-top: 50px;
+    margin-top: 40px;
+    transform: scale(2);
   }
   
   .logo img {
