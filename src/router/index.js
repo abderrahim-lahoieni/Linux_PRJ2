@@ -19,6 +19,7 @@ import list_president from '../views/list_president.vue';
 import list_directeur from '../views/list_directeur.vue';
 import Create_President from '../views/Create_President.vue';
 import list_admin_etab from '../views/list_admin_etab.vue';
+import Create_Admin_Etab from '../views/Create_Admin_Etab.vue';
 import sidebar from '@/components/sidebar.vue';
 import Accueil from '@/components/Accueil.vue';
 
@@ -47,6 +48,11 @@ const routes = [
       path: '/Create_President',
       name: 'Create_President',
       component: Create_President
+    },
+    {
+      path: '/Create_Admin_Etab',
+      name: 'Create_Admin_Etab',
+      component: Create_Admin_Etab
     },
     {
       path: '/list_president',

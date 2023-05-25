@@ -19,6 +19,7 @@
     </div>
     
     <div class="content">
+      <h2>Validation interventions</h2> 
 <div class="table-wrapper">
 
     <table class="fl-table">
@@ -31,6 +32,7 @@
             <th>Date_début</th>
             <th>Date_Fin</th>
             <th>Etat</th>
+            <th>Modif</th>
         </tr>
         </thead>
         <tbody>
@@ -44,6 +46,7 @@
         <input type="checkbox">
         <span class="checkmark"></span>
       </label></td>
+      <td><button type="button" class="btn btn-warning">Update</button></td>
         </tr>
         <tr>
             <td>Content 2</td>
@@ -55,6 +58,7 @@
         <input type="checkbox">
         <span class="checkmark"></span>
       </label></td>
+      <td><button type="button" class="btn btn-warning">Update</button></td>
         </tr>
         <tr>
             <td>Content 3</td>
@@ -66,6 +70,7 @@
         <input type="checkbox">
         <span class="checkmark"></span>
       </label></td>
+      <td><button type="button" class="btn btn-warning">Update</button></td>
         </tr>
         <tr>
             <td>Content 4</td>
@@ -77,6 +82,7 @@
         <input type="checkbox">
         <span class="checkmark"></span>
       </label></td>
+      <td><button type="button" class="btn btn-warning">Update</button></td>
         </tr>
         <tr>
             <td>Content 5</td>
@@ -88,6 +94,7 @@
         <input type="checkbox">
         <span class="checkmark"></span>
       </label></td>
+      <td><button type="button" class="btn btn-warning">Update</button></td>
         </tr>
         <tr>
             <td>Content 6</td>
@@ -99,6 +106,7 @@
         <input type="checkbox">
         <span class="checkmark"></span>
       </label></td>
+      <td><button type="button" class="btn btn-warning">Update</button></td>
         </tr>
         <tr>
             <td>Content 7</td>
@@ -110,6 +118,7 @@
         <input type="checkbox">
         <span class="checkmark"></span>
       </label></td>
+      <td><button type="button" class="btn btn-warning">Update</button></td>
         </tr>
         <tr>
             <td>Content 8</td>
@@ -121,6 +130,7 @@
         <input type="checkbox">
         <span class="checkmark"></span>
       </label></td>
+      <td><button type="button" class="btn btn-warning">Update</button></td>
         </tr>
         <tr>
             <td>Content 9</td>
@@ -132,6 +142,7 @@
         <input type="checkbox">
         <span class="checkmark"></span>
       </label></td>
+      <td><button type="button" class="btn btn-warning">Update</button></td>
         </tr>
         <tr>
             <td>Content 10</td>
@@ -143,6 +154,7 @@
         <input type="checkbox">
         <span class="checkmark"></span>
       </label></td>
+      <td><button type="button" class="btn btn-warning">Update</button></td>
         </tr>
         </tbody>
     </table>

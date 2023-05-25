@@ -10,9 +10,7 @@
      <div class="element">
         <router-link to="/list_enseignants">liste enseignants</router-link>
         </div >
-        <div class="element">
-        <router-link to="/Create_Ens">création</router-link>
-        </div>
+        
         <div class="element">
           <router-link to="/list_directeur">Liste Directeurs</router-link>
          </div>

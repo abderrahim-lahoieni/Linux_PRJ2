@@ -7,12 +7,7 @@
          <div class="element">
           <router-link to="/admin_etab_accueil">profil</router-link>
        </div>
-       <div class="element">
-          <router-link to="/list_enseignants">liste enseignants</router-link>
-          </div >
-          <div class="element">
-          <router-link to="/Create_President">création</router-link>
-          </div>
+      
           <div class="element">
           <router-link to="/admin_univ_interv">interventions</router-link>
          </div>

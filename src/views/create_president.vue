@@ -1,27 +1,26 @@
 <template>
   <div class="container">
     <div class="sidebare">
-      <div class="logo">
-        <img src="../assets/logo_projet.png" alt="Logo">
-      </div>
-       <div class="element">
-        <router-link to="/admin_univ_accueil">profil</router-link>
-       </div>
-      <div class="element">
-         
-        <button class="dropdown-toggle" @click="toggleDropdown">Ajout</button>
-  <ul class="dropdown-menu">
-    <router-link to="/Create_President">Président</router-link>
-   <br> <router-link to="/Create_President">Directeur</router-link>
-   <br><router-link to="/Create_President">Admin_Etablissement</router-link>
-  </ul></div>
-      <div class="element">
-        <router-link to="/admin_univ_interv">liste interventions</router-link>
-      </div>
-        <div class="element">
-        <router-link to="/loginView">logout</router-link>
+        <div class="logo">
+          <img src="../assets/logo_projet.png" alt="Logo">
         </div>
-    </div>
+         <div class="element">
+          <router-link to="/admin_etab_accueil">profil</router-link>
+       </div>
+       
+          <div class="element">
+          <router-link to="/admin_univ_interv">interventions</router-link>
+         </div>
+         <div class="element">
+          <router-link to="/list_president">Les Présidents</router-link>
+         </div>
+          <div class="element">
+          <router-link to="/list_admin_etab">Les Admin_Etab</router-link>
+         </div>
+          <div class="element">
+          <router-link to="/loginView">logout</router-link>
+          </div>
+      </div>
 
   <div class="content">
   

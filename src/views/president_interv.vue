@@ -16,6 +16,7 @@
     </div>
     
     <div class="content">
+      <h2>Les interventions d'université</h2>
 <div class="table-wrapper">
 
     <table class="fl-table">

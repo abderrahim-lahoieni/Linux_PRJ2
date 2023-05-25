@@ -10,9 +10,7 @@
      <div class="element">
         <router-link to="/list_enseignants">liste enseignants</router-link>
         </div >
-        <div class="element">
-        <router-link to="/Create_Ens">création</router-link>
-        </div>
+        
         <div class="element">
           <router-link to="/list_directeur">Liste Directeurs</router-link>
          </div>
@@ -33,7 +31,7 @@
         <form>
           <input type="text" id="Nom" class="fadeIn second" name="Nom" placeholder="Nom">
           <input type="text" id="Prénom" class="fadeIn second" name="Prénom" placeholder="Prénom">
-          <input type="date"  class="fadeIn second" name="date" placeholder="Date de naissance">
+          <input type="text" id="Prénom" class="fadeIn second" name="Type" placeholder="Type">
           <input type="email" id="email" class="fadeIn third" name="login" placeholder="email">
           <input type="password" id="password" class="fadeIn third" name="login" placeholder="Mot de passe">
           <input type="password" id="rpassword" class="fadeIn third" name="login" placeholder="confirmer mot de passe">
@@ -49,7 +47,7 @@
     
     <script>
   export default {
-    name:"loginForm",
+    name:"Create_Admin_Etab",
     methods: {
       accueil_page(){
       this.$router.replace('/accueil_Ens');

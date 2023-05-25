@@ -7,12 +7,8 @@
          <div class="element">
           <router-link to="/admin_etab_accueil">profil</router-link>
        </div>
-       <div class="element">
-          <router-link to="/list_enseignants">liste enseignants</router-link>
-          </div >
-          <div class="element">
-          <router-link to="/Create_President">création</router-link>
-          </div>
+       
+          
           <div class="element">
           <router-link to="/admin_univ_interv">interventions</router-link>
          </div>
@@ -30,7 +26,7 @@
       <div class="content">
         <h2>Liste des Président</h2>
   <div class="table-wrapper">
-    <button type="button" class="btn btn-primary">Create president</button>
+    <button type="button" class="btn btn-primary"><router-link to="/Create_President">Create president</router-link></button>
       <table class="fl-table">
      
           <thead>

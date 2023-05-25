@@ -1,36 +1,32 @@
 <template>
     <div class="container">
       <div class="sidebare">
-        <div class="logo">
-          <img src="../assets/logo_projet.png" alt="Logo">
-        </div>
-         <div class="element">
-          <router-link to="/admin_etab_accueil">profil</router-link>
-       </div>
-       <div class="element">
-          <router-link to="/list_enseignants">liste enseignants</router-link>
-          </div >
-          <div class="element">
-          <router-link to="/Create_President">création</router-link>
-          </div>
-          <div class="element">
-          <router-link to="/list_president">interventions</router-link>
-         </div>
-         <div class="element">
-          <router-link to="/list_admin_etab">Les Présidents</router-link>
-         </div>
-          <div class="element">
-          <router-link to="/list_admin_etab">Les Admin_Etab</router-link>
-         </div>
-          <div class="element">
-          <router-link to="/loginView">logout</router-link>
-          </div>
+      <div class="logo">
+        <img src="../assets/logo_projet.png" alt="Logo">
       </div>
+       <div class="element">
+        <router-link to="/admin_etab_accueil">profil</router-link>
+     </div>
+     <div class="element">
+        <router-link to="/list_enseignants">liste enseignants</router-link>
+        </div >
+       
+        <div class="element">
+          <router-link to="/list_directeur">Liste Directeurs</router-link>
+         </div>
+        <div class="element">
+        <router-link to="/admin_intervention_Etab">interventions</router-link>
+       </div>
+        <div class="element">
+        <router-link to="/loginView">logout</router-link>
+        </div>
+    </div>
+
       
       <div class="content">
         <h2>Liste des directeurs</h2>
   <div class="table-wrapper">
-    <button type="button" class="btn btn-primary">Create directeur</button>
+    <button type="button" class="btn btn-primary"><router-link to="/Create_Admin_Etab">Create directeur</router-link></button>
       <table class="fl-table">
      
           <thead>
