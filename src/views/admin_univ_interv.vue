@@ -1,22 +1,32 @@
 <template>
   <div class="container">
     <div class="sidebare">
-      <div class="logo">
-        <img src="../assets/logo_projet.png" alt="Logo">
-      </div>
-       <div class="element">
-        <router-link to="/admin_univ_accueil">profil</router-link>
-       </div>
-      <div class="element">
-       <router-link to="/créate_president">création des comptes</router-link>
-      </div>
-      <div class="element">
-        <router-link to="/admin_univ_interv">liste interventions</router-link>
-      </div>
-        <div class="element">
-        <router-link to="/loginView">logout</router-link>
+        <div class="logo">
+          <img src="../assets/logo_projet.png" alt="Logo">
         </div>
-    </div>
+         <div class="element">
+          <router-link to="/admin_etab_accueil">profil</router-link>
+       </div>
+       <div class="element">
+          <router-link to="/list_enseignants">liste enseignants</router-link>
+          </div >
+          <div class="element">
+          <router-link to="/Create_President">création</router-link>
+          </div>
+          <div class="element">
+          <router-link to="/admin_univ_interv">interventions</router-link>
+         </div>
+         <div class="element">
+          <router-link to="/list_president">Les Présidents</router-link>
+         </div>
+          <div class="element">
+          <router-link to="/list_admin_etab">Les Admin_Etab</router-link>
+         </div>
+          <div class="element">
+          <router-link to="/loginView">logout</router-link>
+          </div>
+      </div>
+
     
     <div class="content">
 <div class="table-wrapper">
@@ -31,6 +41,7 @@
             <th>Date_début</th>
             <th>Date_Fin</th>
             <th>Etat</th>
+            <th>Modif</th>
         </tr>
         </thead>
         <tbody>
@@ -41,6 +52,8 @@
             <td>Content 1</td>
             <td>Content 1</td>
             <td>Content 1</td>
+            <td><button type="button" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-warning">Update</button></td>
         </tr>
         <tr>
             <td>Content 2</td>
@@ -49,6 +62,8 @@
             <td>Content 2</td>
             <td>Content 2</td>
             <td>Content 1</td>
+            <td><button type="button" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-warning">Update</button></td>
         </tr>
         <tr>
             <td>Content 3</td>
@@ -57,6 +72,8 @@
             <td>Content 3</td>
             <td>Content 3</td>
             <td>Content 1</td>
+            <td><button type="button" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-warning">Update</button></td>
         </tr>
         <tr>
             <td>Content 4</td>
@@ -65,6 +82,8 @@
             <td>Content 4</td>
             <td>Content 4</td>
             <td>Content 1</td>
+            <td><button type="button" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-warning">Update</button></td>
         </tr>
         <tr>
             <td>Content 5</td>
@@ -73,6 +92,8 @@
             <td>Content 5</td>
             <td>Content 5</td>
             <td>Content 1</td>
+            <td><button type="button" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-warning">Update</button></td>
         </tr>
         <tr>
             <td>Content 6</td>
@@ -81,6 +102,8 @@
             <td>Content 6</td>
             <td>Content 6</td>
             <td>Content 1</td>
+            <td><button type="button" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-warning">Update</button></td>
         </tr>
         <tr>
             <td>Content 7</td>
@@ -89,6 +112,8 @@
             <td>Content 7</td>
             <td>Content 7</td>
             <td>Content 1</td>
+            <td><button type="button" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-warning">Update</button></td>
         </tr>
         <tr>
             <td>Content 8</td>
@@ -97,6 +122,8 @@
             <td>Content 8</td>
             <td>Content 8</td>
             <td>Content 1</td>
+            <td><button type="button" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-warning">Update</button></td>
         </tr>
         <tr>
             <td>Content 9</td>
@@ -105,6 +132,8 @@
             <td>Content 9</td>
             <td>Content 9</td>
             <td>Content 1</td>
+            <td><button type="button" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-warning">Update</button></td>
         </tr>
         <tr>
             <td>Content 10</td>
@@ -113,6 +142,8 @@
             <td>Content 10</td>
             <td>Content 10</td>
             <td>Content 1</td>
+            <td><button type="button" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-warning">Update</button></td>
         </tr>
         </tbody>
     </table>

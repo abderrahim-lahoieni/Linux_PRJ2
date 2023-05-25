@@ -15,7 +15,10 @@ import admin_univ_interv from '../views/admin_univ_interv.vue';
 import president_interv from '../views/president_interv.vue';
 import president_accueil from '../views/president_accueil.vue';
 import Create_Ens from '../views/Create_Ens.vue';
+import list_president from '../views/list_president.vue';
+import list_directeur from '../views/list_directeur.vue';
 import Create_President from '../views/Create_President.vue';
+import list_admin_etab from '../views/list_admin_etab.vue';
 import sidebar from '@/components/sidebar.vue';
 import Accueil from '@/components/Accueil.vue';
 
@@ -44,6 +47,21 @@ const routes = [
       path: '/Create_President',
       name: 'Create_President',
       component: Create_President
+    },
+    {
+      path: '/list_president',
+      name: 'list_president',
+      component: list_president
+    },
+    {
+      path: '/list_admin_etab',
+      name: 'list_admin_etab',
+      component: list_admin_etab
+    },
+    {
+      path: '/list_directeur',
+      name: 'list_directeur',
+      component: list_directeur
     },
     {
       path: '/paiement_Ens',
