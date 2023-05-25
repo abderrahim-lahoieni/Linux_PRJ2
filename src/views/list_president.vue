@@ -51,7 +51,7 @@
               <td>Content 1</td>
               <td>Content 1</td>
               <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Warning</button></td>
+                <button type="button" class="btn btn-warning">Update</button></td>
           </tr>
           <tr>
               <td>Content 2</td>
@@ -60,7 +60,7 @@
               <td>Content 2</td>
               <td>Content 2</td>
               <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Warning</button></td>
+                <button type="button" class="btn btn-warning">Update</button></td>
           </tr>
           <tr>
               <td>Content 3</td>
@@ -78,7 +78,7 @@
               <td>Content 4</td>
               <td>Content 4</td>
               <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Warning</button></td>
+                <button type="button" class="btn btn-warning">Update</button></td>
           </tr>
           <tr>
               <td>Content 5</td>
@@ -87,7 +87,7 @@
               <td>Content 5</td>
               <td>Content 5</td>
               <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Warning</button></td>
+                <button type="button" class="btn btn-warning">Update</button></td>
           </tr>
           <tr>
               <td>Content 6</td>
@@ -96,7 +96,7 @@
               <td>Content 6</td>
               <td>Content 6</td>
               <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Warning</button></td>
+                <button type="button" class="btn btn-warning">Update</button></td>
           </tr>
           <tr>
               <td>Content 7</td>
@@ -105,7 +105,7 @@
               <td>Content 7</td>
               <td>Content 7</td>
               <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Warning</button></td>
+                <button type="button" class="btn btn-warning">Update</button></td>
           </tr>
           <tr>
               <td>Content 8</td>
@@ -114,7 +114,7 @@
               <td>Content 8</td>
               <td>Content 8</td>
               <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Warning</button></td>
+                <button type="button" class="btn btn-warning">Update</button></td>
           </tr>
           <tr>
               <td>Content 9</td>
@@ -123,7 +123,7 @@
               <td>Content 9</td>
               <td>Content 9</td>
               <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Warning</button></td>
+                <button type="button" class="btn btn-warning">Update</button></td>
           </tr>
           <tr>
               <td>Content 10</td>
@@ -132,7 +132,7 @@
               <td>Content 10</td>
               <td>Content 10</td>
               <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Warning</button></td>
+                <button type="button" class="btn btn-warning">Update</button></td>
           </tr>
           </tbody>
       </table>
