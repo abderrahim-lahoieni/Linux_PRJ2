@@ -1,3 +1,5 @@
+
+
 <template>
   <div class="container">
     <div class="sidebare">
@@ -34,84 +36,13 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>Content 1</td>
-            <td>Content 1</td>
-            <td>Content 1</td>
-            <td>Content 1</td>
-            <td>Content 1</td>
-            <td>Content 1</td>
-        </tr>
-        <tr>
-            <td>Content 2</td>
-            <td>Content 2</td>
-            <td>Content 2</td>
-            <td>Content 2</td>
-            <td>Content 2</td>
-            <td>Content 1</td>
-        </tr>
-        <tr>
-            <td>Content 3</td>
-            <td>Content 3</td>
-            <td>Content 3</td>
-            <td>Content 3</td>
-            <td>Content 3</td>
-            <td>Content 1</td>
-        </tr>
-        <tr>
-            <td>Content 4</td>
-            <td>Content 4</td>
-            <td>Content 4</td>
-            <td>Content 4</td>
-            <td>Content 4</td>
-            <td>Content 1</td>
-        </tr>
-        <tr>
-            <td>Content 5</td>
-            <td>Content 5</td>
-            <td>Content 5</td>
-            <td>Content 5</td>
-            <td>Content 5</td>
-            <td>Content 1</td>
-        </tr>
-        <tr>
-            <td>Content 6</td>
-            <td>Content 6</td>
-            <td>Content 6</td>
-            <td>Content 6</td>
-            <td>Content 6</td>
-            <td>Content 1</td>
-        </tr>
-        <tr>
-            <td>Content 7</td>
-            <td>Content 7</td>
-            <td>Content 7</td>
-            <td>Content 7</td>
-            <td>Content 7</td>
-            <td>Content 1</td>
-        </tr>
-        <tr>
-            <td>Content 8</td>
-            <td>Content 8</td>
-            <td>Content 8</td>
-            <td>Content 8</td>
-            <td>Content 8</td>
-            <td>Content 1</td>
-        </tr>
-        <tr>
-            <td>Content 9</td>
-            <td>Content 9</td>
-            <td>Content 9</td>
-            <td>Content 9</td>
-            <td>Content 9</td>
-            <td>Content 1</td>
-        </tr>
-        <tr>
-            <td>Content 10</td>
-            <td>Content 10</td>
-            <td>Content 10</td>
-            <td>Content 10</td>
-            <td>Content 10</td>
+          
+        <tr v-for="item in responseData">
+            <td>{{ (item['id']) }}</td>
+            <td>{{ (item['intitule_intervention']) }}</td>
+            <td>{{ (item['nbr_heures']) }}</td>
+            <td>{{ (item['date_debut']) }}</td>
+            <td>{{ (item['date_fin']) }}</td>
             <td>Content 1</td>
         </tr>
         </tbody>
@@ -130,9 +61,40 @@ window.addEventListener('DOMContentLoaded', function() {
     creationProfesseur.style.borderRadius = '5px';
     // Ajoutez d'autres styles ici selon vos besoins
   });
-  export default {
-    name:'interv_Ens',
+
+  import {axiosClient} from '../Network/axios';
+  
+
+export default {
+  // ...
+  data() {
+    return {
+      responseData: []
+    };
+  },
+  mounted() {
+    this.fetchData();
+  },
+
+  methods: {
+    fetchData() {
+      axiosClient.get('interventions')
+        .then(response => {
+          this.responseData = (response.data)['data'];
+          console.log(response.data);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
   }
+}
+  
+  // export default {
+  //   // name:'interv_Ens'
+
+
+  // }
 </script>
 <style>
 * {
