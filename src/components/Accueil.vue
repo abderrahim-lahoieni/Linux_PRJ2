@@ -13,7 +13,7 @@
 
   <div class="wrapper fadeInDown">
   <div class="Accueil" ></div>
-  <h1 class="fadeIn second">Bienvenue</h1>
+  <h1 class="fadeIn second text-danger-500">Bienvenue</h1>
     <footer class="text-container">
       
       <p class="fadeIn third">

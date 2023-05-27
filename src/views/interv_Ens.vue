@@ -43,7 +43,7 @@
             <td>{{ (item['nbr_heures']) }}</td>
             <td>{{ (item['date_debut']) }}</td>
             <td>{{ (item['date_fin']) }}</td>
-            <td>Content 1</td>
+            <td>{{ (item['visa_etb']) }}</td>
         </tr>
         </tbody>
     </table>

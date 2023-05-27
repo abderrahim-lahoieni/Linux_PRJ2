@@ -13,10 +13,10 @@
     
       <h2 class="inactive underlineHover">log in </h2> 
       <form>
-        <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-        <input type="password" id="password" class="fadeIn third" name="login" placeholder="Mot de passe">
-        <input type="submit"  @click="accueil_page" class="fadeIn fourth"  value="Log In">
-        <input type="submit" @click="login_page"  class="fadeIn fourth" value="Annuler">
+        <input type="text" id="login" class="fadeIn second"  placeholder="login" v-model="email">
+        <input type="password" id="password" class="fadeIn third"  placeholder="Mot de passe" v-model="password">
+        <button type="button"  @click="login" class="fadeIn fourth" >Log In</button>
+        
 
       </form>
     </div>
@@ -26,23 +26,44 @@
   
   <script>
   import Accueil from '@/components/Accueil.vue';
-
+  import {axiosClient} from '../Network/axios';
 export default {
-  name:"loginForm",
-  components :{
-    Accueil
-  },
-  methods: {
-    accueil_page(){
-    this.$router.replace('/accueil_Ens');
-    console.log('test')
-  },
-   login_page(){
-    this.$router.push('loginView');
-  }
-  }
+  //name:"loginForm",
+  //components :{
+    //Accueil
+  //},
+  data() {
+    return {
+      email: "",
+      password: ""
+    };},
+    methods: {
+    login(){ {
+    const url = 'login';
+    const data = {
+      email: this.email,
+      password: this.password
+    }; console.log(data);
+axiosClient.post(url,data)
+.then((response)=>{
+  if(response.data.role ==='Directeur')
+ { this.$router.push('/direct_accueil');}
+ else if (response.data.role ==='Enseignant'){
+  this.$router.push('/accueil_Ens');
+ }
+ else if (response.data.role ==='Administrateur_Etablissement'){
+  this.$router.push('/admin_etab_accueil');
+ }
+ else if (response.data.role ==='Administrateur_université'){
+  this.$router.push('/admin_univ_accueil');
+ }
+ else if (response.data.role ==='President'){
+  this.$router.push('/president_accueil');
+ }
+else {this.$router.push('/loginView');
+}})}}}}
 
-}
+
   </script>
   
   <style >
