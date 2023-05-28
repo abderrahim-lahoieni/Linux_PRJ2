@@ -1,5 +1,3 @@
-
-
 <template>
   <div class="container">
     <div class="sidebare">
@@ -7,20 +5,18 @@
         <img src="../assets/logo_projet.png" alt="Logo">
       </div>
        <div class="element">
-        <router-link to="/accueil_Ens">Profil</router-link>
-      </div>
+        <router-link to="/president_accueil">profil</router-link>
+       </div>
       <div class="element">
-       <router-link to="/interv_Ens">Liste interventions</router-link>
-      </div>
-      <div class="element">
-       <router-link to="/paiement_Ens">Liste paiement</router-link>
+        <router-link to="/president_interv">valider les interventions</router-link>
       </div>
         <div class="element">
-        <router-link to="/loginView">Logout</router-link>
-      </div>
+        <router-link to="/loginView">logout</router-link>
+        </div>
     </div>
     
     <div class="content">
+      <h2>Les interventions d'université</h2>
 <div class="table-wrapper">
 
     <table class="fl-table">
@@ -36,65 +32,128 @@
         </tr>
         </thead>
         <tbody>
-          
-        <tr v-for="item in responseData">
-            <td>{{ (item['id']) }}</td>
-            <td>{{ (item['intitule_intervention']) }}</td>
-            <td>{{ (item['nbr_heures']) }}</td>
-            <td>{{ (item['date_debut']) }}</td>
-            <td>{{ (item['date_fin']) }}</td>
-            <td>{{ (item['visa_etb']) }}</td>
+        <tr>
+            <td>Content 1</td>
+            <td>Content 1</td>
+            <td>Content 1</td>
+            <td>Content 1</td>
+            <td>Content 1</td>
+            <td><label class="checkbox-container">
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label></td>
+        </tr>
+        <tr>
+            <td>Content 2</td>
+            <td>Content 2</td>
+            <td>Content 2</td>
+            <td>Content 2</td>
+            <td>Content 2</td>
+            <td><label class="checkbox-container">
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label></td>
+        </tr>
+        <tr>
+            <td>Content 3</td>
+            <td>Content 3</td>
+            <td>Content 3</td>
+            <td>Content 3</td>
+            <td>Content 3</td>
+            <td><label class="checkbox-container">
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label></td>
+        </tr>
+        <tr>
+            <td>Content 4</td>
+            <td>Content 4</td>
+            <td>Content 4</td>
+            <td>Content 4</td>
+            <td>Content 4</td>
+            <td><label class="checkbox-container">
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label></td>
+        </tr>
+        <tr>
+            <td>Content 5</td>
+            <td>Content 5</td>
+            <td>Content 5</td>
+            <td>Content 5</td>
+            <td>Content 5</td>
+            <td><label class="checkbox-container">
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label></td>
+        </tr>
+        <tr>
+            <td>Content 6</td>
+            <td>Content 6</td>
+            <td>Content 6</td>
+            <td>Content 6</td>
+            <td>Content 6</td>
+            <td><label class="checkbox-container">
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label></td>
+        </tr>
+        <tr>
+            <td>Content 7</td>
+            <td>Content 7</td>
+            <td>Content 7</td>
+            <td>Content 7</td>
+            <td>Content 7</td>
+            <td><label class="checkbox-container">
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label></td>
+        </tr>
+        <tr>
+            <td>Content 8</td>
+            <td>Content 8</td>
+            <td>Content 8</td>
+            <td>Content 8</td>
+            <td>Content 8</td>
+            <td><label class="checkbox-container">
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label></td>
+        </tr>
+        <tr>
+            <td>Content 9</td>
+            <td>Content 9</td>
+            <td>Content 9</td>
+            <td>Content 9</td>
+            <td>Content 9</td>
+            <td><label class="checkbox-container">
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label></td>
+        </tr>
+        <tr>
+            <td>Content 10</td>
+            <td>Content 10</td>
+            <td>Content 10</td>
+            <td>Content 10</td>
+            <td>Content 10</td>
+            <td><label class="checkbox-container">
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label></td>
         </tr>
         </tbody>
     </table>
 </div>
       </div>
     </div>
-  
+
 </template>
 <script>
-window.addEventListener('DOMContentLoaded', function() {
-    var creationProfesseur = document.getElementById('creationProfesseur');
-    creationProfesseur.style.backgroundColor = '#f2f2f2';
-    creationProfesseur.style.padding = '20px';
-    creationProfesseur.style.marginTop = '20px';
-    creationProfesseur.style.borderRadius = '5px';
-    // Ajoutez d'autres styles ici selon vos besoins
-  });
 
-  import {axiosClient} from '../Network/axios';
-  
-
-export default {
-  // ...
-  data() {
-    return {
-      responseData: []
-    };
-  },
-  mounted() {
-    this.fetchData();
-  },
-
-  methods: {
-    fetchData() {
-      axiosClient.get('interventions')
-        .then(response => {
-          this.responseData = (response.data)['data'];
-          console.log(response.data);
-        })
-        .catch(error => {
-          console.error(error);
-        });
-    }
+  export default {
+    name:'president_univ',
   }
-}
-  
-  // export default {
-  //   // name:'interv_Ens'
-
-
-  // }
 </script>
 <style>
 * {
@@ -213,7 +272,7 @@ body {
   width: 100%;
   max-width: 100%;
   white-space: nowrap;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.5);
   
 }
 
@@ -230,18 +289,18 @@ body {
 
 .fl-table thead th {
   color: #ffffff;
-  background: #7e968f;
+  background: #4485a5f2;
   height: 50px;
 }
 
 
 .fl-table thead th:nth-child(odd) {
   color: #ffffff;
-  background: #465360;
+  background: #4485a5f2;
 }
 
 .fl-table tr:nth-child(even) {
-  background: #F8F8F8;
+  background: rgba(255, 255, 255, 0.5);
 }
 
 /* Responsive */

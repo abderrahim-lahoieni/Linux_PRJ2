@@ -1,29 +1,24 @@
 <template>
   <div class="container">
-    <div class="sidebar">
+    <div class="sidebare">
       <div class="logo">
-        <img src="logo.png" alt="Logo">
+        <img src="../assets/logo_projet.png" alt="Logo">
       </div>
-       <ul>
-        <li><router-link to="/accueil_Ens">profil</router-link></li>
-      </ul>
-      <ul>
-        <li><router-link to="/interv_Ens">liste interventions</router-link></li>
-      </ul>
-      <ul>
-        <li><router-link to="/paiement_Ens">liste paiement</router-link></li>
-      </ul>
-      <ul>
-        <li><router-link to="/loginView">logout</router-link></li> 
-      </ul>
+       <div class="element">
+        <router-link to="/accueil_Ens">Profil</router-link>
+      </div>
+      <div class="element">
+       <router-link to="/interv_Ens">Liste interventions</router-link>
+      </div>
+      <div class="element">
+       <router-link to="/paiement_Ens">Liste paiement</router-link>
+      </div>
+        <div class="element">
+        <router-link to="/loginView">Logout</router-link>
+      </div>
     </div>
     
     <div class="content">
-      <div class="fonction">
-        <h1>Table paiement</h1>
-      </div>
-      <div id="creationProfesseur">
-        
 <div class="table-wrapper">
     <table class="fl-table">
         <thead>
@@ -123,7 +118,7 @@
       </div>
     </div>
   
-  </div>
+ 
 </template>
 <script>
 export default {
@@ -141,7 +136,7 @@ export default {
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
   }
-  .fonction h1{
+  .fonction {
     text-align: center;
     align-content: center;
     padding: 0;
@@ -234,7 +229,7 @@ export default {
   /* Table Styles */
   
   .table-wrapper{
-    
+     margin-top:20000px;
     box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
   }
   

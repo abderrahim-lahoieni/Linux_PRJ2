@@ -1,5 +1,3 @@
-
-
 <template>
   <div class="container">
     <div class="sidebare">
@@ -7,50 +5,122 @@
         <img src="../assets/logo_projet.png" alt="Logo">
       </div>
        <div class="element">
-        <router-link to="/accueil_Ens">Profil</router-link>
-      </div>
+       <router-link to="/direct_accueil">profil</router-link>
+       </div>
       <div class="element">
-       <router-link to="/interv_Ens">Liste interventions</router-link>
-      </div>
-      <div class="element">
-       <router-link to="/paiement_Ens">Liste paiement</router-link>
+       <router-link to="/list_enseignants_direct">liste enseignants</router-link>
       </div>
         <div class="element">
-        <router-link to="/loginView">Logout</router-link>
-      </div>
+       <router-link to="/valid_interventions">valider les interventions</router-link>
+        </div>
+        <div class="element">
+        <router-link to="/loginView">logout</router-link>
+        </div>
     </div>
     
     <div class="content">
+      <h2>Liste des enseigants</h2> 
 <div class="table-wrapper">
 
     <table class="fl-table">
    
         <thead>
         <tr>
-            <th>ID_Intervention</th>
-            <th>Nom Ethablissement</th>
-            <th>Nombre heures</th>
-            <th>Date_début</th>
-            <th>Date_Fin</th>
+            <th>ID_enseignant</th>
+            <th>ID_Intervention </th>
+            <th>Nbr d'heure</th>
+            <th>Année</th>
             <th>Etat</th>
+            <th>Paiement</th>
         </tr>
         </thead>
         <tbody>
-          
-        <tr v-for="item in responseData">
-            <td>{{ (item['id']) }}</td>
-            <td>{{ (item['intitule_intervention']) }}</td>
-            <td>{{ (item['nbr_heures']) }}</td>
-            <td>{{ (item['date_debut']) }}</td>
-            <td>{{ (item['date_fin']) }}</td>
-            <td>{{ (item['visa_etb']) }}</td>
+        <tr>
+            <td>Content 1</td>
+            <td>Content 1</td>
+            <td>Content 1</td>
+            <td>Content 1</td>
+            <td>Content 1</td>
+            <td>Content 1</td>
+        </tr>
+        <tr>
+            <td>Content 2</td>
+            <td>Content 2</td>
+            <td>Content 2</td>
+            <td>Content 2</td>
+            <td>Content 2</td>
+            <td>Content 1</td>
+        </tr>
+        <tr>
+            <td>Content 3</td>
+            <td>Content 3</td>
+            <td>Content 3</td>
+            <td>Content 3</td>
+            <td>Content 3</td>
+            <td>Content 1</td>
+        </tr>
+        <tr>
+            <td>Content 4</td>
+            <td>Content 4</td>
+            <td>Content 4</td>
+            <td>Content 4</td>
+            <td>Content 4</td>
+            <td>Content 1</td>
+        </tr>
+        <tr>
+            <td>Content 5</td>
+            <td>Content 5</td>
+            <td>Content 5</td>
+            <td>Content 5</td>
+            <td>Content 5</td>
+            <td>Content 1</td>
+        </tr>
+        <tr>
+            <td>Content 6</td>
+            <td>Content 6</td>
+            <td>Content 6</td>
+            <td>Content 6</td>
+            <td>Content 6</td>
+            <td>Content 1</td>
+        </tr>
+        <tr>
+            <td>Content 7</td>
+            <td>Content 7</td>
+            <td>Content 7</td>
+            <td>Content 7</td>
+            <td>Content 7</td>
+            <td>Content 1</td>
+        </tr>
+        <tr>
+            <td>Content 8</td>
+            <td>Content 8</td>
+            <td>Content 8</td>
+            <td>Content 8</td>
+            <td>Content 8</td>
+            <td>Content 1</td>
+        </tr>
+        <tr>
+            <td>Content 9</td>
+            <td>Content 9</td>
+            <td>Content 9</td>
+            <td>Content 9</td>
+            <td>Content 9</td>
+            <td>Content 1</td>
+        </tr>
+        <tr>
+            <td>Content 10</td>
+            <td>Content 10</td>
+            <td>Content 10</td>
+            <td>Content 10</td>
+            <td>Content 10</td>
+            <td>Content 1</td>
         </tr>
         </tbody>
     </table>
 </div>
       </div>
     </div>
-  
+
 </template>
 <script>
 window.addEventListener('DOMContentLoaded', function() {
@@ -61,40 +131,9 @@ window.addEventListener('DOMContentLoaded', function() {
     creationProfesseur.style.borderRadius = '5px';
     // Ajoutez d'autres styles ici selon vos besoins
   });
-
-  import {axiosClient} from '../Network/axios';
-  
-
-export default {
-  // ...
-  data() {
-    return {
-      responseData: []
-    };
-  },
-  mounted() {
-    this.fetchData();
-  },
-
-  methods: {
-    fetchData() {
-      axiosClient.get('interventions')
-        .then(response => {
-          this.responseData = (response.data)['data'];
-          console.log(response.data);
-        })
-        .catch(error => {
-          console.error(error);
-        });
-    }
+  export default {
+    name:'list_enseignants_direct',
   }
-}
-  
-  // export default {
-  //   // name:'interv_Ens'
-
-
-  // }
 </script>
 <style>
 * {
