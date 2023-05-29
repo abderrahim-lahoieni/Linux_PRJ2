@@ -28,6 +28,9 @@
        <br>
       <router-link to="/admin_univ_accueil">admin_univ</router-link>
         <br>
+     
+      <router-link to="/accueil_Ens">Enseignant</router-link>
+      <br>
       <router-link to="/president_accueil">presid_univ</router-link>
     </footer>
   </div>

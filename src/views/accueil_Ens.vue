@@ -59,8 +59,7 @@ export default {
   components: {
     Sidebar,
     content
-
-  },
+  }
  
 }
 </script>

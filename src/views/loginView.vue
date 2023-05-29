@@ -1,15 +1,16 @@
 <template>
   <div class="background"></div>
-  <nav>
-      
+ <nav>
+
       <div class="nav">
         <router-link to="/loginView">login</router-link> |
         <router-link :to="{ path: '/' }" :class="{ 'current': $route.path === '/', 'default': $route.path !== '/' }">Accueil</router-link> |
         <router-link to="/AboutView">About</router-link>
       </div>
-    </nav>
+    </nav> 
     <div class="wrapper fadeInDown">
     <div id="formContent">
+<<<<<<< HEAD
     
       <h2 class="inactive underlineHover">log in </h2> 
       <form>
@@ -17,27 +18,49 @@
         <input type="password" id="password" class="fadeIn third"  placeholder="Mot de passe" v-model="password">
         <button type="button"  @click="login" class="fadeIn fourth" >Log In</button>
         
+=======
+
+      <h2 class="inactive underlineHover">log in </h2>
+      <form >
+        <input type="text" id="login" class="fadeIn second"  placeholder="login" v-model="email">
+        <input type="password" id="password" class="fadeIn third"  placeholder="Mot de passe"  v-model="password">
+        <button type="button"  @click="login" class="fadeIn fourth"  value="Log In">log in</button>
+
+>>>>>>> 411c2eec5f05c83d8e9462bed4e6620d4c46564e
 
       </form>
     </div>
   </div>
- 
+
   </template>
-  
+
   <script>
   import Accueil from '@/components/Accueil.vue';
   import {axiosClient} from '../Network/axios';
+<<<<<<< HEAD
 export default {
   //name:"loginForm",
   //components :{
     //Accueil
   //},
+=======
+
+export default {
+  //name:"loginForm",
+  // components :{
+  //   Accueil
+  // },
+>>>>>>> 411c2eec5f05c83d8e9462bed4e6620d4c46564e
   data() {
     return {
       email: "",
       password: ""
     };},
+<<<<<<< HEAD
     methods: {
+=======
+  methods: {
+>>>>>>> 411c2eec5f05c83d8e9462bed4e6620d4c46564e
     login(){ {
     const url = 'login';
     const data = {
@@ -61,11 +84,27 @@ axiosClient.post(url,data)
   this.$router.push('/president_accueil');
  }
 else {this.$router.push('/loginView');
+<<<<<<< HEAD
 }})}}}}
 
+=======
+}})}}
+    
+        //if(response.data.role ==='Enseignant')
+
+       // })// else {this.$router.push('/admin_univ_accueil');
+       // console.log(error);}
+     // })
+     }}
+      //this.$router.replace('/accueil_Ens');
+    //console.log('test')
+  //},
+   //login_page(){
+    //this.$router.push('loginView');
+>>>>>>> 411c2eec5f05c83d8e9462bed4e6620d4c46564e
 
   </script>
-  
+
   <style >
 
   @import url('https://fonts.googleapis.com/css?family=Poppins');
@@ -75,38 +114,38 @@ else {this.$router.push('/loginView');
     text-decoration: none;
     font-weight: 400;
   }
-  
+
   h2 {
     text-align: center;
     font-size: 30px;
     font-weight: 600;
     text-transform: uppercase;
     display:inline-block;
-    margin: 40px 8px 30px 8px; 
+    margin: 40px 8px 30px 8px;
     color: #cccccc;
   }
-  
+
   /* STRUCTURE */
-  
+
   .wrapper {
-  
+
     display: flex;
     align-items: center;
-    flex-direction: column; 
+    flex-direction: column;
     justify-content: center;
     width: 100%;
     min-height: 100%;
     padding: 20px;
-   
+
   }
-  
+
   #formContent {
     -webkit-border-radius: 10px 10px 10px 10px;
     border-radius: 10px 10px 10px 10px;
     background: hsl(240, 90%, 26%,0.5);
     padding: 30px;
     width: 95%;
-    height: 400px; 
+    height: 400px;
     max-width: 500px;
     position: relative;
     padding: 0px;
@@ -115,8 +154,8 @@ else {this.$router.push('/loginView');
     text-align: center;
     margin-top:100px;
   }
-  
-  
+
+
   #formFooter {
     background-color: #f6f6f6;
     border-top: 1px solid #dce8f1;
@@ -125,20 +164,20 @@ else {this.$router.push('/loginView');
     -webkit-border-radius: 0 0 10px 10px;
     border-radius: 0 0 10px 10px;
   }
-  
+
   h2.inactive {
     color: #cccccc;
   }
-  
+
   h2.active {
     color: #0d0d0d;
     border-bottom: 2px solid #5fbae9;
   }
-  
-  
-  
+
+
+
   /* FORM TYPOGRAPHY*/
-  
+
   input[type=submit], input[type=reset]  {
     background-color: #3d525e;
     border: none;
@@ -164,7 +203,7 @@ else {this.$router.push('/loginView');
    input[type=submit]:hover, input[type=reset]:hover  {
     background-color: #39ace7;
   }
-  
+
  input[type=submit]:active, input[type=reset]:active  {
     -moz-transform: scale(0.95);
     -webkit-transform: scale(0.95);
@@ -172,7 +211,7 @@ else {this.$router.push('/loginView');
     -ms-transform: scale(0.95);
     transform: scale(0.95);
   }
-  
+
   input[type=text], [type=password]{
     background-color: #f6f6f6;
     border: none;
@@ -193,20 +232,20 @@ else {this.$router.push('/loginView');
     -webkit-border-radius: 5px 5px 5px 5px;
     border-radius: 5px 5px 5px 5px;
   }
-  
+
   input[type=text]:focus {
     background-color: #fff;
     border-bottom: 2px solid #5fbae9;
   }
-  
+
   input[type=text]:placeholder {
     color: #cccccc;
   }
-  
-  
-  
+
+
+
   /* ANIMATIONS */
-  
+
   /* Simple CSS3 Fade-in-down Animation */
   .fadeInDown {
     -webkit-animation-name: fadeInDown;
@@ -216,7 +255,7 @@ else {this.$router.push('/loginView');
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
   }
-  
+
   @-webkit-keyframes fadeInDown {
     0% {
       opacity: 0;
@@ -229,7 +268,7 @@ else {this.$router.push('/loginView');
       transform: none;
     }
   }
-  
+
   @keyframes fadeInDown {
     0% {
       opacity: 0;
@@ -242,51 +281,51 @@ else {this.$router.push('/loginView');
       transform: none;
     }
   }
-  
+
   /* Simple CSS3 Fade-in Animation */
   @-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
   @-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
   @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-  
+
   .fadeIn {
     opacity:0;
     -webkit-animation:fadeIn ease-in 1;
     -moz-animation:fadeIn ease-in 1;
     animation:fadeIn ease-in 1;
-  
+
     -webkit-animation-fill-mode:forwards;
     -moz-animation-fill-mode:forwards;
     animation-fill-mode:forwards;
-  
+
     -webkit-animation-duration:1s;
     -moz-animation-duration:1s;
     animation-duration:1s;
   }
-  
+
   .fadeIn.first {
     -webkit-animation-delay: 0.4s;
     -moz-animation-delay: 0.4s;
     animation-delay: 0.4s;
   }
-  
+
   .fadeIn.second {
     -webkit-animation-delay: 0.6s;
     -moz-animation-delay: 0.6s;
     animation-delay: 0.6s;
   }
-  
+
   .fadeIn.third {
     -webkit-animation-delay: 0.8s;
     -moz-animation-delay: 0.8s;
     animation-delay: 0.8s;
   }
-  
+
   .fadeIn.fourth {
     -webkit-animation-delay: 1s;
     -moz-animation-delay: 1s;
     animation-delay: 1s;
   }
-  
+
   /* Simple CSS3 Fade-in Animation */
   .underlineHover:after {
     display: block;
@@ -298,27 +337,27 @@ else {this.$router.push('/loginView');
     content: "";
     transition: width 0.2s;
   }
-  
+
   .underlineHover:hover {
     color: #0d0d0d;
   }
-  
+
   .underlineHover:hover:after{
     width: 100%;
   }
-  
-  
-  
+
+
+
   /* OTHERS */
-  
+
   *:focus {
       outline: none;
-  } 
-  
+  }
+
   #icon {
     width:60%;
   }
-  
+
   * {
     box-sizing: border-box;
   }
