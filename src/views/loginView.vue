@@ -1,50 +1,83 @@
 <template>
   <div class="background"></div>
-  <nav>
-      
+ <nav>
+
       <div class="nav">
         <router-link to="/loginView">login</router-link> |
         <router-link :to="{ path: '/' }" :class="{ 'current': $route.path === '/', 'default': $route.path !== '/' }">Accueil</router-link> |
         <router-link to="/AboutView">About</router-link>
       </div>
-    </nav>
+    </nav> 
     <div class="wrapper fadeInDown">
     <div id="formContent">
-    
-      <h2 class="inactive underlineHover">log in </h2> 
-      <form>
-        <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-        <input type="password" id="password" class="fadeIn third" name="login" placeholder="Mot de passe">
-        <input type="submit"  @click="accueil_page" class="fadeIn fourth"  value="Log In">
-        <input type="submit" @click="login_page"  class="fadeIn fourth" value="Annuler">
+
+      <h2 class="inactive underlineHover">log in </h2>
+      <form >
+        <input type="text" id="login" class="fadeIn second"  placeholder="login" v-model="email">
+        <input type="password" id="password" class="fadeIn third"  placeholder="Mot de passe"  v-model="password">
+        <button type="button"  @click="login" class="fadeIn fourth"  value="Log In">log in</button>
+
 
       </form>
     </div>
   </div>
- 
+
   </template>
-  
+
   <script>
   import Accueil from '@/components/Accueil.vue';
+  import {axiosClient} from '../Network/axios';
 
 export default {
-  name:"loginForm",
-  components :{
-    Accueil
-  },
+  //name:"loginForm",
+  // components :{
+  //   Accueil
+  // },
+  data() {
+    return {
+      email: "",
+      password: ""
+    };},
   methods: {
-    accueil_page(){
-    this.$router.replace('/accueil_Ens');
-    console.log('test')
-  },
-   login_page(){
-    this.$router.push('loginView');
-  }
-  }
+    login(){ {
+    const url = 'login';
+    const data = {
+      email: this.email,
+      password: this.password
+    }; console.log(data);
+axiosClient.post(url,data)
+.then((response)=>{
+  if(response.data.role ==='Directeur')
+ { this.$router.push('/direct_accueil');}
+ else if (response.data.role ==='Enseignant'){
+  this.$router.push('/accueil_Ens');
+ }
+ else if (response.data.role ==='Administrateur_Etablissement'){
+  this.$router.push('/admin_etab_accueil');
+ }
+ else if (response.data.role ==='Administrateur_université'){
+  this.$router.push('/admin_univ_accueil');
+ }
+ else if (response.data.role ==='President'){
+  this.$router.push('/president_accueil');
+ }
+else {this.$router.push('/loginView');
+}})}}
+    
+        //if(response.data.role ==='Enseignant')
 
-}
+       // })// else {this.$router.push('/admin_univ_accueil');
+       // console.log(error);}
+     // })
+     }}
+      //this.$router.replace('/accueil_Ens');
+    //console.log('test')
+  //},
+   //login_page(){
+    //this.$router.push('loginView');
+
   </script>
-  
+
   <style >
 
   @import url('https://fonts.googleapis.com/css?family=Poppins');
@@ -54,38 +87,38 @@ export default {
     text-decoration: none;
     font-weight: 400;
   }
-  
+
   h2 {
     text-align: center;
     font-size: 30px;
     font-weight: 600;
     text-transform: uppercase;
     display:inline-block;
-    margin: 40px 8px 30px 8px; 
+    margin: 40px 8px 30px 8px;
     color: #cccccc;
   }
-  
+
   /* STRUCTURE */
-  
+
   .wrapper {
-  
+
     display: flex;
     align-items: center;
-    flex-direction: column; 
+    flex-direction: column;
     justify-content: center;
     width: 100%;
     min-height: 100%;
     padding: 20px;
-   
+
   }
-  
+
   #formContent {
     -webkit-border-radius: 10px 10px 10px 10px;
     border-radius: 10px 10px 10px 10px;
     background: hsl(240, 90%, 26%,0.5);
     padding: 30px;
     width: 95%;
-    height: 400px; 
+    height: 400px;
     max-width: 500px;
     position: relative;
     padding: 0px;
@@ -94,8 +127,8 @@ export default {
     text-align: center;
     margin-top:100px;
   }
-  
-  
+
+
   #formFooter {
     background-color: #f6f6f6;
     border-top: 1px solid #dce8f1;
@@ -104,20 +137,20 @@ export default {
     -webkit-border-radius: 0 0 10px 10px;
     border-radius: 0 0 10px 10px;
   }
-  
+
   h2.inactive {
     color: #cccccc;
   }
-  
+
   h2.active {
     color: #0d0d0d;
     border-bottom: 2px solid #5fbae9;
   }
-  
-  
-  
+
+
+
   /* FORM TYPOGRAPHY*/
-  
+
   input[type=submit], input[type=reset]  {
     background-color: #3d525e;
     border: none;
@@ -143,7 +176,7 @@ export default {
    input[type=submit]:hover, input[type=reset]:hover  {
     background-color: #39ace7;
   }
-  
+
  input[type=submit]:active, input[type=reset]:active  {
     -moz-transform: scale(0.95);
     -webkit-transform: scale(0.95);
@@ -151,7 +184,7 @@ export default {
     -ms-transform: scale(0.95);
     transform: scale(0.95);
   }
-  
+
   input[type=text], [type=password]{
     background-color: #f6f6f6;
     border: none;
@@ -172,20 +205,20 @@ export default {
     -webkit-border-radius: 5px 5px 5px 5px;
     border-radius: 5px 5px 5px 5px;
   }
-  
+
   input[type=text]:focus {
     background-color: #fff;
     border-bottom: 2px solid #5fbae9;
   }
-  
+
   input[type=text]:placeholder {
     color: #cccccc;
   }
-  
-  
-  
+
+
+
   /* ANIMATIONS */
-  
+
   /* Simple CSS3 Fade-in-down Animation */
   .fadeInDown {
     -webkit-animation-name: fadeInDown;
@@ -195,7 +228,7 @@ export default {
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
   }
-  
+
   @-webkit-keyframes fadeInDown {
     0% {
       opacity: 0;
@@ -208,7 +241,7 @@ export default {
       transform: none;
     }
   }
-  
+
   @keyframes fadeInDown {
     0% {
       opacity: 0;
@@ -221,51 +254,51 @@ export default {
       transform: none;
     }
   }
-  
+
   /* Simple CSS3 Fade-in Animation */
   @-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
   @-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
   @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-  
+
   .fadeIn {
     opacity:0;
     -webkit-animation:fadeIn ease-in 1;
     -moz-animation:fadeIn ease-in 1;
     animation:fadeIn ease-in 1;
-  
+
     -webkit-animation-fill-mode:forwards;
     -moz-animation-fill-mode:forwards;
     animation-fill-mode:forwards;
-  
+
     -webkit-animation-duration:1s;
     -moz-animation-duration:1s;
     animation-duration:1s;
   }
-  
+
   .fadeIn.first {
     -webkit-animation-delay: 0.4s;
     -moz-animation-delay: 0.4s;
     animation-delay: 0.4s;
   }
-  
+
   .fadeIn.second {
     -webkit-animation-delay: 0.6s;
     -moz-animation-delay: 0.6s;
     animation-delay: 0.6s;
   }
-  
+
   .fadeIn.third {
     -webkit-animation-delay: 0.8s;
     -moz-animation-delay: 0.8s;
     animation-delay: 0.8s;
   }
-  
+
   .fadeIn.fourth {
     -webkit-animation-delay: 1s;
     -moz-animation-delay: 1s;
     animation-delay: 1s;
   }
-  
+
   /* Simple CSS3 Fade-in Animation */
   .underlineHover:after {
     display: block;
@@ -277,27 +310,27 @@ export default {
     content: "";
     transition: width 0.2s;
   }
-  
+
   .underlineHover:hover {
     color: #0d0d0d;
   }
-  
+
   .underlineHover:hover:after{
     width: 100%;
   }
-  
-  
-  
+
+
+
   /* OTHERS */
-  
+
   *:focus {
       outline: none;
-  } 
-  
+  }
+
   #icon {
     width:60%;
   }
-  
+
   * {
     box-sizing: border-box;
   }
