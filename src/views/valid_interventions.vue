@@ -36,126 +36,18 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>Content 1</td>
-            <td>Content 1</td>
-            <td>Content 1</td>
-            <td>Content 1</td>
-            <td>Content 1</td>
-            <td><label class="checkbox-container">
-        <input type="checkbox">
-        <span class="checkmark"></span>
-      </label></td>
+       
+          <tr v-for="item in responseData">
+            <td>{{ (item['id']) }}</td>
+            <td>{{ (item['intitule_intervention']) }}</td>
+            <td>{{ (item['nbr_heures']) }}</td>
+            <td>{{ (item['date_debut']) }}</td>
+            <td>{{ (item['date_fin']) }}</td>
+            <td>{{ (item['annee_univ']) }}</td>
+            
       <td><button type="button" class="btn btn-warning">Update</button></td>
         </tr>
-        <tr>
-            <td>Content 2</td>
-            <td>Content 2</td>
-            <td>Content 2</td>
-            <td>Content 2</td>
-            <td>Content 2</td>
-            <td><label class="checkbox-container">
-        <input type="checkbox">
-        <span class="checkmark"></span>
-      </label></td>
-      <td><button type="button" class="btn btn-warning">Update</button></td>
-        </tr>
-        <tr>
-            <td>Content 3</td>
-            <td>Content 3</td>
-            <td>Content 3</td>
-            <td>Content 3</td>
-            <td>Content 3</td>
-            <td><label class="checkbox-container">
-        <input type="checkbox">
-        <span class="checkmark"></span>
-      </label></td>
-      <td><button type="button" class="btn btn-warning">Update</button></td>
-        </tr>
-        <tr>
-            <td>Content 4</td>
-            <td>Content 4</td>
-            <td>Content 4</td>
-            <td>Content 4</td>
-            <td>Content 4</td>
-            <td><label class="checkbox-container">
-        <input type="checkbox">
-        <span class="checkmark"></span>
-      </label></td>
-      <td><button type="button" class="btn btn-warning">Update</button></td>
-        </tr>
-        <tr>
-            <td>Content 5</td>
-            <td>Content 5</td>
-            <td>Content 5</td>
-            <td>Content 5</td>
-            <td>Content 5</td>
-            <td><label class="checkbox-container">
-        <input type="checkbox">
-        <span class="checkmark"></span>
-      </label></td>
-      <td><button type="button" class="btn btn-warning">Update</button></td>
-        </tr>
-        <tr>
-            <td>Content 6</td>
-            <td>Content 6</td>
-            <td>Content 6</td>
-            <td>Content 6</td>
-            <td>Content 6</td>
-            <td><label class="checkbox-container">
-        <input type="checkbox">
-        <span class="checkmark"></span>
-      </label></td>
-      <td><button type="button" class="btn btn-warning">Update</button></td>
-        </tr>
-        <tr>
-            <td>Content 7</td>
-            <td>Content 7</td>
-            <td>Content 7</td>
-            <td>Content 7</td>
-            <td>Content 7</td>
-            <td><label class="checkbox-container">
-        <input type="checkbox">
-        <span class="checkmark"></span>
-      </label></td>
-      <td><button type="button" class="btn btn-warning">Update</button></td>
-        </tr>
-        <tr>
-            <td>Content 8</td>
-            <td>Content 8</td>
-            <td>Content 8</td>
-            <td>Content 8</td>
-            <td>Content 8</td>
-            <td><label class="checkbox-container">
-        <input type="checkbox">
-        <span class="checkmark"></span>
-      </label></td>
-      <td><button type="button" class="btn btn-warning">Update</button></td>
-        </tr>
-        <tr>
-            <td>Content 9</td>
-            <td>Content 9</td>
-            <td>Content 9</td>
-            <td>Content 9</td>
-            <td>Content 9</td>
-            <td><label class="checkbox-container">
-        <input type="checkbox">
-        <span class="checkmark"></span>
-      </label></td>
-      <td><button type="button" class="btn btn-warning">Update</button></td>
-        </tr>
-        <tr>
-            <td>Content 10</td>
-            <td>Content 10</td>
-            <td>Content 10</td>
-            <td>Content 10</td>
-            <td>Content 10</td>
-            <td><label class="checkbox-container">
-        <input type="checkbox">
-        <span class="checkmark"></span>
-      </label></td>
-      <td><button type="button" class="btn btn-warning">Update</button></td>
-        </tr>
+       
         </tbody>
     </table>
 </div>
@@ -172,8 +64,30 @@ window.addEventListener('DOMContentLoaded', function() {
     creationProfesseur.style.borderRadius = '5px';
     // Ajoutez d'autres styles ici selon vos besoins
   });
+  import {axiosClient} from '../Network/axios';
   export default {
     name:'valid_interventions',
+    data() {
+    return {
+      id:"",
+      responseData: []
+    };
+  },
+  mounted() {
+    this.fetchData();
+  },
+  methods: {
+    fetchData() {
+      axiosClient.post('directeur/interventions')
+        .then(response => {
+          this.responseData = (response.data)['data'];
+          console.log(response.data);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
+  }
   }
 </script>
 <style>

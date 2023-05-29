@@ -29,119 +29,20 @@
             <th>Date_début</th>
             <th>Date_Fin</th>
             <th>Etat</th>
+            <th>valider</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>Content 1</td>
-            <td>Content 1</td>
-            <td>Content 1</td>
-            <td>Content 1</td>
-            <td>Content 1</td>
-            <td><label class="checkbox-container">
-        <input type="checkbox">
-        <span class="checkmark"></span>
-      </label></td>
+          <tr v-for="item in responseData" :key="item.id">
+            <td>{{ (item['id']) }}</td>
+            <td>{{ (item['intitule_intervention']) }}</td>
+            <td>{{ (item['nbr_heures']) }}</td>
+            <td>{{ (item['date_debut']) }}</td>
+            <td>{{ (item['date_fin']) }}</td>
+            <td>{{ (item['visa_etb']) }}</td>
+            <td><button type="button" class="btn btn-warning" @click="valider(item.id)">Valider</button></td>
         </tr>
-        <tr>
-            <td>Content 2</td>
-            <td>Content 2</td>
-            <td>Content 2</td>
-            <td>Content 2</td>
-            <td>Content 2</td>
-            <td><label class="checkbox-container">
-        <input type="checkbox">
-        <span class="checkmark"></span>
-      </label></td>
-        </tr>
-        <tr>
-            <td>Content 3</td>
-            <td>Content 3</td>
-            <td>Content 3</td>
-            <td>Content 3</td>
-            <td>Content 3</td>
-            <td><label class="checkbox-container">
-        <input type="checkbox">
-        <span class="checkmark"></span>
-      </label></td>
-        </tr>
-        <tr>
-            <td>Content 4</td>
-            <td>Content 4</td>
-            <td>Content 4</td>
-            <td>Content 4</td>
-            <td>Content 4</td>
-            <td><label class="checkbox-container">
-        <input type="checkbox">
-        <span class="checkmark"></span>
-      </label></td>
-        </tr>
-        <tr>
-            <td>Content 5</td>
-            <td>Content 5</td>
-            <td>Content 5</td>
-            <td>Content 5</td>
-            <td>Content 5</td>
-            <td><label class="checkbox-container">
-        <input type="checkbox">
-        <span class="checkmark"></span>
-      </label></td>
-        </tr>
-        <tr>
-            <td>Content 6</td>
-            <td>Content 6</td>
-            <td>Content 6</td>
-            <td>Content 6</td>
-            <td>Content 6</td>
-            <td><label class="checkbox-container">
-        <input type="checkbox">
-        <span class="checkmark"></span>
-      </label></td>
-        </tr>
-        <tr>
-            <td>Content 7</td>
-            <td>Content 7</td>
-            <td>Content 7</td>
-            <td>Content 7</td>
-            <td>Content 7</td>
-            <td><label class="checkbox-container">
-        <input type="checkbox">
-        <span class="checkmark"></span>
-      </label></td>
-        </tr>
-        <tr>
-            <td>Content 8</td>
-            <td>Content 8</td>
-            <td>Content 8</td>
-            <td>Content 8</td>
-            <td>Content 8</td>
-            <td><label class="checkbox-container">
-        <input type="checkbox">
-        <span class="checkmark"></span>
-      </label></td>
-        </tr>
-        <tr>
-            <td>Content 9</td>
-            <td>Content 9</td>
-            <td>Content 9</td>
-            <td>Content 9</td>
-            <td>Content 9</td>
-            <td><label class="checkbox-container">
-        <input type="checkbox">
-        <span class="checkmark"></span>
-      </label></td>
-        </tr>
-        <tr>
-            <td>Content 10</td>
-            <td>Content 10</td>
-            <td>Content 10</td>
-            <td>Content 10</td>
-            <td>Content 10</td>
-            <td><label class="checkbox-container">
-        <input type="checkbox">
-        <span class="checkmark"></span>
-      </label></td>
-        </tr>
+     
         </tbody>
     </table>
 </div>
@@ -150,10 +51,42 @@
 
 </template>
 <script>
-
+  import {axiosClient} from '../Network/axios';
   export default {
-    name:'president_univ',
+   // name:'president_univ',
+  //}
+  data() {
+    return {
+      responseData: []
+    };
+  },
+  mounted() {
+    this.fetchData();
+  },
+
+  methods: {
+    fetchData() {
+      axiosClient.get('interventions')
+        .then(response => {
+          this.responseData = (response.data)['data'];
+          console.log(response.data);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    },
+    valider(id){
+     
+      axiosClient.put(`president/interventions/valider/${id}`)
+      .then(response=> {
+        console.log(response.data.status_message);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    }
   }
+}
 </script>
 <style>
 * {
