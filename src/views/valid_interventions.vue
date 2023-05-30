@@ -32,19 +32,20 @@
             <th>Date_début</th>
             <th>Date_Fin</th>
             <th>Etat</th>
+            <th>Valider</th>
             <th>Modif</th>
         </tr>
         </thead>
         <tbody>
        
-          <tr v-for="item in responseData">
+          <tr v-for="item in responseData" :key="item.id">
             <td>{{ (item['id']) }}</td>
             <td>{{ (item['intitule_intervention']) }}</td>
             <td>{{ (item['nbr_heures']) }}</td>
             <td>{{ (item['date_debut']) }}</td>
             <td>{{ (item['date_fin']) }}</td>
-            <td>{{ (item['annee_univ']) }}</td>
-            
+            <td>{{ (item['visa_etb']) }}</td>
+            <td><button type="button" class="btn btn-warning" @click="valider(item.id)">Valider</button></td>  
       <td><button type="button" class="btn btn-warning">Update</button></td>
         </tr>
        
@@ -69,16 +70,16 @@ window.addEventListener('DOMContentLoaded', function() {
     name:'valid_interventions',
     data() {
     return {
-      id:"",
       responseData: []
     };
   },
   mounted() {
     this.fetchData();
   },
+
   methods: {
     fetchData() {
-      axiosClient.post('directeur/interventions')
+      axiosClient.get('interventions')
         .then(response => {
           this.responseData = (response.data)['data'];
           console.log(response.data);
@@ -86,6 +87,16 @@ window.addEventListener('DOMContentLoaded', function() {
         .catch(error => {
           console.error(error);
         });
+    },
+    valider(id){
+     
+      axiosClient.put(`directeur/interventions/valider/${id}`)
+      .then(response=> {
+        console.log(response.data.status_message);
+      })
+      .catch(error => {
+        console.error(error);
+      });
     }
   }
   }
