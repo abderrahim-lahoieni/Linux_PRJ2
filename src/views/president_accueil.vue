@@ -17,39 +17,39 @@
 
     <div class="content">
         <div classe="fonction">
-            <h2 classe="h">Professeur</h2></div>
+            <h2 classe="h">Président</h2></div>
       <h2>Informations personnelles</h2>
       <div class="personal-dat">
         <div class="personal-info">
           <div class="info-label">Nom:</div>
-          <div class="info-value">hasnaoui</div>
+          <div class="info-value">{{ responseData.nom }}</div>
         </div>
         <div class="personal-info">
             <div class="info-label">Prenom:</div>
-            <div class="info-value">karim</div>
+            <div class="info-value">{{ responseData.prenom }}</div>
           </div>
           <div class="personal-info">
             <div class="info-label">grade:</div>
-            <div class="info-value">echel 11</div>
+            <div class="info-value">{{  }}</div>
           </div>
           <div class="personal-info">
-            <div class="info-label">type:</div>
-            <div class="info-value">directeur</div>
+            <div class="info-label">Métier:</div>
+            <div class="info-value">Enseignant</div>
           </div>
         <div class="personal-info">
           <div class="info-label">Email:</div>
-          <div class="info-value">johndoe@example.com</div>
+          <div class="info-value">{{ emailaddr }}</div>
         </div>
-        <div class="personal-info">
-          <div class="info-label">Tel:</div>
-          <div class="info-value">1234567890</div>
-        </div>
+       
       </div>
     </div>
     
   </div>
 </template>
 <script>
+import {axiosClient} from '../Network/axios';
+
+import { mapGetters } from 'vuex';
 export default {
     name: 'president_accueil',
    }

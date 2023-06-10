@@ -1,48 +1,105 @@
 <template>
   <div class="background"></div>
-  <nav>
-      
+ <nav>
+
       <div class="nav">
         <router-link to="/loginView">login</router-link> |
         <router-link :to="{ path: '/' }" :class="{ 'current': $route.path === '/', 'default': $route.path !== '/' }">Accueil</router-link> |
         <router-link to="/AboutView">About</router-link>
       </div>
-    </nav>
+    </nav> 
     <div class="wrapper fadeInDown">
     <div id="formContent">
-    
-      <h2 class="inactive underlineHover">log in </h2> 
-      <form>
-        <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-        <input type="password" id="password" class="fadeIn third" name="login" placeholder="Mot de passe">
-        <input type="submit"  @click="accueil_page" class="fadeIn fourth"  value="Log In">
-        <input type="submit" @click="login_page"  class="fadeIn fourth" value="Annuler">
+
+      <h2 class="inactive underlineHover">log in </h2>
+      <form >
+        <input type="text" id="login" class="fadeIn second"  placeholder="login" v-model="email">
+        <input type="password" id="password" class="fadeIn third"  placeholder="Mot de passe"  v-model="password">
+        <button type="button"  @click="login" class="fadeIn fourth"  value="Log In">log in</button>
+
 
       </form>
     </div>
   </div>
- 
+
   </template>
-  
+
   <script>
   import Accueil from '@/components/Accueil.vue';
+  import {axiosClient} from '../Network/axios';
+  import { mapGetters, mapActions } from 'vuex';
+
 
 export default {
   name:"loginForm",
-  components :{
-    Accueil
+   components :{
+     Accueil
+   },
+  data() {
+    return {
+      email: "",
+      password: "",
+      
+      
+    };},
+    computed: {
+      ...mapGetters(['getSharedValues']),
+    id() {
+      return this.getSharedValues.id;
+    },
+    emailaddr() {
+      return this.getSharedValues.emailaddr;
+    },
   },
   methods: {
-    accueil_page(){
-    this.$router.replace('/accueil_Ens');
-    console.log('test')
-  },
-   login_page(){
-    this.$router.push('loginView');
-  }
-  }
+    
+    ...mapActions(['updateSharedValues']),
+    
+    login(){ {
+    const url = 'login';
+    const data = {
+      email: this.email,
+      password: this.password,
+      
+    }; 
+   
+    console.log(data);
+axiosClient.post(url,data)
+.then((response)=>{
+  this.$store.commit('updateSharedValues', { id: response.data.items.id, emailaddr: this.email });
+  if(response.data.role ==='Directeur')
+ { this.$router.push('/direct_accueil');}
+ else if (response.data.role ==='Enseignant'){
+  
+  // this.$store.commit('updateSharedValues', { id: response.data.items.id, emailaddr: this.email });
+  // this.$store.dispatch('updateSharedValue',response.data.items.id);
+  // console.log(this.$store.getters.getSharedValue);
+  this.$router.push('/accueil_Ens');
+ }
+ else if (response.data.role ==='Administrateur_Etablissement'){
+  this.$router.push('/admin_etab_accueil');
+ }
+ else if (response.data.role ==='Administrateur_université'){
+  this.$router.push('/admin_univ_accueil');
+ }
+ else if (response.data.role ==='President'){
+  this.$router.push('/president_accueil');
+ }
+else {this.$router.push('/loginView');
+}})}}
+    
+        //if(response.data.role ==='Enseignant')
 
-}
+       // })// else {this.$router.push('/admin_univ_accueil');
+       // console.log(error);}
+     // })
+     }}
+      //this.$router.replace('/accueil_Ens');
+    //console.log('test')
+  //},
+   //login_page(){
+    //this.$router.push('loginView');
+
   </script>
   
   <style >
@@ -117,7 +174,9 @@ export default {
   
   
   /* FORM TYPOGRAPHY*/
-  
+  button{
+    font-size: 20px;
+  }
   input[type=submit], input[type=reset]  {
     background-color: #3d525e;
     border: none;

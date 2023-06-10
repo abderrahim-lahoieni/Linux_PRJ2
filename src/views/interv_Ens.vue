@@ -69,7 +69,7 @@ export default {
   // ...
   data() {
     return {
-      responseData: []
+      responseData: {}
     };
   },
   mounted() {
