@@ -148,6 +148,20 @@
     });
     export default {
       name:'list_admin_etab',
+      methods:{
+        logout(){
+    axiosClient
+        .post('logout',null,{headers: {
+    'Authorization': 'Bearer ' + this.tok}})
+        .then(response => {
+          console.log(response);
+          this.$router.push('/loginView');
+        })
+        .catch(error => {
+          console.error(error);
+        });
+      },
+      }
     }
   </script>
   <style>

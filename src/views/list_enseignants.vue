@@ -33,116 +33,25 @@
         <thead>
         <tr>
             <th>ID_enseignant</th>
-            <th>Nom </th>
-            <th>Prénom</th>
-            <th>email</th>
-            <th>Tel</th>
-            <th>Etablissement d'origine</th>
+            <th>nom</th>
+            <th>prenom</th>
+            <th>date_naissance</th>
+          
             <th>Modif</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>Content 1</td>
-            <td>Content 1</td>
-            <td>Content 1</td>
-            <td>Content 1</td>
-            <td>Content 1</td>
-            <td>Content 1</td>
-            <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Update</button></td>
+          <tr v-for="item in responseData.filter(item => item.etat )" >
+            <td>{{ (item['id']) }}</td>
+            <td>{{ (item['nom']) }}</td>
+            <td>{{ (item['prenom']) }}</td>
+            <td>{{ (item['date_naissance']) }}</td>
+           
+            <td><button type="submit" @click.prevent="Delete(item['id'])" class="btn btn-danger">Delete</button>
+                <button type="submit" @click.prevent="Update(item['id'])" class="btn btn-warning">Update</button></td>
             
         </tr>
-        <tr>
-            <td>Content 2</td>
-            <td>Content 2</td>
-            <td>Content 2</td>
-            <td>Content 2</td>
-            <td>Content 2</td>
-            <td>Content 1</td>
-            <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Update</button></td>
-        </tr>
-        <tr>
-            <td>Content 3</td>
-            <td>Content 3</td>
-            <td>Content 3</td>
-            <td>Content 3</td>
-            <td>Content 3</td>
-            <td>Content 1</td>
-            <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Warning</button></td>
-        </tr>
-        <tr>
-            <td>Content 4</td>
-            <td>Content 4</td>
-            <td>Content 4</td>
-            <td>Content 4</td>
-            <td>Content 4</td>
-            <td>Content 1</td>
-            <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Update</button></td>
-        </tr>
-        <tr>
-            <td>Content 5</td>
-            <td>Content 5</td>
-            <td>Content 5</td>
-            <td>Content 5</td>
-            <td>Content 5</td>
-            <td>Content 1</td>
-            <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Update</button></td>
-        </tr>
-        <tr>
-            <td>Content 6</td>
-            <td>Content 6</td>
-            <td>Content 6</td>
-            <td>Content 6</td>
-            <td>Content 6</td>
-            <td>Content 1</td>
-            <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Warning</button></td>
-        </tr>
-        <tr>
-            <td>Content 7</td>
-            <td>Content 7</td>
-            <td>Content 7</td>
-            <td>Content 7</td>
-            <td>Content 7</td>
-            <td>Content 1</td>
-            <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Update</button></td>
-        </tr>
-        <tr>
-            <td>Content 8</td>
-            <td>Content 8</td>
-            <td>Content 8</td>
-            <td>Content 8</td>
-            <td>Content 8</td>
-            <td>Content 1</td>
-            <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Warning</button></td>
-        </tr>
-        <tr>
-            <td>Content 9</td>
-            <td>Content 9</td>
-            <td>Content 9</td>
-            <td>Content 9</td>
-            <td>Content 9</td>
-            <td>Content 1</td>
-            <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Update</button></td>
-        </tr>
-        <tr>
-            <td>Content 10</td>
-            <td>Content 10</td>
-            <td>Content 10</td>
-            <td>Content 10</td>
-            <td>Content 10</td>
-            <td>Content 1</td>
-            <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Update</button></td>
-        </tr>
+        
         </tbody>
     </table>
 </div>
@@ -151,16 +60,71 @@
 
 </template>
 <script>
-window.addEventListener('DOMContentLoaded', function() {
-    var creationProfesseur = document.getElementById('creationProfesseur');
-    creationProfesseur.style.backgroundColor = '#f2f2f2';
-    creationProfesseur.style.padding = '20px';
-    creationProfesseur.style.marginTop = '20px';
-    creationProfesseur.style.borderRadius = '5px';
-    // Ajoutez d'autres styles ici selon vos besoins
-  });
+
+  import { axiosClient } from '../Network/axios';
   export default {
     name:'list_enseignants',
+    data() {
+    return {
+      responseData: []
+    };
+  },
+  mounted() {
+    this.fetchData();
+  },
+  methods: {
+    logout(){
+    axiosClient
+        .post('logout',null,{headers: {
+    'Authorization': 'Bearer ' + this.tok}})
+        .then(response => {
+          console.log(response);
+          this.$router.push('/loginView');
+        })
+        .catch(error => {
+          console.error(error);
+        });
+      },
+    Delete(itemId){
+      localStorage.setItem('itemId', itemId);
+      const itemI = localStorage.getItem('itemId');
+      const token = localStorage.getItem('accessToken');
+      console.log("token : ",token);
+      axiosClient.delete(`/enseignants/${itemI}`,
+      {  headers: {
+    'Authorization': 'Bearer ' + token
+      }})
+        .then(response => {
+          console.log(response);
+          // location.reload();
+          
+        })
+        .catch(error => {
+          console.error(error);
+        });
+
+    },
+    Update(itemId){
+      localStorage.setItem('itemId', itemId);
+      this.$router.push('/Update_ens_adm');
+    },
+    fetchData() {
+      const token = localStorage.getItem('accessToken');
+      console.log("token : ",token);
+      axiosClient.get('administrateur/enseignants',
+      {  headers: {
+    'Authorization': 'Bearer ' + token
+      }})
+        .then(response => {
+          
+          this.responseData = (response.data)['data'];
+          console.log(this.responseData);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
+  }
   }
 </script>
 <style>

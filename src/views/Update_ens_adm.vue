@@ -29,28 +29,24 @@
       <div class="wrapper fadeInDown">
       <div id="formContent">
       
-        <h2 class="inactive underlineHover">Creer un nouveau Enseignant</h2> 
+        <h2 class="inactive underlineHover">update Enseignant</h2> 
         <form>
-          <input type="text" id="Nom" class="fadeIn second" name="Nom" placeholder="Nom" v-model="nom">
-          <input type="text" id="Prénom" class="fadeIn second" name="Prénom" placeholder="Prénom" v-model="prenom">
+          <input type="text" id="Nom" class="fadeIn second" name="Nom"  v-model="responseData.nom">
+          <input type="text" id="Prénom" class="fadeIn second" name="Prénom" v-model="responseData.prenom" >
 
-          <input type="text" id="Nom" class="fadeIn second" name="Nom" placeholder="ppr" v-model="ppr">
-
-          <input type="date"  class="fadeIn second" name="date" placeholder="Date de naissance" v-model="date">
-
-          <input type="email" id="email" class="fadeIn third" name="login" placeholder="email" v-model="email">
-
-          <input type="password" id="password" class="fadeIn third" name="login" placeholder="Mot de passe" v-model="passwd">
-          <input type="password" id="rpassword" class="fadeIn third" name="login" placeholder="confirmer mot de passe" v-model="confpasswd">
-          <!-- <input type="text" class="fadeIn third" name="login" placeholder="designation" v-model="grade"> -->
-          <select id="select" class="fadeIn third" name="login" v-model="grade">
+          <select id="select" class="fadeIn third" name="login"  v-model="grade">
             <option value="PA">PA</option>
             <option value="PH">PH</option>
             <option value="PES">PES</option>
           </select> 
+
+          <input type="date"  class="fadeIn second"  name="date" v-model="responseData.date_naissance">
+          
+          <!-- <input type="text" class="fadeIn third" name="login" placeholder="designation" v-model="grade"> -->
+         
           <!-- <input type="text"  class="fadeIn third" name="login" placeholder="etat" v-model="etat">  -->
 
-          <input type="submit"  @click.prevent="creation()" class="fadeIn fourth"  value="Creer">
+          <input type="submit"  @click.prevent="Update()" class="fadeIn fourth"  value="UPDATE">
           <input type="reset"  class="fadeIn fourth" value="Annuler">
   
         </form>
@@ -61,26 +57,49 @@
     </template>
     
     <script>
+    
+import { mapGetters, mapActions } from 'vuex';
     import {axiosClient} from '../Network/axios';
 
   export default {
     name:"loginForm",
     data() {
-    return {
-      nom:'',
-      prenom:'',
-      ppr:'',
-      date_naissance:'',
-      email:'',
-      passwd:'',
-      confpasswd:'',
-      designation:'',
+  return {
+    
+        nom:'',
+        prenom:'',
+        designation:'',
+        date_naissance:'',
 
-      
-    };},
+    responseData: {},
+    grade:'',
+    
 
+  };
+},
+computed: {
+    ...mapGetters(['getSharedValues']),
+    id() {
+      return this.getSharedValues.id;
+    },
+    idgr() {
+      return this.getSharedValues.idgr;
+    },
+    emailaddr() {
+      return this.getSharedValues.emailaddr;
+    },
+    tok() {
+      return this.getSharedValues.tok;
+    },
+  },
+  
+    mounted() {
+        this.fetchData();
+        const itemId = localStorage.getItem('itemId');
+        console.log('ID:', itemId);
+  },
     methods: {
-      logout(){
+        logout(){
     axiosClient
         .post('logout',null,{headers: {
     'Authorization': 'Bearer ' + this.tok}})
@@ -92,34 +111,84 @@
           console.error(error);
         });
       },
-      creation(){
-        const url ='enseignants/create';
-       
-        const data = {
-  nom: this.nom,
-  prenom: this.prenom,
-  ppr: this.ppr,
-  date_naissance:this.date,
-  email: this.email,
-  password: this.passwd,
-  password_confirmation: this.confpasswd,
-  designation:this.grade,
-};
-console.log(data);
-const token = localStorage.getItem('accessToken');
-      console.log("token : ",token);
-        
+        Update(){
+            const itemId = localStorage.getItem('itemId');
+        console.log('ID:', itemId);
+            const url =`administrateur_etb/Enseigant/update/${itemId}`;
+            const data = {
+            nom : this.responseData.nom,
+            prenom : this.responseData.prenom,
+            designation:this.grade,
+            date_naissance:this.responseData.date_naissance
+        } 
         axiosClient
         .post(url,data,{headers: {
-    'Authorization': 'Bearer ' + token}})
+    'Authorization': 'Bearer ' + this.tok}})
         .then(response => {
-          console.log(response.data);
+      
+          console.log(response);
+          console.log(response.data.items);
         })
-        
         .catch(error => {
           console.error(error);
         });
-    },
+
+         },
+       fetchData(){
+        const itemId = localStorage.getItem('itemId');
+      console.log('ID:', itemId);
+        axiosClient
+        .get(`enseignants/${itemId}`,{headers: {
+    'Authorization': 'Bearer ' + this.tok}})
+        .then(response => {
+         const  idg=response.data.items.id_grade;
+        //  console.log(this.idgr);
+        //   console.log(this.id);
+          console.log(response);
+          console.log(response.data.items);
+          axiosClient
+        .get(`grades/${idg}`)
+        .then(response => {
+          console.log(response);
+          console.log(response.data.data);
+          this.grade= response.data.data.designation;
+          console.log(this.grade);
+        })
+      
+          console.log(response.data.items);
+          this.responseData = response.data.items;
+        })
+        .catch(error => {
+          console.error(error);
+        });
+        // const data = {
+//   nom: this.nom,
+//   prenom: this.prenom,
+//   ppr: this.ppr,
+//   date_naissance:this.date,
+//   email: this.email,
+//   password: this.passwd,
+//   password_confirmation: this.confpasswd,
+//   designation:this.grade,
+// };
+// console.log(data);
+
+// const token = localStorage.getItem('accessToken');
+//       console.log("token : ",token);
+// // console.log(itemId);
+//         axiosClient
+//         .post(url,data,{headers: {
+//     'Authorization': 'Bearer ' + token}})
+//         .then(response => {
+//             // localStorage.setItem('idens',response.data);
+//             // console.log((response.data)['id']);
+//         })
+        
+    //     .catch(error => {
+    //       console.error(error);
+    //     });
+    // },
+       },
      login_page(){
       this.$router.push('loginView');
     }

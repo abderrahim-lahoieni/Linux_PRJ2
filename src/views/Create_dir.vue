@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-      <div class="sidebare">
+        <div class="sidebare">
       <div class="logo">
         <img src="../assets/logo_projet.png" alt="Logo">
       </div>
@@ -10,15 +10,22 @@
      <div class="element">
         <router-link to="/list_enseignants">liste enseignants</router-link>
         </div >
-        <div class="element">
-        <router-link to="/Create_Ens">création</router-link>
-        </div>
+        
         <div class="element">
           <router-link to="/list_directeur">Liste Directeurs</router-link>
          </div>
         <div class="element">
         <router-link to="/admin_intervention_Etab">interventions</router-link>
        </div>
+       <div class="element">
+        <router-link to="/Create_dir">création Directeur</router-link>
+        </div>
+       <div class="element">
+        <router-link to="/Create_Ens">création Enseignant</router-link>
+        </div>
+        <div class="element">
+        <router-link to="/Create_interv">création Intervention</router-link>
+        </div>
         <div class="element">
         <router-link to="/loginView">logout</router-link>
         </div>
@@ -29,29 +36,16 @@
       <div class="wrapper fadeInDown">
       <div id="formContent">
       
-        <h2 class="inactive underlineHover">Creer un nouveau Enseignant</h2> 
+        <h2 class="inactive underlineHover">Creer un nouveau Directeur</h2> 
         <form>
-          <input type="text" id="Nom" class="fadeIn second" name="Nom" placeholder="Nom" v-model="nom">
-          <input type="text" id="Prénom" class="fadeIn second" name="Prénom" placeholder="Prénom" v-model="prenom">
-
-          <input type="text" id="Nom" class="fadeIn second" name="Nom" placeholder="ppr" v-model="ppr">
-
-          <input type="date"  class="fadeIn second" name="date" placeholder="Date de naissance" v-model="date">
-
-          <input type="email" id="email" class="fadeIn third" name="login" placeholder="email" v-model="email">
-
-          <input type="password" id="password" class="fadeIn third" name="login" placeholder="Mot de passe" v-model="passwd">
-          <input type="password" id="rpassword" class="fadeIn third" name="login" placeholder="confirmer mot de passe" v-model="confpasswd">
-          <!-- <input type="text" class="fadeIn third" name="login" placeholder="designation" v-model="grade"> -->
-          <select id="select" class="fadeIn third" name="login" v-model="grade">
-            <option value="PA">PA</option>
-            <option value="PH">PH</option>
-            <option value="PES">PES</option>
-          </select> 
-          <!-- <input type="text"  class="fadeIn third" name="login" placeholder="etat" v-model="etat">  -->
-
-          <input type="submit"  @click.prevent="creation()" class="fadeIn fourth"  value="Creer">
-          <input type="reset"  class="fadeIn fourth" value="Annuler">
+          <input type="text"  class="fadeIn second" name="Nom" placeholder="Nom" v-model="nom">
+          <input type="text"  class="fadeIn second" name="Prénom" placeholder="Prénom" v-model="prenom">
+          <input type="text"  class="fadeIn second" name="Type" placeholder="PPR" v-model="ppr">
+          <input type="email"  class="fadeIn third" name="login" placeholder="email" v-model="email">
+          <input type="password"  class="fadeIn third" name="login" placeholder="Mot de passe" v-model="passwd">
+          <input type="password"  class="fadeIn third" name="login" placeholder="confirmer mot de passe" v-model="confpasswd">
+          <input type="submit"  @click.prevent="cre_admn_etb()" class="fadeIn fourth"  value="Creer">
+          <input type="reset"   class="fadeIn fourth" value="Annuler">
   
         </form>
       </div>
@@ -64,23 +58,21 @@
     import {axiosClient} from '../Network/axios';
 
   export default {
-    name:"loginForm",
+    name:"Create_Admin_Etab",
+    
     data() {
     return {
       nom:'',
       prenom:'',
       ppr:'',
-      date_naissance:'',
       email:'',
       passwd:'',
       confpasswd:'',
-      designation:'',
-
+      
       
     };},
-
     methods: {
-      logout(){
+        logout(){
     axiosClient
         .post('logout',null,{headers: {
     'Authorization': 'Bearer ' + this.tok}})
@@ -92,33 +84,32 @@
           console.error(error);
         });
       },
-      creation(){
-        const url ='enseignants/create';
-       
+      cre_admn_etb(){
+        const url = 'administrateur_etb/create/directeur';
         const data = {
   nom: this.nom,
   prenom: this.prenom,
   ppr: this.ppr,
-  date_naissance:this.date,
   email: this.email,
   password: this.passwd,
   password_confirmation: this.confpasswd,
-  designation:this.grade,
 };
-console.log(data);
-const token = localStorage.getItem('accessToken');
+        const token = localStorage.getItem('accessToken');
       console.log("token : ",token);
-        
         axiosClient
-        .post(url,data,{headers: {
+        .post(url,data,
+        {headers: {
     'Authorization': 'Bearer ' + token}})
         .then(response => {
-          console.log(response.data);
+          console.log(response);
         })
-        
         .catch(error => {
           console.error(error);
         });
+      },
+      accueil_page(){
+      this.$router.replace('/accueil_Ens');
+      console.log('test')
     },
      login_page(){
       this.$router.push('loginView');
@@ -264,7 +255,7 @@ const token = localStorage.getItem('accessToken');
       transform: scale(0.95);
     }
     
-    input[type=text], [type=password], input[type=date], input[type=email],select{
+    input[type=text], [type=password], input[type=date], input[type=email]{
       background-color: #f6f6f6;
       border: none;
       color: #0d0d0d;

@@ -10,9 +10,6 @@
         <router-link to="/accueil_Ens">Profil</router-link>
       </div>
       <div class="element">
-       <router-link to="/interv_Ens">Liste interventions</router-link>
-      </div>
-      <div class="element">
        <router-link to="/paiement_Ens">Liste paiement</router-link>
       </div>
         <div class="element">
@@ -69,7 +66,7 @@ export default {
   // ...
   data() {
     return {
-      responseData: []
+      responseData: {}
     };
   },
   mounted() {
@@ -77,6 +74,18 @@ export default {
   },
 
   methods: {
+    logout(){
+    axiosClient
+        .post('logout',null,{headers: {
+    'Authorization': 'Bearer ' + this.tok}})
+        .then(response => {
+          console.log(response);
+          this.$router.push('/loginView');
+        })
+        .catch(error => {
+          console.error(error);
+        });
+      },
     fetchData() {
       axiosClient.get('interventions')
         .then(response => {

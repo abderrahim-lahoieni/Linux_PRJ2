@@ -29,25 +29,21 @@
       <div class="wrapper fadeInDown">
       <div id="formContent">
       
-        <h2 class="inactive underlineHover">Creer un nouveau Enseignant</h2> 
+        <h2 class="inactive underlineHover">Creer un nouvelle intervention</h2> 
         <form>
-          <input type="text" id="Nom" class="fadeIn second" name="Nom" placeholder="Nom" v-model="nom">
-          <input type="text" id="Prénom" class="fadeIn second" name="Prénom" placeholder="Prénom" v-model="prenom">
+          <input type="text" id="Nom" class="fadeIn second" name="Nom" placeholder="intitule_intervention" v-model="intitule_intervention">
+          <input type="text" id="Prénom" class="fadeIn second" name="Prénom" placeholder="annee_univ" v-model="annee_univ">
 
-          <input type="text" id="Nom" class="fadeIn second" name="Nom" placeholder="ppr" v-model="ppr">
+          <input type="text" id="Nom" class="fadeIn second" name="Nom" placeholder="semestre" v-model="semestre">
 
-          <input type="date"  class="fadeIn second" name="date" placeholder="Date de naissance" v-model="date">
+          <input type="date"  class="fadeIn second" name="date" placeholder="date_debut" v-model="date_debut">
 
-          <input type="email" id="email" class="fadeIn third" name="login" placeholder="email" v-model="email">
+          <input type="date" id="email" class="fadeIn third" name="login" placeholder="date_fin" v-model="date_fin">
 
-          <input type="password" id="password" class="fadeIn third" name="login" placeholder="Mot de passe" v-model="passwd">
-          <input type="password" id="rpassword" class="fadeIn third" name="login" placeholder="confirmer mot de passe" v-model="confpasswd">
+          <input type="number" id="password" class="fadeIn third" name="login" placeholder="nbr_heures" v-model="nbr_heures">
+          <input type="text" id="rpassword" class="fadeIn third" name="login" placeholder="ppr_enseignant" v-model="ppr_enseignant">
           <!-- <input type="text" class="fadeIn third" name="login" placeholder="designation" v-model="grade"> -->
-          <select id="select" class="fadeIn third" name="login" v-model="grade">
-            <option value="PA">PA</option>
-            <option value="PH">PH</option>
-            <option value="PES">PES</option>
-          </select> 
+       
           <!-- <input type="text"  class="fadeIn third" name="login" placeholder="etat" v-model="etat">  -->
 
           <input type="submit"  @click.prevent="creation()" class="fadeIn fourth"  value="Creer">
@@ -67,20 +63,19 @@
     name:"loginForm",
     data() {
     return {
-      nom:'',
-      prenom:'',
-      ppr:'',
-      date_naissance:'',
-      email:'',
-      passwd:'',
-      confpasswd:'',
-      designation:'',
+      intitule_intervention:'',
+      annee_univ:'',
+      semestre:'',
+      date_debut:'',
+      date_fin:'',
+      nbr_heures:'',
+      ppr_enseignant:'',
 
       
     };},
 
     methods: {
-      logout(){
+        logout(){
     axiosClient
         .post('logout',null,{headers: {
     'Authorization': 'Bearer ' + this.tok}})
@@ -93,17 +88,17 @@
         });
       },
       creation(){
-        const url ='enseignants/create';
+        const url ='interventions/create';
        
         const data = {
-  nom: this.nom,
-  prenom: this.prenom,
-  ppr: this.ppr,
-  date_naissance:this.date,
-  email: this.email,
-  password: this.passwd,
-  password_confirmation: this.confpasswd,
-  designation:this.grade,
+            intitule_intervention: this.intitule_intervention,
+            annee_univ: this.annee_univ,
+            semestre: this.semestre,
+            date_debut:this.date_debut,
+            date_fin: this.date_fin,
+            nbr_heures: this.nbr_heures,
+            ppr_enseignant: this.ppr_enseignant,
+
 };
 console.log(data);
 const token = localStorage.getItem('accessToken');

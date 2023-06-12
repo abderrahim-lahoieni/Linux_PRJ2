@@ -10,9 +10,6 @@
       <div class="element">
        <router-link to="/interv_Ens">Liste interventions</router-link>
       </div>
-      <div class="element">
-       <router-link to="/paiement_Ens">Liste paiement</router-link>
-      </div>
         <div class="element">
         <router-link to="/loginView">Logout</router-link>
       </div>
@@ -123,6 +120,20 @@
 <script>
 export default {
     name: 'paiment_Ens',
+    methods:{
+      logout(){
+    axiosClient
+        .post('logout',null,{headers: {
+    'Authorization': 'Bearer ' + this.tok}})
+        .then(response => {
+          console.log(response);
+          this.$router.push('/loginView');
+        })
+        .catch(error => {
+          console.error(error);
+        });
+      },
+    }
 }
 </script>
 <style>

@@ -25,39 +25,78 @@
       <div class="personal-dat">
         <div class="personal-info">
           <div class="info-label">Nom:</div>
-          <div class="info-value">hasnaoui</div>
+          <div class="info-value">{{ responseData.nom }}</div>
         </div>
         <div class="personal-info">
             <div class="info-label">Prenom:</div>
-            <div class="info-value">karim</div>
-          </div>
-          <div class="personal-info">
-            <div class="info-label">grade:</div>
-            <div class="info-value">echel 11</div>
-          </div>
-          <div class="personal-info">
-            <div class="info-label">type:</div>
-            <div class="info-value">directeur</div>
+            <div class="info-value">{{ responseData.prenom }}</div>
           </div>
         <div class="personal-info">
           <div class="info-label">Email:</div>
-          <div class="info-value">johndoe@example.com</div>
+          <div class="info-value">{{ email }}</div>
         </div>
-        <div class="personal-info">
-          <div class="info-label">Tel:</div>
-          <div class="info-value">1234567890</div>
-        </div>
+       
       </div>
-      <input type="submit"  class="fadeIn fourth"  value="modifier vos informations">
+      <button type="submit" @click.prevent="update()">Modifier vos informations</button>
+     
     </div>
   </div>
 </template>
 <script>
+ import {axiosClient} from '../Network/axios';
+
+import { mapGetters } from 'vuex';
 export default {
     name: 'direct_accueil',
+    data() {
+    return {
+      email:'',
+      responseData: {}
+    };
+  },
+  mounted() {
+    this.fetchData();
+  },
+  methods: {
+    update(){
+      this.$router.push('/Update_directeur');
+    },
+    logout(){
+      const token = localStorage.getItem('accessToken');
+    axiosClient
+        .post('logout',null,{headers: {
+    'Authorization': 'Bearer ' + token}})
+        .then(response => {
+          console.log(response);
+          this.$router.push('/loginView');
+        })
+        .catch(error => {
+          console.error(error);
+        });
+      },
+    fetchData() {
+      const token = localStorage.getItem('accessToken');
+      this.email=localStorage.getItem('email');
+     axiosClient
+       .get('administrateur_etb',{headers: {
+   'Authorization': 'Bearer ' + token}})
+       .then(response => {
+         console.log(this.id);
+         console.log(response);
+         console.log(response.data.items);
+         console.log(response.data.items);
+         this.responseData = response.data.items;
+       })
+       .catch(error => {
+         console.error(error);
+       });
+   }
+  }
+
+ 
    }
 </script>
-<style>
+<style >
 * {
     box-sizing: border-box;
   }
@@ -153,4 +192,8 @@ export default {
     flex: 1;
     color: #333;
   }
+  /* button{
+    width: 500px;
+    height: 150px;
+  } */
 </style>

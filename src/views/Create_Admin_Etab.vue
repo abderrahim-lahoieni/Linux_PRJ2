@@ -29,14 +29,16 @@
       
         <h2 class="inactive underlineHover">Creer un nouveau Enseignant</h2> 
         <form>
-          <input type="text" id="Nom" class="fadeIn second" name="Nom" placeholder="Nom">
-          <input type="text" id="Prénom" class="fadeIn second" name="Prénom" placeholder="Prénom">
-          <input type="text" id="Prénom" class="fadeIn second" name="Type" placeholder="Type">
-          <input type="email" id="email" class="fadeIn third" name="login" placeholder="email">
-          <input type="password" id="password" class="fadeIn third" name="login" placeholder="Mot de passe">
-          <input type="password" id="rpassword" class="fadeIn third" name="login" placeholder="confirmer mot de passe">
-          <input type="submit"  @click="accueil_page" class="fadeIn fourth"  value="Creer">
-          <input type="submit" @click="login_page"  class="fadeIn fourth" value="Annuler">
+          <input type="text"  class="fadeIn second" name="Nom" placeholder="Nom" v-model="nom">
+          <input type="text"  class="fadeIn second" name="Prénom" placeholder="Prénom" v-model="prenom">
+          <input type="text"  class="fadeIn second" name="Type" placeholder="PPR" v-model="ppr">
+          <input type="text"  class="fadeIn second" name="Type" placeholder="nom_etablissement" v-model="etab">
+          <input type="text" class="fadeIn second" name="Type" placeholder="ville" v-model="ville">
+          <input type="email"  class="fadeIn third" name="login" placeholder="email" v-model="email">
+          <input type="password"  class="fadeIn third" name="login" placeholder="Mot de passe" v-model="passwd">
+          <input type="password"  class="fadeIn third" name="login" placeholder="confirmer mot de passe" v-model="confpasswd">
+          <input type="submit"  @click.prevent="cre_admn_etb()" class="fadeIn fourth"  value="Creer">
+          <input type="reset"   class="fadeIn fourth" value="Annuler">
   
         </form>
       </div>
@@ -46,9 +48,62 @@
     </template>
     
     <script>
+    import {axiosClient} from '../Network/axios';
+
   export default {
     name:"Create_Admin_Etab",
+    
+    data() {
+    return {
+      nom:'',
+      prenom:'',
+      ppr:'',
+      etab:'',
+      ville:'',
+      email:'',
+      passwd:'',
+      confpasswd:'',
+      
+      
+    };},
     methods: {
+      logout(){
+    axiosClient
+        .post('logout',null,{headers: {
+    'Authorization': 'Bearer ' + this.tok}})
+        .then(response => {
+          console.log(response);
+          this.$router.push('/loginView');
+        })
+        .catch(error => {
+          console.error(error);
+        });
+      },
+      cre_admn_etb(){
+        const url = 'administrateur_univ/create/administrateur_etb';
+        const data = {
+  nom: this.nom,
+  prenom: this.prenom,
+  ppr: this.ppr,
+  nom_etablissement: this.etab,
+  ville: this.ville,
+  email: this.email,
+  password: this.passwd,
+  password_confirmation: this.confpasswd,
+};
+        const token = localStorage.getItem('accessToken');
+      console.log("token : ",token);
+        axiosClient
+        .post(url,data,
+        {headers: {
+    'Authorization': 'Bearer ' + token}})
+        .then(response => {
+          console.log(response);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+      },
       accueil_page(){
       this.$router.replace('/accueil_Ens');
       console.log('test')

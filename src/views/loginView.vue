@@ -1,48 +1,98 @@
 <template>
   <div class="background"></div>
-  <nav>
-      
+ <nav>
+
       <div class="nav">
         <router-link to="/loginView">login</router-link> |
         <router-link :to="{ path: '/' }" :class="{ 'current': $route.path === '/', 'default': $route.path !== '/' }">Accueil</router-link> |
         <router-link to="/AboutView">About</router-link>
       </div>
-    </nav>
+    </nav> 
     <div class="wrapper fadeInDown">
     <div id="formContent">
-    
-      <h2 class="inactive underlineHover">log in </h2> 
-      <form>
-        <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-        <input type="password" id="password" class="fadeIn third" name="login" placeholder="Mot de passe">
-        <input type="submit"  @click="accueil_page" class="fadeIn fourth"  value="Log In">
-        <input type="submit" @click="login_page"  class="fadeIn fourth" value="Annuler">
+
+      <h2 class="inactive underlineHover">log in </h2>
+      <form >
+        <input type="text" id="login" class="fadeIn second"  placeholder="login" v-model="email" >
+        <input type="password" id="password" class="fadeIn third"  placeholder="Mot de passe"  v-model="password">
+        <button type="button"  @click="login()" class="fadeIn fourth"  value="Log In">log in</button>
+
 
       </form>
     </div>
   </div>
- 
+
   </template>
-  
+
   <script>
   import Accueil from '@/components/Accueil.vue';
+  import {axiosClient} from '../Network/axios';
+  // import { mapGetters, mapActions } from 'vuex';
+  
+
 
 export default {
   name:"loginForm",
-  components :{
-    Accueil
-  },
+   components :{
+     Accueil
+   },
+  data() {
+    return {
+      email: "",
+      password: "",
+      
+      
+    };},
   methods: {
-    accueil_page(){
-    this.$router.replace('/accueil_Ens');
-    console.log('test')
-  },
-   login_page(){
-    this.$router.push('loginView');
-  }
-  }
+    login(){ {
+    const url = 'login';
+    const data = {
+      email: this.email,
+      password: this.password,
+    }; 
+  console.log(data);
+  axiosClient.post(url,data)
+  .then((response)=>{
+  console.log(response.data);
+  localStorage.setItem('accessToken',response.data.token);
+  localStorage.setItem('id',response.data.id_user);
+  localStorage.setItem('email',this.email);
+  console.log(localStorage.getItem('accessToken'));
+     
+  // console.log(this.$store.getters.getSharedValues);
+  if(response.data.role ==='DIRECTEUR')
+ { this.$router.push('/direct_accueil');}
+ else if (response.data.role ==='ENSEIGNANT'){
+  
+  // this.$store.commit('updateSharedValues', { id: response.data.items.id, emailaddr: this.email });
+  // this.$store.dispatch('updateSharedValue',response.data.items.id);
+  // console.log(this.$store.getters.getSharedValue);
+  this.$router.push('/accueil_Ens');
+ }
+ else if (response.data.role ==='ADMINISTRATEUR_ETA'){
+  this.$router.push('/admin_etab_accueil');
+ }
+ else if (response.data.role ==='ADMINISTRATEUR_UNIV'){
+  this.$router.push('/admin_univ_accueil');
+ }
+ else if (response.data.role ==='President'){
+  this.$router.push('/president_accueil');
+ }
+else {this.$router.push('/loginView');
+}})}}
+    
+        //if(response.data.role ==='Enseignant')
 
-}
+       // })// else {this.$router.push('/admin_univ_accueil');
+       // console.log(error);}
+     // })
+     }}
+      //this.$router.replace('/accueil_Ens');
+    //console.log('test')
+  //},
+   //login_page(){
+    //this.$router.push('loginView');
+
   </script>
   
   <style >
@@ -117,7 +167,9 @@ export default {
   
   
   /* FORM TYPOGRAPHY*/
-  
+  button{
+    font-size: 20px;
+  }
   input[type=submit], input[type=reset]  {
     background-color: #3d525e;
     border: none;
@@ -152,7 +204,7 @@ export default {
     transform: scale(0.95);
   }
   
-  input[type=text], [type=password]{
+  input[type=text], [type=password], [type=number]{
     background-color: #f6f6f6;
     border: none;
     color: #0d0d0d;
@@ -173,12 +225,12 @@ export default {
     border-radius: 5px 5px 5px 5px;
   }
   
-  input[type=text]:focus {
+  input[type=text]:focus ,[type=number]{
     background-color: #fff;
     border-bottom: 2px solid #5fbae9;
   }
   
-  input[type=text]:placeholder {
+  input[type=text]:placeholder,[type=number]:placeholder {
     color: #cccccc;
   }
   

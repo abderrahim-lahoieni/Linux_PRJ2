@@ -29,29 +29,18 @@
       <div class="wrapper fadeInDown">
       <div id="formContent">
       
-        <h2 class="inactive underlineHover">Creer un nouveau Enseignant</h2> 
+        <h2 class="inactive underlineHover">Modification des interventions</h2> 
         <form>
-          <input type="text" id="Nom" class="fadeIn second" name="Nom" placeholder="Nom" v-model="nom">
-          <input type="text" id="Prénom" class="fadeIn second" name="Prénom" placeholder="Prénom" v-model="prenom">
-
-          <input type="text" id="Nom" class="fadeIn second" name="Nom" placeholder="ppr" v-model="ppr">
-
-          <input type="date"  class="fadeIn second" name="date" placeholder="Date de naissance" v-model="date">
-
-          <input type="email" id="email" class="fadeIn third" name="login" placeholder="email" v-model="email">
-
-          <input type="password" id="password" class="fadeIn third" name="login" placeholder="Mot de passe" v-model="passwd">
-          <input type="password" id="rpassword" class="fadeIn third" name="login" placeholder="confirmer mot de passe" v-model="confpasswd">
-          <!-- <input type="text" class="fadeIn third" name="login" placeholder="designation" v-model="grade"> -->
-          <select id="select" class="fadeIn third" name="login" v-model="grade">
-            <option value="PA">PA</option>
-            <option value="PH">PH</option>
-            <option value="PES">PES</option>
-          </select> 
-          <!-- <input type="text"  class="fadeIn third" name="login" placeholder="etat" v-model="etat">  -->
-
-          <input type="submit"  @click.prevent="creation()" class="fadeIn fourth"  value="Creer">
-          <input type="reset"  class="fadeIn fourth" value="Annuler">
+          <input type="text" id="Nom" class="fadeIn second" v-model="intitule_intervention" placeholder="intervention">
+          <input type="text" id="Prénom" class="fadeIn second" v-model="annee_univ" placeholder="Année intervention">
+          <input type="text" id="ppr" class="fadeIn second" v-model="semestre" placeholder="semestre">
+          <input type="date"  class="fadeIn second" v-model="date_debut" placeholder="Date début">
+          <input type="date" id="d_f" class="fadeIn third" v-model="date_fin" placeholder="Date fin">
+          <input type="text" id="nbr" class="fadeIn third" v-model="nbr_heures" placeholder="Nombre d'heures">
+          <input type="text" id="ppr" class="fadeIn third" v-model="ppr_enseignant" placeholder="PPR">
+          
+          
+          <button type="submit"  @click.prevent="update_interv()" class="fadeIn fourth"  value="creer">creer</button>
   
         </form>
       </div>
@@ -61,26 +50,31 @@
     </template>
     
     <script>
+
     import {axiosClient} from '../Network/axios';
+    import { mapGetters, mapActions } from 'vuex';
 
   export default {
     name:"loginForm",
     data() {
-    return {
-      nom:'',
-      prenom:'',
-      ppr:'',
-      date_naissance:'',
-      email:'',
-      passwd:'',
-      confpasswd:'',
-      designation:'',
-
-      
-    };},
-
+  return {
+    intitule_intervention:"",
+    annee_univ:"",
+    semestre:"",
+    date_debut:"",
+    date_fin: "",
+    nbr_heures: "",
+    ppr_enseignant:""
+    
+  };},
+  mounted(){
+    //this.fetchData();
+    const itemId = localStorage.getItem('itemId');
+    console.log('ID',itemId);
+  },
+  
     methods: {
-      logout(){
+        logout(){
     axiosClient
         .post('logout',null,{headers: {
     'Authorization': 'Bearer ' + this.tok}})
@@ -92,39 +86,48 @@
           console.error(error);
         });
       },
-      creation(){
-        const url ='enseignants/create';
-       
-        const data = {
-  nom: this.nom,
-  prenom: this.prenom,
-  ppr: this.ppr,
-  date_naissance:this.date,
-  email: this.email,
-  password: this.passwd,
-  password_confirmation: this.confpasswd,
-  designation:this.grade,
-};
-console.log(data);
-const token = localStorage.getItem('accessToken');
+    //     fetchData() {
+    //   const token = localStorage.getItem('accessToken');
+    //   console.log("token : ",token);
+    //   axiosClient.get(`interventions/edit/${id}`,
+    //   {  headers: {
+    // 'Authorization': 'Bearer ' + token
+    //   }})
+    //     .then(response => {
+    //       this.responseData = (response.data)['data'];
+    //       console.log(response.data);
+    //     })
+    //     .catch(error => {
+    //       console.error(error);
+    //     });
+    // },
+    update_interv(){
+        const token = localStorage.getItem('accessToken');
       console.log("token : ",token);
-        
-        axiosClient
-        .post(url,data,{headers: {
-    'Authorization': 'Bearer ' + token}})
-        .then(response => {
+      const itemId = localStorage.getItem('itemId');
+      console.log("id",itemId);
+      const url =`interventions/edit/${itemId}`;
+      const data ={
+    intitule_intervention: this.intitule_intervention,
+    annee_univ : this.annee_univ,
+    semestre : this.semestre,
+    date_debut : this.date_debut,
+    date_fin: this.date_fin,
+    nbr_heures: this.nbr_heures,
+    ppr_enseignant: this.ppr_enseignant
+      }
+      axiosClient.post(url,data,{ headers: {
+    'Authorization': 'Bearer ' + token
+  }})
+  .then(response => {
           console.log(response.data);
+          location.reload();
         })
-        
         .catch(error => {
           console.error(error);
         });
-    },
-     login_page(){
-      this.$router.push('loginView');
     }
-    }
-  
+  } 
   }
     </script>
     
@@ -264,7 +267,7 @@ const token = localStorage.getItem('accessToken');
       transform: scale(0.95);
     }
     
-    input[type=text], [type=password], input[type=date], input[type=email],select{
+    input[type=text], [type=password], input[type=date], input[type=email]{
       background-color: #f6f6f6;
       border: none;
       color: #0d0d0d;

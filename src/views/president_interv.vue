@@ -153,6 +153,20 @@
 
   export default {
     name:'president_univ',
+    methods:{
+      logout(){
+    axiosClient
+        .post('logout',null,{headers: {
+    'Authorization': 'Bearer ' + this.tok}})
+        .then(response => {
+          console.log(response);
+          this.$router.push('/loginView');
+        })
+        .catch(error => {
+          console.error(error);
+        });
+      },
+    }
   }
 </script>
 <style>

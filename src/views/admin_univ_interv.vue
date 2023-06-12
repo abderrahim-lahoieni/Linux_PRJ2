@@ -159,6 +159,20 @@ window.addEventListener('DOMContentLoaded', function() {
   });
   export default {
     name:'admin_univ_interv',
+    methods:{
+      logout(){
+    axiosClient
+        .post('logout',null,{headers: {
+    'Authorization': 'Bearer ' + this.tok}})
+        .then(response => {
+          console.log(response);
+          this.$router.push('/loginView');
+        })
+        .catch(error => {
+          console.error(error);
+        });
+      },
+    }
   }
 </script>
 <style>

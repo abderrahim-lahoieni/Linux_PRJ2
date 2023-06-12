@@ -17,6 +17,15 @@
         <div class="element">
         <router-link to="/admin_intervention_Etab">interventions</router-link>
        </div>
+       <div class="element">
+        <router-link to="/Create_dir">création Directeur</router-link>
+        </div>
+       <div class="element">
+        <router-link to="/Create_Ens">création Enseignant</router-link>
+        </div>
+        <div class="element">
+        <router-link to="/Create_interv">création Intervention</router-link>
+        </div>
         <div class="element">
         <router-link to="/loginView">logout</router-link>
         </div>
@@ -29,37 +38,87 @@
       <div class="personal-dat">
         <div class="personal-info">
           <div class="info-label">Nom:</div>
-          <div class="info-value">hasnaoui</div>
+          <div class="info-value">{{ responseData.nom }}</div>
         </div>
         <div class="personal-info">
             <div class="info-label">Prenom:</div>
-            <div class="info-value">karim</div>
+            <div class="info-value">{{ responseData.prenom }}</div>
           </div>
-          <div class="personal-info">
-            <div class="info-label">grade:</div>
-            <div class="info-value">echel 11</div>
-          </div>
-          <div class="personal-info">
-            <div class="info-label">type:</div>
-            <div class="info-value">directeur</div>
-          </div>
+          
+          
         <div class="personal-info">
           <div class="info-label">Email:</div>
-          <div class="info-value">johndoe@example.com</div>
-        </div>
-        <div class="personal-info">
-          <div class="info-label">Tel:</div>
-          <div class="info-value">1234567890</div>
+          <div class="info-value">{{ email }}</div>
         </div>
       </div>
-      <input type="submit"  class="fadeIn fourth"  value="modifier vos informations">
+      <input type="submit" @click.prevent="update()" class="fadeIn fourth"  value="modifier vos informations">
     </div>
   </div>
 </template>
 <script>
+import {axiosClient} from '../Network/axios';
+
+import { mapGetters } from 'vuex';
+
+import Sidebar from '@/components/sidebar.vue'; 
+import content from '@/components/content.vue';
+
 export default {
-    name: 'admin_etab_accueil',
-   }
+  components: {
+    Sidebar,
+    content
+
+  },
+  data() {
+    return {
+      responseData: {},
+      email:'',
+    };
+  },
+  mounted() {
+    this.fetchData();
+  },
+  
+  methods: {
+    update(){
+      this.$router.push('/Update_admn_etb');
+    },
+    logout(){
+      const token = localStorage.getItem('accessToken');
+    axiosClient
+        .post('logout',null,{headers: {
+    'Authorization': 'Bearer ' + token}})
+        .then(response => {
+          console.log(response);
+          localStorage.clear();
+          this.$router.push('/loginView');
+        })
+        .catch(error => {
+          console.error(error);
+        });
+      },
+    fetchData() {
+      this.email=localStorage.getItem('email');
+      const token = localStorage.getItem('accessToken');
+      axiosClient
+        .get('administrateur_etb',{headers: {
+    'Authorization': 'Bearer ' + token}})
+        .then(response => {
+          console.log(response);
+          console.log(response.data.items);
+          console.log(response.data.items);
+          this.responseData = response.data.items;
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
+  }
+
+ 
+}
+
+
 </script>
 <style>
 * {

@@ -18,48 +18,31 @@
           <div class="element">
           <router-link to="/list_admin_etab">Les Admin_Etab</router-link>
          </div>
+         <div class="element">
+         <button type="submit" @click.prevent="create_pre()">Creation President</button>
+         </div>
+         <div class="element">
+         <button type="submit" @click.prevent="create_adm_etab()">Creation admin etablissement</button>
+         </div>
           <div class="element">
           <router-link to="/loginView">logout</router-link>
           </div>
       </div>
-
-    <div class="content">
-        <div classe="fonction">
-            <h2 classe="h">administrateur université</h2></div>
-      <h2>Informations personnelles</h2>
-      <div class="personal-dat">
-        <div class="personal-info">
-          <div class="info-label">Nom:</div>
-          <div class="info-value">hasnaoui</div>
-        </div>
-        <div class="personal-info">
-            <div class="info-label">Prenom:</div>
-            <div class="info-value">karim</div>
-          </div>
-          <div class="personal-info">
-            <div class="info-label">grade:</div>
-            <div class="info-value">echel 11</div>
-          </div>
-          <div class="personal-info">
-            <div class="info-label">type:</div>
-            <div class="info-value">directeur</div>
-          </div>
-        <div class="personal-info">
+      <div class="content">
+        <div class="personal-dat">
+      <div class="personal-info">
           <div class="info-label">Email:</div>
-          <div class="info-value">johndoe@example.com</div>
+          <div class="info-value">{{ email }}</div>
         </div>
-        <div class="personal-info">
-          <div class="info-label">Tel:</div>
-          <div class="info-value">1234567890</div>
-        </div>
-       
       </div>
-      <input type="submit"  class="fadeIn fourth"  value="modifier vos informations">
-    </div>
-    
+      <input type="submit"  class="inpuu"  value="modifier vos informations"> 
+
   </div>
+</div>
 </template>
 <script>
+
+import {axiosClient} from '../Network/axios';
   import Sidebar from '@/components/sidebar.vue'; 
 import content from '@/components/content.vue';
 export default {
@@ -68,13 +51,46 @@ export default {
     Sidebar,
     content
   },
-  methods:{
+  data(){
+    return {
+      email:''
+    };
+  },
+  mounted() {
+    this.fetchData();
+  },
+  methods: {
+    logout(){
+      const token = localStorage.getItem('accessToken');
+    axiosClient
+        .post('logout',null,{headers: {
+    'Authorization': 'Bearer ' + token}})
+        .then(response => {
+          console.log(response);
+          this.$router.push('/loginView');
+        })
+        .catch(error => {
+          console.error(error);
+        });
+      },
+    create_adm_etab(){
+      this.$router.push('/Create_Admin_Etab');
+    },
+    create_pre(){
+      this.$router.push('/Create_President');
+    },
     toggleDropdown(){
+      
       var dropdownMenu = document.querySelector('.dropdown-menu');
   dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    },
+    fetchData(){
+      this.email=localStorage.getItem('email');
     }
+    
+    
   }
- 
+
 }
    
 </script>

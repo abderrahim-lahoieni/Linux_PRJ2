@@ -8,16 +8,25 @@ import list_enseignants from '../views/list_enseignants.vue';
 import admin_etab_accueil from '../views/admin_etab_accueil.vue';
 import admin_intervention_Etab from '../views/admin_intervention_Etab.vue';
 import direct_accueil from '../views/direct_accueil.vue';
+import Create_interv from '../views/Create_interv.vue';
+import Create_dir from '../views/Create_dir.vue';
+
 import list_enseignants_direct from '../views/list_enseignants_direct.vue';
 import valid_interventions from '../views/valid_interventions.vue';
 import admin_univ_accueil from '../views/admin_univ_accueil.vue';
 import admin_univ_interv from '../views/admin_univ_interv.vue';
 import president_interv from '../views/president_interv.vue';
+import Update_ens_adm from '../views/Update_ens_adm.vue';
+import Update_ens from '../views/Update_ens.vue';
+import Update_admn_etb from '../views/Update_admn_etb.vue';
+import Update_directeur from '../views/Update_directeur.vue';
+import Update_inter from '../views/Update_inter.vue';
 import president_accueil from '../views/president_accueil.vue';
 import Create_Ens from '../views/Create_Ens.vue';
+// import Update_directeur from '../views/Update_directeur.vue';
 import list_president from '../views/list_president.vue';
 import list_directeur from '../views/list_directeur.vue';
-import Create_President from '../views/create_president.vue';
+import Create_President from '../views/Create_President.vue';
 import list_admin_etab from '../views/list_admin_etab.vue';
 import Create_Admin_Etab from '../views/Create_Admin_Etab.vue';
 import sidebar from '@/components/sidebar.vue';
@@ -38,6 +47,41 @@ const routes = [
       path: '/AboutView',
       name: 'AboutView',
       component: AboutView
+    },
+    {
+      path: '/Update_ens_adm',
+      name: 'Update_ens_adm',
+      component: Update_ens_adm
+    },
+    {
+      path: '/Update_admn_etb',
+      name: 'Update_admn_etb',
+      component: Update_admn_etb
+    },
+    {
+      path: '/Update_inter',
+      name: 'Update_inter',
+      component: Update_inter
+    },
+    {
+      path: '/Update_ens',
+      name: 'Update_ens',
+      component: Update_ens
+    },
+    {
+      path: '/Create_interv',
+      name: 'Create_interv',
+      component: Create_interv
+    },
+    {
+      path: '/Create_dir',
+      name: 'dir',
+      component: Create_dir
+    },
+    {
+      path: '/Update_directeur',
+      name: 'Update_directeur',
+      component: Update_directeur
     },
     {
       path: '/Create_Ens',
