@@ -14,14 +14,17 @@
        <router-link to="/valid_interventions">valider les interventions</router-link>
         </div>
         <div class="element">
-        <router-link to="/loginView">logout</router-link>
+          <a @click="logout" href="loginView">logout</a>
         </div>
     </div>
+
     
     <div class="content">
-      <h2>Validation interventions</h2> 
+      <h2>Liste des interventions d'établissement</h2>
+      
+       
 <div class="table-wrapper">
-
+  
     <table class="fl-table">
    
         <thead>
@@ -32,23 +35,23 @@
             <th>Date_début</th>
             <th>Date_Fin</th>
             <th>Etat</th>
-            <th>Valider</th>
             <th>Modif</th>
         </tr>
         </thead>
         <tbody>
-       
           <tr v-for="item in responseData" :key="item.id">
             <td>{{ (item['id']) }}</td>
             <td>{{ (item['intitule_intervention']) }}</td>
             <td>{{ (item['nbr_heures']) }}</td>
             <td>{{ (item['date_debut']) }}</td>
             <td>{{ (item['date_fin']) }}</td>
-            <td>{{ (item['visa_etb']) }}</td>
-            <td><button type="button" class="btn btn-warning" @click="valider(item.id)">Valider</button></td>  
-      <td><button type="button" class="btn btn-warning">Update</button></td>
+            <td v-if="item['visa_etb'] === 1">Validé</td>
+              <td v-if="item['visa_etb'] === 0">Non Validé</td>
+            <td><button type="button" class="btn btn-warning" @click="valid(item.id)">V</button></td>
+           
+            
         </tr>
-       
+        
         </tbody>
     </table>
 </div>
@@ -57,20 +60,15 @@
  
 </template>
 <script>
-window.addEventListener('DOMContentLoaded', function() {
-    var creationProfesseur = document.getElementById('creationProfesseur');
-    creationProfesseur.style.backgroundColor = '#f2f2f2';
-    creationProfesseur.style.padding = '20px';
-    creationProfesseur.style.marginTop = '20px';
-    creationProfesseur.style.borderRadius = '5px';
-    // Ajoutez d'autres styles ici selon vos besoins
-  });
+
   import {axiosClient} from '../Network/axios';
   export default {
-    name:'valid_interventions',
+    name:'admin_intervention_Etab',
+
     data() {
     return {
       responseData: []
+         
     };
   },
   mounted() {
@@ -79,7 +77,12 @@ window.addEventListener('DOMContentLoaded', function() {
 
   methods: {
     fetchData() {
-      axiosClient.get('interventions')
+      const token = localStorage.getItem('accessToken');
+      console.log("token : ",token);
+      axiosClient.get('administrateur/interventions',
+      {  headers: {
+    'Authorization': 'Bearer ' + token
+      }})
         .then(response => {
           this.responseData = (response.data)['data'];
           console.log(response.data);
@@ -88,72 +91,27 @@ window.addEventListener('DOMContentLoaded', function() {
           console.error(error);
         });
     },
-    valider(id){
-     
-      axiosClient.put(`directeur/interventions/valider/${id}`)
-      .then(response=> {
-        console.log(response.data.status_message);
-      })
-      .catch(error => {
-        console.error(error);
-      });
-    }
+ 
+  valid(id) {
+    const token = localStorage.getItem('accessToken');
+      console.log("token : ",token);
+      console.log("id",id),
+      axiosClient.put(`directeur/interventions/valider/${id}`, token, {
+  headers: {
+    'Authorization': 'Bearer ' + token
   }
-  }
+})
+        .then(response => {
+          console.log(response.data.status_message);
+          location.reload();
+        })
+        .catch(error => {
+          console.error(error);
+        });
+  },
+  } }
 </script>
 <style>
-
-.checkbox-container {
-  position: relative;
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-}
-
-.checkbox-container input[type="checkbox"] {
-  opacity: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-  cursor: pointer;
-}
-
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #eee;
-}
-
-.checkbox-container input[type="checkbox"]:checked + .checkmark {
-  background-color: #2196F3; /* Couleur de fond lorsque la case est cochée */
-}
-
-.checkmark::after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-.checkbox-container input[type="checkbox"]:checked + .checkmark::after {
-  display: block;
-}
-
-.checkbox-container .checkmark::after {
-  left: 6px;
-  top: 2px;
-  width: 5px;
-  height: 10px;
-  border: solid #fff;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-}
-
-
-
-
 * {
   box-sizing: border-box;
 }

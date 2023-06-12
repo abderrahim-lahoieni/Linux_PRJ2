@@ -16,11 +16,12 @@
        <router-link to="/paiement_Ens">Liste paiement</router-link>
       </div>
         <div class="element">
-        <router-link to="/loginView">Logout</router-link>
+          <a @click="logout" href="loginView">logout</a>
       </div>
     </div>
     
     <div class="content">
+      <h2>Les interventions </h2>
 <div class="table-wrapper">
 
     <table class="fl-table">
@@ -28,22 +29,25 @@
         <thead>
         <tr>
             <th>ID_Intervention</th>
-            <th>Nom Ethablissement</th>
-            <th>Nombre heures</th>
+            <th>nom intervention</th>
+            <th>Année université</th>
             <th>Date_début</th>
             <th>Date_Fin</th>
             <th>Etat</th>
+            <th>Nombre heures</th>
         </tr>
         </thead>
         <tbody>
           
-        <tr v-for="item in responseData">
+        <tr  v-for="item in responseData">
             <td>{{ (item['id']) }}</td>
             <td>{{ (item['intitule_intervention']) }}</td>
-            <td>{{ (item['nbr_heures']) }}</td>
+            <td>{{ (item['annee_univ']) }}</td>
             <td>{{ (item['date_debut']) }}</td>
             <td>{{ (item['date_fin']) }}</td>
             <td>{{ (item['visa_etb']) }}</td>
+            <td>{{ (item['nbr_heures']) }}</td>
+           
         </tr>
         </tbody>
     </table>
@@ -53,14 +57,7 @@
   
 </template>
 <script>
-window.addEventListener('DOMContentLoaded', function() {
-    var creationProfesseur = document.getElementById('creationProfesseur');
-    creationProfesseur.style.backgroundColor = '#f2f2f2';
-    creationProfesseur.style.padding = '20px';
-    creationProfesseur.style.marginTop = '20px';
-    creationProfesseur.style.borderRadius = '5px';
-    // Ajoutez d'autres styles ici selon vos besoins
-  });
+
 
   import {axiosClient} from '../Network/axios';
   
@@ -78,7 +75,12 @@ export default {
 
   methods: {
     fetchData() {
-      axiosClient.get('interventions')
+      const token = localStorage.getItem('accessToken');
+      console.log("token : ",token);
+      axiosClient.get('enseignant/interventions',
+      {  headers: {
+    'Authorization': 'Bearer ' + token
+      }})
         .then(response => {
           this.responseData = (response.data)['data'];
           console.log(response.data);

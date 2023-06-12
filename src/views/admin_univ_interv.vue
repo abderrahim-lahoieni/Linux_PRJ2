@@ -7,7 +7,6 @@
          <div class="element">
           <router-link to="/admin_etab_accueil">profil</router-link>
        </div>
-       
           <div class="element">
           <router-link to="/admin_univ_interv">interventions</router-link>
          </div>
@@ -18,150 +17,242 @@
           <router-link to="/list_admin_etab">Les Admin_Etab</router-link>
          </div>
           <div class="element">
-          <router-link to="/loginView">logout</router-link>
+            <a @click="logout" href="loginView">logout</a>
           </div>
       </div>
-
-    
     <div class="content">
-      <h2>Liste des Interventions d'établissement</h2>
-<div class="table-wrapper">
+      <h2>Les interventions d'université</h2>
+      <hr />
+      <button type="button" @click="fetchData()" class="fadeIn fourth" value="Log In">ALL interventions</button>
+      <hr /> <label for="pet-select">Choose a etab:</label>
 
-    <table class="fl-table">
-   
-        <thead>
-        <tr>
-            <th>ID_Intervention</th>
-            <th>Nom Ethablissement</th>
-            <th>Nombre heures</th>
-            <th>Date_début</th>
-            <th>Date_Fin</th>
-            <th>Etat</th>
-            <th>Modif</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>Content 1</td>
-            <td>Content 1</td>
-            <td>Content 1</td>
-            <td>Content 1</td>
-            <td>Content 1</td>
-            <td>Content 1</td>
-            <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Update</button></td>
-        </tr>
-        <tr>
-            <td>Content 2</td>
-            <td>Content 2</td>
-            <td>Content 2</td>
-            <td>Content 2</td>
-            <td>Content 2</td>
-            <td>Content 1</td>
-            <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Update</button></td>
-        </tr>
-        <tr>
-            <td>Content 3</td>
-            <td>Content 3</td>
-            <td>Content 3</td>
-            <td>Content 3</td>
-            <td>Content 3</td>
-            <td>Content 1</td>
-            <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Update</button></td>
-        </tr>
-        <tr>
-            <td>Content 4</td>
-            <td>Content 4</td>
-            <td>Content 4</td>
-            <td>Content 4</td>
-            <td>Content 4</td>
-            <td>Content 1</td>
-            <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Update</button></td>
-        </tr>
-        <tr>
-            <td>Content 5</td>
-            <td>Content 5</td>
-            <td>Content 5</td>
-            <td>Content 5</td>
-            <td>Content 5</td>
-            <td>Content 1</td>
-            <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Update</button></td>
-        </tr>
-        <tr>
-            <td>Content 6</td>
-            <td>Content 6</td>
-            <td>Content 6</td>
-            <td>Content 6</td>
-            <td>Content 6</td>
-            <td>Content 1</td>
-            <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Update</button></td>
-        </tr>
-        <tr>
-            <td>Content 7</td>
-            <td>Content 7</td>
-            <td>Content 7</td>
-            <td>Content 7</td>
-            <td>Content 7</td>
-            <td>Content 1</td>
-            <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Update</button></td>
-        </tr>
-        <tr>
-            <td>Content 8</td>
-            <td>Content 8</td>
-            <td>Content 8</td>
-            <td>Content 8</td>
-            <td>Content 8</td>
-            <td>Content 1</td>
-            <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Update</button></td>
-        </tr>
-        <tr>
-            <td>Content 9</td>
-            <td>Content 9</td>
-            <td>Content 9</td>
-            <td>Content 9</td>
-            <td>Content 9</td>
-            <td>Content 1</td>
-            <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Update</button></td>
-        </tr>
-        <tr>
-            <td>Content 10</td>
-            <td>Content 10</td>
-            <td>Content 10</td>
-            <td>Content 10</td>
-            <td>Content 10</td>
-            <td>Content 1</td>
-            <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Update</button></td>
-        </tr>
-        </tbody>
-    </table>
-</div>
+      <select v-model="nom_etab" id="filtre_etab">
+        <option value="All">All</option>
+        <option value="Ensa Tanger">ENSA TANGR</option>
+        <option value="Ensa Tetouan">ENSA Tetouan</option>
+        <option value="Fst">Fst</option>
+        <option value="Ispits">Ispits</option>
+        <option value="Medecine">Medecine</option>
+        <option value="Encg">Encg</option>
+      </select>
+      <button type="button" @click="filtrer_etab" class="fadeIn fourth" value="Log In">GO</button>
+      <hr />
+
+      <label for="pet-select">Choose a year:</label>
+      <select v-model="year" id="filtre_year">
+        <option value="All">All</option>
+        <option value="2000">2000</option>
+        <option value="2001">2001</option>
+        <option value="2002">2002</option>
+        <option value="2003">2003</option>
+        <option value="2004">2004</option>
+        <option value="2005">2005</option>
+      </select>
+
+      <button type="button" @click="filtrer_year" class="fadeIn fourth" value="Log In">GO</button>
+      <div class="table-wrapper">
+
+        <table class="fl-table" v-if="filterApplied">
+
+          <thead>
+            <tr>
+
+              <th>Nom Ethablissement</th>
+              <th>Nombre heures</th>
+              <th>Date_début</th>
+              <th>Date_Fin</th>
+              <th>Etat</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="item in responseData">
+
+              <td>{{ (item['intitule_intervention']) }}</td>
+              <td>{{ (item['nbr_heures']) }}</td>
+              <td>{{ (item['date_debut']) }}</td>
+              <td>{{ (item['date_fin']) }}</td>
+              <td v-if="item['visa_uae'] === 1">Validé</td>
+              <td v-else>Non Validé</td>
+               </tr>
+
+          </tbody>
+        </table>
       </div>
     </div>
-
+  </div>
 </template>
 <script>
-window.addEventListener('DOMContentLoaded', function() {
-    var creationProfesseur = document.getElementById('creationProfesseur');
-    creationProfesseur.style.backgroundColor = '#f2f2f2';
-    creationProfesseur.style.padding = '20px';
-    creationProfesseur.style.marginTop = '20px';
-    creationProfesseur.style.borderRadius = '5px';
-    // Ajoutez d'autres styles ici selon vos besoins
-  });
-  export default {
-    name:'admin_univ_interv',
+import { axiosClient } from '../Network/axios';
+export default {
+  // name:'president_univ',
+  //}
+
+  
+  email: localStorage.getItem('user'),
+  data() {
+    return {
+      responseData: [],
+      filterApplied: false,
+      etab: "",
+      year: "",
+      nom_ens: ""
+    };
+  },
+  mounted() {
+    this.fetchData();
+  },
+
+  methods: {
+    fetchData() {
+
+      const token = localStorage.getItem('accessToken');
+      console.log("token : ",token);
+      axiosClient.get('president/interventions',
+      {
+      headers: {
+    'Authorization': 'Bearer ' + token
+      }
+  })
+        .then(response => {
+          this.responseData = (response.data)['data'];
+          this.filterApplied = true;
+          console.log(response.data);
+          
+
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    },
+    valider(id) {
+      const token = localStorage.getItem('accessToken');
+      console.log("token : ",token);
+      axiosClient.put(`president/interventions/valider/${id}`, 
+      {
+      headers: {
+    'Authorization': 'Bearer ' + token
+      }
+  })
+        .then(response => {
+          console.log(response.data.status_message);
+         
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    },
+    Nonvalider(id) {
+      const token = localStorage.getItem('accessToken');
+      console.log("token : ",token);
+      axiosClient.put(`president/interventions/non_valider/${id}`,
+      {
+      headers: {
+    'Authorization': 'Bearer ' + token
+      }
+  })
+        .then(response => {
+          console.log(response.data.status_message);
+          
+
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    },
+    filtrer_etab() {
+      const token = localStorage.getItem('accessToken');
+      console.log("token : ",token);
+      
+      const etablissement = this.nom_etab;  
+      console.log("etab",etablissement)   
+      axiosClient.get(`president/interventions/etablissement/${this.nom_etab}`,
+      {
+      headers: {
+    'Authorization': 'Bearer ' + token
+      }
+  })
+        .then(response => {
+          this.responseData = (response.data)['data'];
+          this.filterApplied = true;
+          //Traitez les résultats de la requête ici
+          console.log(response.data);
+         
+        })
+        .catch(error => {
+          // Gérez les erreurs de la requête ici
+          console.error(error);
+        });
+    },
+    
+    filtrer_year() {
+      const token = localStorage.getItem('accessToken');
+      console.log("token : ",token);
+      const ans = this.year;
+      axiosClient.get(`president/interventions/annee/${ans}`,
+      {  headers: {
+    'Authorization': 'Bearer ' + token
+      }})
+        .then(response => {
+          // Traitez les résultats de la requête ici
+          this.responseData = (response.data)['data'];
+          this.filterApplied = true;
+          console.log(response.data);
+        })
+        .catch(error => {
+          // Gérez les erreurs de la requête ici
+          console.error(error);
+        });
+    },
+  
+  logout() {
+    const token = localStorage.getItem('accessToken');
+      console.log("token : ",token);
+    axios.post('/logout', {},
+      {  headers: {
+    'Authorization': 'Bearer ' + token
+      }})
+      .then(response => {
+        console.log(response.data.message);
+        // Faites quelque chose après la déconnexion, par exemple rediriger l'utilisateur vers une page de connexion
+        // window.location.href = '/loginView';
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  },
+  toggleChoices() {
+    this.showChoices = !this.showChoices;
+  },
+  hideChoices() {
+    this.showChoices = false;
+  },
+  selectChoice(choice) {
+    // Faites quelque chose avec le choix sélectionné, par exemple :
+    console.log('Choix sélectionné :', choice);
   }
+}}
+
 </script>
 <style>
+.choices-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.choices-list li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.choices-list li:hover {
+  background-color: #f2f2f2;
+}
+
+
+
+
 * {
   box-sizing: border-box;
 }
@@ -172,14 +263,16 @@ body {
   font-family: Arial, sans-serif;
   background-color: #f2f2f2;
 }
-.fonction h1{
+
+.fonction h1 {
   text-align: center;
   align-content: center;
   padding: 0;
   margin: 0;
-  color:#f2f2f2
+  color: #f2f2f2
 }
-.fonction{
+
+.fonction {
   background-color: #f2f2f2;
 }
 
@@ -255,7 +348,8 @@ body {
   flex: 1;
   color: #333;
 }
-*{
+
+* {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -264,9 +358,9 @@ body {
 
 /* Table Styles */
 
-.table-wrapper{
+.table-wrapper {
   margin: 10px 70px 70px;
-  box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+  box-shadow: 0px 35px 50px rgba(0, 0, 0, 0.2);
 }
 
 .fl-table {
@@ -278,11 +372,12 @@ body {
   width: 100%;
   max-width: 100%;
   white-space: nowrap;
-  background-color: white;
-  
+  background-color: rgba(255, 255, 255, 0.5);
+
 }
 
-.fl-table td, .fl-table th {
+.fl-table td,
+.fl-table th {
   text-align: center;
   padding: 8px;
 }
@@ -295,83 +390,98 @@ body {
 
 .fl-table thead th {
   color: #ffffff;
-  background: #7e968f;
+  background: #4485a5f2;
   height: 50px;
 }
 
 
 .fl-table thead th:nth-child(odd) {
   color: #ffffff;
-  background: #465360;
+  background: #4485a5f2;
 }
 
 .fl-table tr:nth-child(even) {
-  background: #F8F8F8;
+  background: rgba(255, 255, 255, 0.5);
 }
 
 /* Responsive */
 
 @media (max-width: 767px) {
   .fl-table {
-      display: block;
-      width: 100%;
+    display: block;
+    width: 100%;
   }
-  .table-wrapper:before{
-      content: "Scroll horizontally >";
-      display: block;
-      text-align: right;
-      font-size: 11px;
-      color: white;
-      padding: 0 0 10px;
+
+  .table-wrapper:before {
+    content: "Scroll horizontally >";
+    display: block;
+    text-align: right;
+    font-size: 11px;
+    color: white;
+    padding: 0 0 10px;
   }
-  .fl-table thead, .fl-table tbody, .fl-table thead th {
-      display: block;
-  }
-  .fl-table thead th:last-child{
-      border-bottom: none;
-  }
-  .fl-table thead {
-      float: left;
-  }
-  .fl-table tbody {
-      width: auto;
-      position: relative;
-      overflow-x: auto;
-  }
-  .fl-table td, .fl-table th {
-      padding: 20px .625em .625em .625em;
-      height: 60px;
-      vertical-align: middle;
-      box-sizing: border-box;
-      overflow-x: hidden;
-      overflow-y: auto;
-      width: 120px;
-      font-size: 13px;
-      text-overflow: ellipsis;
-  }
+
+  .fl-table thead,
+  .fl-table tbody,
   .fl-table thead th {
-      text-align: left;
-      border-bottom: 1px solid #f7f7f9;
+    display: block;
   }
+
+  .fl-table thead th:last-child {
+    border-bottom: none;
+  }
+
+  .fl-table thead {
+    float: left;
+  }
+
+  .fl-table tbody {
+    width: auto;
+    position: relative;
+    overflow-x: auto;
+  }
+
+  .fl-table td,
+  .fl-table th {
+    padding: 20px .625em .625em .625em;
+    height: 60px;
+    vertical-align: middle;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 120px;
+    font-size: 13px;
+    text-overflow: ellipsis;
+  }
+
+  .fl-table thead th {
+    text-align: left;
+    border-bottom: 1px solid #f7f7f9;
+  }
+
   .fl-table tbody tr {
-      display: table-cell;
+    display: table-cell;
   }
+
   .fl-table tbody tr:nth-child(odd) {
-      background: none;
+    background: none;
   }
+
   .fl-table tr:nth-child(even) {
-      background: transparent;
+    background: transparent;
   }
+
   .fl-table tr td:nth-child(odd) {
-      background: #F8F8F8;
-      border-right: 1px solid #E6E4E4;
+    background: #F8F8F8;
+    border-right: 1px solid #E6E4E4;
   }
+
   .fl-table tr td:nth-child(even) {
-      border-right: 1px solid #E6E4E4;
+    border-right: 1px solid #E6E4E4;
   }
+
   .fl-table tbody td {
-      display: block;
-      text-align: center;
+    display: block;
+    text-align: center;
   }
-}
-</style>
+}</style>

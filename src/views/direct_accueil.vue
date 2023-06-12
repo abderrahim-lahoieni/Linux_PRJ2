@@ -14,7 +14,7 @@
        <router-link to="/valid_interventions">valider les interventions</router-link>
         </div>
         <div class="element">
-        <router-link to="/loginView">logout</router-link>
+          <a @click="logout" href="loginView">logout</a>
         </div>
     </div>
 
@@ -48,7 +48,7 @@
           <div class="info-value">1234567890</div>
         </div>
       </div>
-      <input type="submit"  class="fadeIn fourth"  value="modifier vos informations">
+      <button type="button" @click.prevent="Update(item['id'])" class="btn btn-warning">Modifier les données</button>
     </div>
   </div>
 </template>

@@ -11,13 +11,13 @@
           <router-link to="/president_interv">valider les interventions</router-link>
         </div>
           <div class="element">
-          <router-link to="/loginView">logout</router-link>
+            <a  href="loginView">logout</a>
           </div>
       </div>
   
       <div class="content">
           <div classe="fonction">
-              <h2 classe="h">Professeur</h2></div>
+              <h2 classe="h">President</h2></div>
         <h2>Informations personnelles</h2>
         <div class="personal-dat">
           <div class="personal-info">
@@ -52,7 +52,24 @@
   <script>
   export default {
       name: 'president_accueil',
-     }
+      email: localStorage.getItem('user'),
+      method:{
+  //       logout() {
+  //   axios.post('/logout', {}, {
+  //     headers: {
+  //       Authorization: 'Bearer ' + localStorage.getItem('token')
+  //     }})
+  //     .then(response => {
+  //       console.log(response.data.message);
+  //       // Faites quelque chose après la déconnexion, par exemple rediriger l'utilisateur vers une page de connexion
+  //       // window.location.href = '/loginView';
+  //     })
+  //     .catch(error => {
+  //       console.error(error);
+  //     });
+  // },
+  //     }
+     }}
   </script>
   <style>
   * {

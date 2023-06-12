@@ -19,99 +19,25 @@
     </div>
     
     <div class="content">
+      <h2> Paiements </h2>
 <div class="table-wrapper">
     <table class="fl-table">
         <thead>
         <tr>
-            <th>ID_Intervention</th>
-            <th>Nom Ethablissement</th>
-            <th>Nombre heures</th>
-            <th>Date_début</th>
-            <th>Date_Fin</th>
+            <th>etablissement</th>
+            <th>Volume horaire</th>
+            <th>brute</th>
             <th>Net</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>Content 1</td>
-            <td>Content 1</td>
-            <td>Content 1</td>
-            <td>Content 1</td>
-            <td>Content 1</td>
-            <td>Content 1</td>
-        </tr>
-        <tr>
-            <td>Content 2</td>
-            <td>Content 2</td>
-            <td>Content 2</td>
-            <td>Content 2</td>
-            <td>Content 2</td>
-            <td>Content 1</td>
-        </tr>
-        <tr>
-            <td>Content 3</td>
-            <td>Content 3</td>
-            <td>Content 3</td>
-            <td>Content 3</td>
-            <td>Content 3</td>
-            <td>Content 1</td>
-        </tr>
-        <tr>
-            <td>Content 4</td>
-            <td>Content 4</td>
-            <td>Content 4</td>
-            <td>Content 4</td>
-            <td>Content 4</td>
-            <td>Content 1</td>
-        </tr>
-        <tr>
-            <td>Content 5</td>
-            <td>Content 5</td>
-            <td>Content 5</td>
-            <td>Content 5</td>
-            <td>Content 5</td>
-            <td>Content 1</td>
-        </tr>
-        <tr>
-            <td>Content 6</td>
-            <td>Content 6</td>
-            <td>Content 6</td>
-            <td>Content 6</td>
-            <td>Content 6</td>
-            <td>Content 1</td>
-        </tr>
-        <tr>
-            <td>Content 7</td>
-            <td>Content 7</td>
-            <td>Content 7</td>
-            <td>Content 7</td>
-            <td>Content 7</td>
-            <td>Content 1</td>
-        </tr>
-        <tr>
-            <td>Content 8</td>
-            <td>Content 8</td>
-            <td>Content 8</td>
-            <td>Content 8</td>
-            <td>Content 8</td>
-            <td>Content 1</td>
-        </tr>
-        <tr>
-            <td>Content 9</td>
-            <td>Content 9</td>
-            <td>Content 9</td>
-            <td>Content 9</td>
-            <td>Content 9</td>
-            <td>Content 1</td>
-        </tr>
-        <tr>
-            <td>Content 10</td>
-            <td>Content 10</td>
-            <td>Content 10</td>
-            <td>Content 10</td>
-            <td>Content 10</td>
-            <td>Content 1</td>
-        </tr>
+          <tr  v-for="item in responseData">
+            <td>{{ (item['id_etab']) }}</td>
+            <td>{{ (item['vh']) }}</td>
+            <td>{{ (item['brut']) }}</td>
+            <td>{{ (item['net']) }}</td></tr>
+        
+        
         </tbody>
     </table>
 </div>
@@ -121,8 +47,35 @@
  
 </template>
 <script>
+import { axiosClient } from '../Network/axios';
 export default {
     name: 'paiment_Ens',
+    data() {
+    return {
+      responseData: [],
+      
+    };
+  },
+  mounted() {
+    this.fetchData();
+  },
+  methods: {
+    fetchData() {
+      const token = localStorage.getItem('accessToken');
+      console.log("token : ",token);
+      axiosClient.get(`enseignant/payement`,
+      {  headers: {
+    'Authorization': 'Bearer ' + token
+      }})
+        .then(response => {
+          this.responseData = (response.data)['data'];
+          console.log(response.data);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
+  }
 }
 </script>
 <style>

@@ -14,107 +14,39 @@
        <router-link to="/valid_interventions">valider les interventions</router-link>
         </div>
         <div class="element">
-        <router-link to="/loginView">logout</router-link>
+          <a @click="logout" href="loginView">logout</a>
         </div>
     </div>
+
     
     <div class="content">
-      <h2>Liste des enseigants</h2> 
+      <h2>Liste des enseignants</h2>
+      
 <div class="table-wrapper">
-
+  
     <table class="fl-table">
    
         <thead>
         <tr>
             <th>ID_enseignant</th>
-            <th>ID_Intervention </th>
-            <th>Nbr d'heure</th>
-            <th>Année</th>
-            <th>Etat</th>
-            <th>Paiement</th>
+            <th>nom</th>
+            <th>prenom</th>
+            <th>date_naissance</th>
+          
+           
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>Content 1</td>
-            <td>Content 1</td>
-            <td>Content 1</td>
-            <td>Content 1</td>
-            <td>Content 1</td>
-            <td>Content 1</td>
+        
+          <tr  v-for="item in responseData">
+            <td>{{ (item['id']) }}</td>
+            <td>{{ (item['nom']) }}</td>
+            <td>{{ (item['prenom']) }}</td>
+            <td>{{ (item['date_naissance']) }}</td>
+            
+            
         </tr>
-        <tr>
-            <td>Content 2</td>
-            <td>Content 2</td>
-            <td>Content 2</td>
-            <td>Content 2</td>
-            <td>Content 2</td>
-            <td>Content 1</td>
-        </tr>
-        <tr>
-            <td>Content 3</td>
-            <td>Content 3</td>
-            <td>Content 3</td>
-            <td>Content 3</td>
-            <td>Content 3</td>
-            <td>Content 1</td>
-        </tr>
-        <tr>
-            <td>Content 4</td>
-            <td>Content 4</td>
-            <td>Content 4</td>
-            <td>Content 4</td>
-            <td>Content 4</td>
-            <td>Content 1</td>
-        </tr>
-        <tr>
-            <td>Content 5</td>
-            <td>Content 5</td>
-            <td>Content 5</td>
-            <td>Content 5</td>
-            <td>Content 5</td>
-            <td>Content 1</td>
-        </tr>
-        <tr>
-            <td>Content 6</td>
-            <td>Content 6</td>
-            <td>Content 6</td>
-            <td>Content 6</td>
-            <td>Content 6</td>
-            <td>Content 1</td>
-        </tr>
-        <tr>
-            <td>Content 7</td>
-            <td>Content 7</td>
-            <td>Content 7</td>
-            <td>Content 7</td>
-            <td>Content 7</td>
-            <td>Content 1</td>
-        </tr>
-        <tr>
-            <td>Content 8</td>
-            <td>Content 8</td>
-            <td>Content 8</td>
-            <td>Content 8</td>
-            <td>Content 8</td>
-            <td>Content 1</td>
-        </tr>
-        <tr>
-            <td>Content 9</td>
-            <td>Content 9</td>
-            <td>Content 9</td>
-            <td>Content 9</td>
-            <td>Content 9</td>
-            <td>Content 1</td>
-        </tr>
-        <tr>
-            <td>Content 10</td>
-            <td>Content 10</td>
-            <td>Content 10</td>
-            <td>Content 10</td>
-            <td>Content 10</td>
-            <td>Content 1</td>
-        </tr>
+        
         </tbody>
     </table>
 </div>
@@ -123,16 +55,35 @@
 
 </template>
 <script>
-window.addEventListener('DOMContentLoaded', function() {
-    var creationProfesseur = document.getElementById('creationProfesseur');
-    creationProfesseur.style.backgroundColor = '#f2f2f2';
-    creationProfesseur.style.padding = '20px';
-    creationProfesseur.style.marginTop = '20px';
-    creationProfesseur.style.borderRadius = '5px';
-    // Ajoutez d'autres styles ici selon vos besoins
-  });
+
+  import { axiosClient } from '../Network/axios';
   export default {
-    name:'list_enseignants_direct',
+    name:'list_enseignants',
+    data() {
+    return {
+      responseData: []
+    };
+  },
+  mounted() {
+    this.fetchData();
+  },
+  methods: {
+    fetchData() {
+      const token = localStorage.getItem('accessToken');
+      console.log("token : ",token);
+      axiosClient.get('directeur/enseignants',
+      {  headers: {
+    'Authorization': 'Bearer ' + token
+      }})
+        .then(response => {
+          this.responseData = (response.data)['data'];
+          console.log(response.data);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
+  }
   }
 </script>
 <style>

@@ -4,164 +4,94 @@
       <div class="logo">
         <img src="../assets/logo_projet.png" alt="Logo">
       </div>
-       <div class="element">
+      <div class="element">
         <router-link to="/admin_etab_accueil">profil</router-link>
-     </div>
-     <div class="element">
+      </div>
+      <div class="element">
         <router-link to="/list_enseignants">liste enseignants</router-link>
-        </div >
-        
-        <div class="element">
-          <router-link to="/list_directeur">Liste Directeurs</router-link>
-         </div>
-        <div class="element">
-        <router-link to="/admin_intervention_Etab">interventions</router-link>
-       </div>
-        <div class="element">
-        <router-link to="/loginView">logout</router-link>
-        </div>
-    </div>
+      </div>
 
-    
-    <div class="content">
-      <h2>Liste des enseignants</h2>
-      
-<div class="table-wrapper">
-  <button type="button" class="btn btn-primary"><router-link to="/Create_Ens">Create Enseignant</router-link></button>
-    <table class="fl-table">
-   
-        <thead>
-        <tr>
-            <th>ID_enseignant</th>
-            <th>Nom </th>
-            <th>Prénom</th>
-            <th>email</th>
-            <th>Tel</th>
-            <th>Etablissement d'origine</th>
-            <th>Modif</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>Content 1</td>
-            <td>Content 1</td>
-            <td>Content 1</td>
-            <td>Content 1</td>
-            <td>Content 1</td>
-            <td>Content 1</td>
-            <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Update</button></td>
-            
-        </tr>
-        <tr>
-            <td>Content 2</td>
-            <td>Content 2</td>
-            <td>Content 2</td>
-            <td>Content 2</td>
-            <td>Content 2</td>
-            <td>Content 1</td>
-            <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Update</button></td>
-        </tr>
-        <tr>
-            <td>Content 3</td>
-            <td>Content 3</td>
-            <td>Content 3</td>
-            <td>Content 3</td>
-            <td>Content 3</td>
-            <td>Content 1</td>
-            <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Warning</button></td>
-        </tr>
-        <tr>
-            <td>Content 4</td>
-            <td>Content 4</td>
-            <td>Content 4</td>
-            <td>Content 4</td>
-            <td>Content 4</td>
-            <td>Content 1</td>
-            <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Update</button></td>
-        </tr>
-        <tr>
-            <td>Content 5</td>
-            <td>Content 5</td>
-            <td>Content 5</td>
-            <td>Content 5</td>
-            <td>Content 5</td>
-            <td>Content 1</td>
-            <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Update</button></td>
-        </tr>
-        <tr>
-            <td>Content 6</td>
-            <td>Content 6</td>
-            <td>Content 6</td>
-            <td>Content 6</td>
-            <td>Content 6</td>
-            <td>Content 1</td>
-            <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Warning</button></td>
-        </tr>
-        <tr>
-            <td>Content 7</td>
-            <td>Content 7</td>
-            <td>Content 7</td>
-            <td>Content 7</td>
-            <td>Content 7</td>
-            <td>Content 1</td>
-            <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Update</button></td>
-        </tr>
-        <tr>
-            <td>Content 8</td>
-            <td>Content 8</td>
-            <td>Content 8</td>
-            <td>Content 8</td>
-            <td>Content 8</td>
-            <td>Content 1</td>
-            <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Warning</button></td>
-        </tr>
-        <tr>
-            <td>Content 9</td>
-            <td>Content 9</td>
-            <td>Content 9</td>
-            <td>Content 9</td>
-            <td>Content 9</td>
-            <td>Content 1</td>
-            <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Update</button></td>
-        </tr>
-        <tr>
-            <td>Content 10</td>
-            <td>Content 10</td>
-            <td>Content 10</td>
-            <td>Content 10</td>
-            <td>Content 10</td>
-            <td>Content 1</td>
-            <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Update</button></td>
-        </tr>
-        </tbody>
-    </table>
-</div>
+      <div class="element">
+        <router-link to="/list_directeur">Liste Directeurs</router-link>
+      </div>
+      <div class="element">
+        <router-link to="/admin_intervention_Etab">interventions</router-link>
+      </div>
+      <div class="element">
+        <router-link to="/loginView">logout</router-link>
       </div>
     </div>
 
+    <div class="content">
+      <h2>Liste des enseignants</h2>
+
+      <div class="table-wrapper">
+        <button type="button" class="btn btn-primary"><router-link to="/Create_Ens">Create
+            Enseignant</router-link></button>
+        <table class="fl-table">
+
+          <thead>
+            <tr>
+              <th>ID_enseignant</th>
+              <th>nom</th>
+              <th>prenom</th>
+              <th>date_naissance</th>
+
+              <th>Modif</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr v-for="item in responseData">
+              <td>{{ (item['id']) }}</td>
+              <td>{{ (item['nom']) }}</td>
+              <td>{{ (item['prenom']) }}</td>
+              <td>{{ (item['date_naissance']) }}</td>
+              <td><button type="button" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-warning">Update</button>
+              </td>
+
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </template>
 <script>
-window.addEventListener('DOMContentLoaded', function() {
-    var creationProfesseur = document.getElementById('creationProfesseur');
-    creationProfesseur.style.backgroundColor = '#f2f2f2';
-    creationProfesseur.style.padding = '20px';
-    creationProfesseur.style.marginTop = '20px';
-    creationProfesseur.style.borderRadius = '5px';
-    // Ajoutez d'autres styles ici selon vos besoins
-  });
-  export default {
-    name:'list_enseignants',
+
+import { axiosClient } from '../Network/axios';
+export default {
+  name: 'list_enseignants',
+  data() {
+    return {
+      responseData: []
+    };
+  },
+  mounted() {
+    this.fetchData();
+  },
+  methods: {
+    fetchData() {
+      const token = localStorage.getItem('accessToken');
+      console.log("token : ", token);
+      axiosClient.get('administrateur/enseignants',
+        {
+          headers: {
+            'Authorization': 'Bearer ' + token
+          }
+        })
+        .then(response => {
+          this.responseData = (response.data)['data'];
+          console.log(response.data);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
   }
+}
 </script>
 <style>
 * {
@@ -174,14 +104,16 @@ body {
   font-family: Arial, sans-serif;
   background-color: #f2f2f2;
 }
-.fonction h1{
+
+.fonction h1 {
   text-align: center;
   align-content: center;
   padding: 0;
   margin: 0;
-  color:#f2f2f2
+  color: #f2f2f2
 }
-.fonction{
+
+.fonction {
   background-color: #f2f2f2;
 }
 
@@ -257,7 +189,8 @@ body {
   flex: 1;
   color: #333;
 }
-*{
+
+* {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -266,9 +199,9 @@ body {
 
 /* Table Styles */
 
-.table-wrapper{
+.table-wrapper {
   margin: 10px 70px 70px;
-  box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+  box-shadow: 0px 35px 50px rgba(0, 0, 0, 0.2);
 }
 
 .fl-table {
@@ -281,10 +214,11 @@ body {
   max-width: 100%;
   white-space: nowrap;
   background-color: white;
-  
+
 }
 
-.fl-table td, .fl-table th {
+.fl-table td,
+.fl-table th {
   text-align: center;
   padding: 8px;
 }
@@ -315,65 +249,81 @@ body {
 
 @media (max-width: 767px) {
   .fl-table {
-      display: block;
-      width: 100%;
+    display: block;
+    width: 100%;
   }
-  .table-wrapper:before{
-      content: "Scroll horizontally >";
-      display: block;
-      text-align: right;
-      font-size: 11px;
-      color: white;
-      padding: 0 0 10px;
+
+  .table-wrapper:before {
+    content: "Scroll horizontally >";
+    display: block;
+    text-align: right;
+    font-size: 11px;
+    color: white;
+    padding: 0 0 10px;
   }
-  .fl-table thead, .fl-table tbody, .fl-table thead th {
-      display: block;
-  }
-  .fl-table thead th:last-child{
-      border-bottom: none;
-  }
-  .fl-table thead {
-      float: left;
-  }
-  .fl-table tbody {
-      width: auto;
-      position: relative;
-      overflow-x: auto;
-  }
-  .fl-table td, .fl-table th {
-      padding: 20px .625em .625em .625em;
-      height: 60px;
-      vertical-align: middle;
-      box-sizing: border-box;
-      overflow-x: hidden;
-      overflow-y: auto;
-      width: 120px;
-      font-size: 13px;
-      text-overflow: ellipsis;
-  }
+
+  .fl-table thead,
+  .fl-table tbody,
   .fl-table thead th {
-      text-align: left;
-      border-bottom: 1px solid #f7f7f9;
+    display: block;
   }
+
+  .fl-table thead th:last-child {
+    border-bottom: none;
+  }
+
+  .fl-table thead {
+    float: left;
+  }
+
+  .fl-table tbody {
+    width: auto;
+    position: relative;
+    overflow-x: auto;
+  }
+
+  .fl-table td,
+  .fl-table th {
+    padding: 20px .625em .625em .625em;
+    height: 60px;
+    vertical-align: middle;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 120px;
+    font-size: 13px;
+    text-overflow: ellipsis;
+  }
+
+  .fl-table thead th {
+    text-align: left;
+    border-bottom: 1px solid #f7f7f9;
+  }
+
   .fl-table tbody tr {
-      display: table-cell;
+    display: table-cell;
   }
+
   .fl-table tbody tr:nth-child(odd) {
-      background: none;
+    background: none;
   }
+
   .fl-table tr:nth-child(even) {
-      background: transparent;
+    background: transparent;
   }
+
   .fl-table tr td:nth-child(odd) {
-      background: #F8F8F8;
-      border-right: 1px solid #E6E4E4;
+    background: #F8F8F8;
+    border-right: 1px solid #E6E4E4;
   }
+
   .fl-table tr td:nth-child(even) {
-      border-right: 1px solid #E6E4E4;
+    border-right: 1px solid #E6E4E4;
   }
+
   .fl-table tbody td {
-      display: block;
-      text-align: center;
+    display: block;
+    text-align: center;
   }
 }
 </style>

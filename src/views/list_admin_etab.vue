@@ -40,96 +40,16 @@
           </tr>
           </thead>
           <tbody>
-          <tr>
-              <td>Content 1</td>
-              <td>Content 1</td>
-              <td>Content 1</td>
-              <td>Content 1</td>
-              <td>Content 1</td>
+            <tr  v-for="item in responseData">
+            <td>{{ (item['id']) }}</td>
+            <td>{{ (item['nom']) }}</td>
+            <td>{{ (item['prenom']) }}</td>
+            <td>{{ (item['date_naissance']) }}</td>
+            <td>{{ (item['nom']) }}</td>
               <td><button type="button" class="btn btn-danger">Delete</button>
                 <button type="button" class="btn btn-warning">Update</button></td>
           </tr>
-          <tr>
-              <td>Content 2</td>
-              <td>Content 2</td>
-              <td>Content 2</td>
-              <td>Content 2</td>
-              <td>Content 2</td>
-              <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Update</button></td>
-          </tr>
-          <tr>
-              <td>Content 3</td>
-              <td>Content 3</td>
-              <td>Content 3</td>
-              <td>Content 3</td>
-              <td>Content 3</td>
-              <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Update</button></td>
-          </tr>
-          <tr>
-              <td>Content 4</td>
-              <td>Content 4</td>
-              <td>Content 4</td>
-              <td>Content 4</td>
-              <td>Content 4</td>
-              <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Update</button></td>
-          </tr>
-          <tr>
-              <td>Content 5</td>
-              <td>Content 5</td>
-              <td>Content 5</td>
-              <td>Content 5</td>
-              <td>Content 5</td>
-              <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Update</button></td>
-          </tr>
-          <tr>
-              <td>Content 6</td>
-              <td>Content 6</td>
-              <td>Content 6</td>
-              <td>Content 6</td>
-              <td>Content 6</td>
-              <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Update</button></td>
-          </tr>
-          <tr>
-              <td>Content 7</td>
-              <td>Content 7</td>
-              <td>Content 7</td>
-              <td>Content 7</td>
-              <td>Content 7</td>
-              <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Update</button></td>
-          </tr>
-          <tr>
-              <td>Content 8</td>
-              <td>Content 8</td>
-              <td>Content 8</td>
-              <td>Content 8</td>
-              <td>Content 8</td>
-              <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Update</button></td>
-          </tr>
-          <tr>
-              <td>Content 9</td>
-              <td>Content 9</td>
-              <td>Content 9</td>
-              <td>Content 9</td>
-              <td>Content 9</td>
-              <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Update</button></td>
-          </tr>
-          <tr>
-              <td>Content 10</td>
-              <td>Content 10</td>
-              <td>Content 10</td>
-              <td>Content 10</td>
-              <td>Content 10</td>
-              <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Update</button></td>
-          </tr>
+          
           </tbody>
       </table>
   </div>

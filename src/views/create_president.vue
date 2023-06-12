@@ -29,11 +29,12 @@
     
       <h2 class="inactive underlineHover">Creer un Président</h2> 
       <form>
-        <input type="email" id="email" class="fadeIn third" name="login" placeholder="email">
-        <input type="password" id="password" class="fadeIn third" name="login" placeholder="Mot de passe">
-        <input type="password" id="rpassword" class="fadeIn third" name="login" placeholder="confirmer mot de passe">
-        <input type="submit"  @click="accueil_page" class="fadeIn fourth"  value="Creer">
-        <input type="reset" class="fadeIn fourth" value="Annuler">
+        <input type="email" id="email" class="fadeIn third" v-model="email" placeholder="email">
+        <input type="password" id="password" class="fadeIn third" v-model="passw" placeholder="Mot de passe">
+        <input type="password" id="rpassword" class="fadeIn third" v-model="passwc" placeholder="confirmer mot de passe">
+        <!--<input type="text" id="rpassword" class="fadeIn third" v-model="type" placeholder="type">
+      --><input type="submit"  @click.prevent="create_president" class="fadeIn fourth"  value="Creer">
+        <input type="reset" class="fadeIn fourth" @click="retour" value="Annuler">
 
       </form>
     </div>
@@ -43,19 +44,43 @@
   </template>
   
   <script>
+  import {axiosClient} from '../Network/axios';
 export default {
   name:"loginForm",
-  methods: {
-    accueil_page(){
-    this.$router.replace('/accueil_Ens');
-    console.log('test')
-  },
-  
-    toggleDropdown(){
-      var dropdownMenu = document.querySelector('.dropdown-menu');
-  dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+  data() {
+  return {
+    email:"",
+    passw:"",
+    passwc:"",
+    type:"PRESIDENT",
     
-  }
+    
+  };},
+  methods: {
+    create_president(){
+        const token = localStorage.getItem('accessToken');
+      console.log("token : ",token);
+        const url = 'administrateur_univ/register';
+  const data = {
+    email: this.email,
+    password: this.passw,
+    password_confirmation: this.passwc,
+    type: this.type,
+    
+  }; 
+  axiosClient.post(url,data,{  headers: {
+    'Authorization': 'Bearer ' + token
+      }})
+      .then(response => {
+          
+          console.log(response.data);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    },
+  
+    
    
   }
 

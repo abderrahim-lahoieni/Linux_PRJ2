@@ -15,8 +15,13 @@
       <form >
         <input type="text" id="login" class="fadeIn second"  placeholder="login" v-model="email">
         <input type="password" id="password" class="fadeIn third"  placeholder="Mot de passe"  v-model="password">
+        
         <button type="button"  @click="login" class="fadeIn fourth"  value="Log In">log in</button>
-
+        <div v-if="errors">
+      <ul>
+        <li v-for="(error, field) in errors" :key="field">{{ error[0] }}</li>
+      </ul>
+    </div>
 
       </form>
     </div>
@@ -24,62 +29,107 @@
 
   </template>
 
-  <script>
-  import Accueil from '@/components/Accueil.vue';
-  import {axiosClient} from '../Network/axios';
+<script>
+import Accueil from '@/components/Accueil.vue';
+import {axiosClient} from '../Network/axios';
+import { mapGetters, mapActions } from 'vuex';
+
 
 export default {
-  //name:"loginForm",
-  // components :{
-  //   Accueil
-  // },
-  data() {
-    return {
-      email: "",
-      password: ""
-    };},
-  methods: {
-    login(){ {
-    const url = 'login';
-    const data = {
-      email: this.email,
-      password: this.password
-    }; console.log(data);
+name:"loginForm",
+ components :{
+   Accueil
+ },
+data() {
+  return {
+    email: "",
+    password: "",
+    
+    
+  };},
+  computed: {
+    ...mapGetters(['getSharedValues']),
+  id() {
+    return this.getSharedValues.id;
+  },
+  emailaddr() {
+    return this.getSharedValues.emailaddr;
+  },
+  idgr() {
+    return this.getSharedValues.idgr;
+  },
+},
+methods: {
+  
+  ...mapActions(['updateSharedValues']),
+  
+  login(){ {
+  const url = 'login';
+  const data = {
+    email: this.email,
+    password: this.password,
+    
+  }; 
 axiosClient.post(url,data)
 .then((response)=>{
-  if(response.data.role ==='Directeur')
- { this.$router.push('/direct_accueil');}
- else if (response.data.role ==='Enseignant'){
-  this.$router.push('/accueil_Ens');
- }
- else if (response.data.role ==='Administrateur_Etablissement'){
-  this.$router.push('/admin_etab_accueil');
- }
- else if (response.data.role ==='Administrateur_université'){
-  this.$router.push('/admin_univ_accueil');
- }
- else if (response.data.role ==='President'){
-  this.$router.push('/president_accueil');
- }
-else {this.$router.push('/loginView');
-}})}}
-    
-        //if(response.data.role ==='Enseignant')
+  localStorage.setItem('user',response.data.items.email);
+  console.log(response.data)
+  console.log("==========")
 
-       // })// else {this.$router.push('/admin_univ_accueil');
-       // console.log(error);}
-     // })
-     }}
-      //this.$router.replace('/accueil_Ens');
-    //console.log('test')
-  //},
-   //login_page(){
-    //this.$router.push('loginView');
+  localStorage.setItem('accessToken',response.data.token);
 
-  </script>
+  console.log(localStorage.getItem('accessToken'));
 
-  <style >
 
+
+
+
+this.$store.commit('updateSharedValues', { id: response.data.items.id, emailaddr: response.data.items.email ,idgr : response.data.items.id_grade});
+
+console.log(this.$store.getters.getSharedValue);
+if(response.data.role ==='DIRECTEUR')
+{ this.$router.push('/direct_accueil');}
+else if (response.data.role ==='ENSEIGNANT'){
+
+// this.$store.commit('updateSharedValues', { id: response.data.items.id, emailaddr: this.email });
+// this.$store.dispatch('updateSharedValue',response.data.items.id);
+// console.log(this.$store.getters.getSharedValue);
+
+this.$router.push('/accueil_Ens');
+}
+else if (response.data.role ==='ADMINISTRATEUR_ETA'){
+this.$router.push('/admin_etab_accueil');
+}
+else if (response.data.role ==='ADMINISTRATEUR_UNIV'){
+this.$router.push('/admin_univ_accueil');
+}
+else if (response.data.role ==='PRESIDENT'){
+this.$router.push('/president_accueil');
+}
+})
+.catch((error) => {
+        if (error.response && error.response.status === 422) {
+          // Afficher les erreurs de validation
+          this.errors = error.response.data.errors;
+        }
+      });
+}}
+  
+      //if(response.data.role ==='Enseignant')
+
+     // })// else {this.$router.push('/admin_univ_accueil');
+     // console.log(error);}
+   // })
+   }}
+    //this.$router.replace('/accueil_Ens');
+  //console.log('test')
+//},
+ //login_page(){
+  //this.$router.push('loginView');
+
+</script>
+
+<style>
   @import url('https://fonts.googleapis.com/css?family=Poppins');
   a {
     color: #92badd;

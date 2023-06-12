@@ -15,11 +15,14 @@ import admin_univ_interv from '../views/admin_univ_interv.vue';
 import president_interv from '../views/president_interv.vue';
 import president_accueil from '../views/president_accueil.vue';
 import Create_Ens from '../views/Create_Ens.vue';
+import create_interv from '../views/create_interv.vue';
 import list_president from '../views/list_president.vue';
 import list_directeur from '../views/list_directeur.vue';
 import Create_President from '../views/Create_President.vue';
 import list_admin_etab from '../views/list_admin_etab.vue';
 import Create_Admin_Etab from '../views/Create_Admin_Etab.vue';
+import Mod_interv from '../views/Mod_interv.vue';
+import Mod_profil_direct from '../views/Mod_profil_direct.vue';
 import sidebar from '@/components/sidebar.vue';
 import Accueil from '@/components/Accueil.vue';
 
@@ -34,21 +37,39 @@ const routes = [
       name: 'sidebar',
       component: sidebar
     },
+    
     {
       path: '/AboutView',
       name: 'AboutView',
       component: AboutView
     },
+    
     {
       path: '/Create_Ens',
       name: 'Create_Ens',
       component: Create_Ens
     },
     {
+      path: '/Mod_interv',
+      name: 'Mod_interv',
+      component: Mod_interv
+    },
+    {
+      path: '/Mod_profil_direct',
+      name: 'Mod_profil_direct',
+      component: Mod_profil_direct
+    },
+    {
+      path: '/create_interv',
+      name: 'create_interv',
+      component: create_interv
+    },
+    {
       path: '/Create_President',
       name: 'Create_President',
       component: Create_President
     },
+    
     {
       path: '/Create_Admin_Etab',
       name: 'Create_Admin_Etab',

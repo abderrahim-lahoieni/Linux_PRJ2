@@ -19,7 +19,7 @@
           <router-link to="/list_admin_etab">Les Admin_Etab</router-link>
          </div>
           <div class="element">
-          <router-link to="/loginView">logout</router-link>
+            <a @click="logout" href="loginView">logout</a>
           </div>
       </div>
 

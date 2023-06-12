@@ -9,7 +9,7 @@
      </div>
      <div class="element">
         <router-link to="/list_enseignants">liste enseignants</router-link>
-        </div>
+        </div >
         <div class="element">
         <router-link to="/Create_Ens">création</router-link>
         </div>
@@ -29,18 +29,18 @@
       <div class="wrapper fadeInDown">
       <div id="formContent">
       
-        <h2 class="inactive underlineHover">Creer un nouveau Enseignant</h2> 
+        <h2 class="inactive underlineHover">Modification des interventions</h2> 
         <form>
-          <input type="text" id="Nom" class="fadeIn second" v-model="nom" placeholder="Nom">
-          <input type="text" id="Prénom" class="fadeIn second" v-model="prenom" placeholder="Prénom">
-          <input type="text" id="ppr" class="fadeIn second" v-model="ppr" placeholder="PPr">
-          <input type="text"  class="fadeIn second" v-model="date_n" placeholder="Date de naissance">
-          <input type="text" id="email" class="fadeIn third" v-model="email" placeholder="email">
-          <input type="password" id="password" class="fadeIn third" v-model="pw1" placeholder="Mot de passe">
-          <input type="password" id="password2" class="fadeIn third" v-model="pw2" placeholder="confirmer mot de passe">
-          <input type="text" id="grade" class="fadeIn third" v-model="grd" placeholder="grade">
+          <input type="text" id="Nom" class="fadeIn second" v-model="intitule_intervention" placeholder="intervention">
+          <input type="text" id="Prénom" class="fadeIn second" v-model="annee_univ" placeholder="Année intervention">
+          <input type="text" id="ppr" class="fadeIn second" v-model="semestre" placeholder="semestre">
+          <input type="date"  class="fadeIn second" v-model="date_debut" placeholder="Date début">
+          <input type="date" id="d_f" class="fadeIn third" v-model="date_fin" placeholder="Date fin">
+          <input type="text" id="nbr" class="fadeIn third" v-model="nbr_heures" placeholder="Nombre d'heures">
+          <input type="text" id="ppr" class="fadeIn third" v-model="ppr_enseignant" placeholder="PPR">
           
-          <button type="button"  @click="creer_ens" class="fadeIn fourth"  value="creer">creer</button>
+          
+          <button type="button"  @click.prevent="update_interv()" class="fadeIn fourth"  value="creer">creer</button>
   
         </form>
       </div>
@@ -55,47 +55,63 @@
     name:"loginForm",
     data() {
   return {
-    nom:"",
-    prenom:"",
-    ppr:"",
-    date_n:"",
-    email: "",
-    pw1: "",
-    pw2:"",
-    grd:""
+    intitule_intervention:"",
+    annee_univ:"",
+    semestre:"",
+    date_debut:"",
+    date_fin: "",
+    nbr_heures: "",
+    ppr_enseignant:""
     
   };},
+  mounted(){
+    //this.fetchData();
+    const itemId = localStorage.getItem('itemId');
+    console.log('ID',itemId);
+  },
     methods: {
-      creer_ens(){
+    //     fetchData() {
+    //   const token = localStorage.getItem('accessToken');
+    //   console.log("token : ",token);
+    //   axiosClient.get(`interventions/edit/${id}`,
+    //   {  headers: {
+    // 'Authorization': 'Bearer ' + token
+    //   }})
+    //     .then(response => {
+    //       this.responseData = (response.data)['data'];
+    //       console.log(response.data);
+    //     })
+    //     .catch(error => {
+    //       console.error(error);
+    //     });
+    // },
+    update_interv(){
         const token = localStorage.getItem('accessToken');
       console.log("token : ",token);
-        const url = 'enseignants/create';
-  const data = {
-    nom: this.nom,
-    prenom: this.prenom,
-    ppr: this.ppr,
-    date_naissance: this.date_n,
-    email: this.email,
-    password: this.pw1,
-    password_confirmation: this.pw2,
-    designation: this.grd
-  }; 
-  axiosClient.post(url,data,{  headers: {
+      const itemId = localStorage.getItem('itemId');
+      console.log("id",itemId);
+      const url =`interventions/edit/${itemId}`;
+      const data ={
+    intitule_intervention: this.intitule_intervention,
+    annee_univ: this.annee_uni,
+    semestre: this.semestre,
+    date_debut: this.date_debut,
+    date_fin: this.date_fin,
+    nbr_heures: this.nbr_heures,
+    ppr_enseignant: this.ppr_enseignant
+      }
+      axiosClient.put(url,data,token,{ headers: {
     'Authorization': 'Bearer ' + token
-      }})
-      .then(response => {
-          
+  }})
+  .then(response => {
           console.log(response.data);
+          location.reload();
         })
         .catch(error => {
           console.error(error);
         });
-    },
-     login_page(){
-      this.$router.push('loginView');
     }
-    }
-  
+  } 
   }
     </script>
     
