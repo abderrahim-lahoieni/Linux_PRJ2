@@ -1,27 +1,22 @@
 <template>
   <div class="background"></div>
- <nav>
+ <!-- <nav>
 
       <div class="nav">
         <router-link to="/loginView">login</router-link> |
         <router-link :to="{ path: '/' }" :class="{ 'current': $route.path === '/', 'default': $route.path !== '/' }">Accueil</router-link> |
         <router-link to="/AboutView">About</router-link>
       </div>
-    </nav> 
-    <div class="wrapper fadeInDown">
+    </nav>  -->
+    <div style="padding-top: 15%;" class="wrapper fadeInDown">
     <div id="formContent">
 
       <h2 class="inactive underlineHover">log in </h2>
       <form >
-        <input type="text" id="login" class="fadeIn second"  placeholder="login" v-model="email">
-        <input type="password" id="password" class="fadeIn third"  placeholder="Mot de passe"  v-model="password">
-        
-        <button type="button"  @click="login" class="fadeIn fourth"  value="Log In">log in</button>
-        <div v-if="errors">
-      <ul>
-        <li v-for="(error, field) in errors" :key="field">{{ error[0] }}</li>
-      </ul>
-    </div>
+        <input  style="margin:20px" type="text" id="login" class="fadeIn second"  placeholder="login" v-model="email">
+        <input style="margin:20px" type="password" id="password" class="fadeIn third"  placeholder="Mot de passe"  v-model="password">
+        <button type="button" style="margin:20px" @click="login" class="fadeIn fourth"  value="Log In">Log In</button>
+
 
       </form>
     </div>
@@ -29,129 +24,62 @@
 
   </template>
 
-<script>
-import Accueil from '@/components/Accueil.vue';
-import {axiosClient} from '../Network/axios';
-import { mapGetters, mapActions } from 'vuex';
-
+  <script>
+  import Accueil from '@/components/Accueil.vue';
+  import {axiosClient} from '../Network/axios';
 
 export default {
-name:"loginForm",
- components :{
-   Accueil
- },
- mounted() {
-   
-   const token = localStorage.getItem('accessToken');
-   console.log("token mounted"+token)
-   if(token==null) {
-     this.$router.push('/loginView');
-   }
- },
-data() {
-  return {
-    email: "",
-    password: "",
-    
-    
-  };},
-  computed: {
-    ...mapGetters(['getSharedValues']),
-  id() {
-    return this.getSharedValues.id;
-  },
-  emailaddr() {
-    return this.getSharedValues.emailaddr;
-  },
-  idgr() {
-    return this.getSharedValues.idgr;
-  },
-},
-methods: {
-  
-  ...mapActions(['updateSharedValues']),
-  logout(){
-      const token = localStorage.getItem('accessToken');
-    axiosClient
-        .post('logout',null,{headers: {
-    'Authorization': 'Bearer ' + token}})
-        .then(response => {
-          console.log(response);
-          localStorage.clear();
-          this.$router.push('/loginView');
-        })
-        .catch(error => {
-          console.error(error);
-        });
-      },
-  
-  login(){ {
-  const url = 'login';
-  const data = {
-    email: this.email,
-    password: this.password,
-    
-  }; 
+  //name:"loginForm",
+  // components :{
+  //   Accueil
+  // },
+  data() {
+    return {
+      email: "",
+      password: ""
+    };},
+  methods: {
+    login(){ {
+    const url = 'login';
+    const data = {
+      email: this.email,
+      password: this.password
+    }; console.log(data);
 axiosClient.post(url,data)
 .then((response)=>{
-  localStorage.setItem('email',response.data.items.email);
-  console.log(response.data)
-  console.log("==========")
+  if(response.data.role ==='Directeur')
+ { this.$router.push('/direct_accueil');}
+ else if (response.data.role ==='Enseignant'){
+  this.$router.push('/accueil_Ens');
+ }
+ else if (response.data.role ==='Administrateur_Etablissement'){
+  this.$router.push('/admin_etab_accueil');
+ }
+ else if (response.data.role ==='Administrateur_université'){
+  this.$router.push('/admin_univ_accueil');
+ }
+ else if (response.data.role ==='President'){
+  this.$router.push('/president_accueil');
+ }
+else {this.$router.push('/loginView');
+}})}}
+    
+        //if(response.data.role ==='Enseignant')
 
-  localStorage.setItem('accessToken',response.data.token);
+       // })// else {this.$router.push('/admin_univ_accueil');
+       // console.log(error);}
+     // })
+     }}
+      //this.$router.replace('/accueil_Ens');
+    //console.log('test')
+  //},
+   //login_page(){
+    //this.$router.push('loginView');
 
-  console.log(localStorage.getItem('accessToken'));
+  </script>
 
+  <style >
 
-
-
-
-this.$store.commit('updateSharedValues', { id: response.data.items.id, emailaddr: response.data.items.email ,idgr : response.data.items.id_grade});
-
-console.log(this.$store.getters.getSharedValue);
-if(response.data.role ==='DIRECTEUR')
-{ this.$router.push('/direct_accueil');}
-else if (response.data.role ==='ENSEIGNANT'){
-
-// this.$store.commit('updateSharedValues', { id: response.data.items.id, emailaddr: this.email });
-// this.$store.dispatch('updateSharedValue',response.data.items.id);
-// console.log(this.$store.getters.getSharedValue);
-
-this.$router.push('/accueil_Ens');
-}
-else if (response.data.role ==='ADMINISTRATEUR_ETA'){
-this.$router.push('/admin_etab_accueil');
-}
-else if (response.data.role ==='ADMINISTRATEUR_UNIV'){
-this.$router.push('/admin_univ_accueil');
-}
-else if (response.data.role ==='PRESIDENT'){
-this.$router.push('/president_accueil');
-}
-})
-.catch((error) => {
-        if (error.response && error.response.status === 422) {
-          // Afficher les erreurs de validation
-          this.errors = error.response.data.errors;
-        }
-      });
-}}
-  
-      //if(response.data.role ==='Enseignant')
-
-     // })// else {this.$router.push('/admin_univ_accueil');
-     // console.log(error);}
-   // })
-   }}
-    //this.$router.replace('/accueil_Ens');
-  //console.log('test')
-//},
- //login_page(){
-  //this.$router.push('loginView');
-
-</script>
-
-<style>
   @import url('https://fonts.googleapis.com/css?family=Poppins');
   a {
     color: #92badd;
@@ -159,6 +87,8 @@ this.$router.push('/president_accueil');
     text-decoration: none;
     font-weight: 400;
   }
+
+
 
   h2 {
     text-align: center;
