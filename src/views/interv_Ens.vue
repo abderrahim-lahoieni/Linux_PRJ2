@@ -16,7 +16,7 @@
        <router-link to="/paiement_Ens">Liste paiement</router-link>
       </div>
         <div class="element">
-          <a @click="logout" href="loginView">logout</a>
+          <a @click="logout" href="#">logout</a>
       </div>
     </div>
     

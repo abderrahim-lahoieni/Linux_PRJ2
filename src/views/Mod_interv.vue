@@ -17,7 +17,7 @@
         <router-link to="/list_directeur">Liste Directeurs</router-link>
        </div>
       <div class="element">
-      <router-link to="/admin_intervention_Etab">interventions</router-link>
+      <router-link to="#">interventions</router-link>
      </div>
       <div class="element">
       <router-link to="/loginView">logout</router-link>

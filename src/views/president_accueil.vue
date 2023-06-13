@@ -11,7 +11,7 @@
           <router-link to="/president_interv">valider les interventions</router-link>
         </div>
           <div class="element">
-          <router-link to="/loginView">logout</router-link>
+          <router-link to="#">logout</router-link>
           </div>
       </div>
   

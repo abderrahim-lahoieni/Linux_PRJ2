@@ -14,7 +14,7 @@
        <router-link to="/valid_interventions">valider les interventions</router-link>
         </div>
         <div class="element">
-          <a @click="logout" href="loginView">logout</a>
+          <a @click="logout" href="#">logout</a>
         </div>
     </div>
 

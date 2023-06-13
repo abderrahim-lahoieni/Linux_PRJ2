@@ -14,7 +14,7 @@
        <router-link to="/paiement_Ens">Liste paiement</router-link>
       </div>
         <div class="element">
-        <router-link to="/loginView">Logout</router-link>
+        <router-link to="#">Logout</router-link>
       </div>
     </div>
     

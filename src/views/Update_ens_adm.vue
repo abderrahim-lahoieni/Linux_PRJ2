@@ -20,7 +20,7 @@
         <router-link to="/admin_intervention_Etab">interventions</router-link>
        </div>
         <div class="element">
-        <router-link to="/loginView">logout</router-link>
+        <router-link to="#">logout</router-link>
         </div>
     </div>
 

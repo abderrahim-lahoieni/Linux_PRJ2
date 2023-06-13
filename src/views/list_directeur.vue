@@ -17,7 +17,7 @@
         <router-link to="/admin_intervention_Etab">interventions</router-link>
       </div>
       <div class="element">
-        <a @click="logout" href="loginView">logout</a>
+        <a @click="logout" href="#">logout</a>
       </div>
     </div>
     <div class="content">
