@@ -13,8 +13,8 @@
           <div class="element">
            <router-link to="/paiement_Ens">Liste paiement</router-link>
           </div>
-            <div class="element">
-           <button type="submit" @click.prevent="logout()"> Logout</button>
+          <div class="element">
+            <a @click="logout" href="#">logout</a>
           </div>
         </div>
     

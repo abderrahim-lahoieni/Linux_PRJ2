@@ -19,9 +19,9 @@
       <div class="element">
       <router-link to="#">interventions</router-link>
      </div>
-      <div class="element">
-      <router-link to="/loginView">logout</router-link>
-      </div>
+     <div class="element">
+            <a @click="logout" href="#">logout</a>
+          </div>
   </div>
 
   <div class="content">

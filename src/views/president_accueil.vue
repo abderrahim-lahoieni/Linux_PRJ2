@@ -10,8 +10,8 @@
         <div class="element">
           <router-link to="/president_interv">valider les interventions</router-link>
         </div>
-          <div class="element">
-          <router-link to="#">logout</router-link>
+        <div class="element">
+            <a @click="logout" href="#">logout</a>
           </div>
       </div>
   

@@ -24,9 +24,9 @@
            <div class="element">
            <button type="submit" @click.prevent="create_adm_etab()">Creation admin etablissement</button>
            </div>
-            <div class="element">
-            <router-link to="#">logout</router-link>
-            </div>
+           <div class="element">
+            <a @click="logout" href="#">logout</a>
+          </div>
         </div>
         <div class="content">
           <div class="personal-dat">

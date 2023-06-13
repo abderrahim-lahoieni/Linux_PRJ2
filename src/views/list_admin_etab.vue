@@ -17,8 +17,8 @@
           <div class="element">
           <router-link to="/list_admin_etab">Les Admin_Etab</router-link>
          </div>
-          <div class="element">
-          <router-link to="#">logout</router-link>
+         <div class="element">
+            <a @click="logout" href="#">logout</a>
           </div>
       </div>
       
