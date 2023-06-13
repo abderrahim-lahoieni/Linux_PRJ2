@@ -8,10 +8,10 @@
          <router-link to="/direct_accueil">profil</router-link>
          </div>
         <div class="element">
-         <router-link to="/list_enseignants_direct">liste enseignants</router-link>
+         <router-link to="/list_enseignants_direct">Liste Enseignants</router-link>
         </div>
           <div class="element">
-         <router-link to="/valid_interventions">valider les interventions</router-link>
+         <router-link to="/valid_interventions">Valider Interventions</router-link>
           </div>
           <div class="element">
             <a @click="logout" href="#">logout</a>

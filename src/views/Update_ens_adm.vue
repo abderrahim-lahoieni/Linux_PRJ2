@@ -8,7 +8,7 @@
         <router-link to="/admin_etab_accueil">profil</router-link>
      </div>
      <div class="element">
-        <router-link to="/list_enseignants">liste enseignants</router-link>
+        <router-link to="/list_enseignants">Liste Enseignants</router-link>
         </div >
         <div class="element">
         <router-link to="/Create_Ens">création</router-link>

@@ -13,10 +13,10 @@
           <router-link to="/admin_univ_interv">interventions</router-link>
          </div>
          <div class="element">
-          <router-link to="/list_president">Les Présidents</router-link>
+          <router-link to="/list_president"> Présidents</router-link>
          </div>
           <div class="element">
-          <router-link to="/list_admin_etab">Les Admin_Etab</router-link>
+          <router-link to="/list_admin_etab">Admins Etablissements</router-link>
          </div>
          <div class="element">
             <a @click="logout" href="#">logout</a>
@@ -33,6 +33,8 @@
           <tr>
               <th>ID</th>
               <th>Email</th>
+              <th>Actions</th>
+
               
           </tr>
           </thead>

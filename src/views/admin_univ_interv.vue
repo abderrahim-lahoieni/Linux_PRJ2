@@ -11,10 +11,10 @@
           <router-link to="/admin_univ_interv">interventions</router-link>
          </div>
          <div class="element">
-          <router-link to="/list_president">Les Présidents</router-link>
+          <router-link to="/list_president"> Présidents</router-link>
          </div>
           <div class="element">
-          <router-link to="/list_admin_etab">Les Admin_Etab</router-link>
+          <router-link to="/list_admin_etab">Admins Etablissements</router-link>
          </div>
          <div class="element">
             <a @click="logout" href="#">logout</a>
@@ -23,10 +23,10 @@
     <div class="content">
       <h2>Les interventions d'université</h2>
       <hr />
-      <button type="button" @click="fetchData()" class="fadeIn fourth" value="Log In">ALL interventions</button>
+      <button type="button" @click="fetchData()" class="btn" value="Log In">Toutes Les Interventions</button>
       <hr /> <label for="pet-select">Choose a etab:</label>
 
-      <select v-model="nom_etab" id="filtre_etab">
+      <select style="width:20%; margin:50px" value="All" v-model="nom_etab" id="filtre_etab">
         <option value="All">All</option>
         <option value="Ensa Tanger">ENSA TANGR</option>
         <option value="Ensa Tetouan">ENSA Tetouan</option>
@@ -36,10 +36,10 @@
         <option value="Encg">Encg</option>
       </select>
       <button type="button" @click="filtrer_etab" class="fadeIn fourth" value="Log In">GO</button>
-      <hr />
+      <!-- <hr /> -->
 
       <label for="pet-select">Choose a year:</label>
-      <select v-model="year" id="filtre_year">
+      <select style="width:20%" v-model="year" id="filtre_year">
         <option value="All">All</option>
         <option value="2000">2000</option>
         <option value="2001">2001</option>
@@ -62,19 +62,19 @@
               <th>Date_début</th>
               <th>Date_Fin</th>
               <th>Etat</th>
-              
+
             </tr>
           </thead>
           <tbody>
             <tr v-for="item in responseData">
 
-              <td>{{ (item['intitule_intervention']) }}</td>
-              <td>{{ (item['nbr_heures']) }}</td>
-              <td>{{ (item['date_debut']) }}</td>
-              <td>{{ (item['date_fin']) }}</td>
-              <td v-if="item['visa_uae'] === 1">Validé</td>
-              <td v-else>Non Validé</td>
-               </tr>
+<td>{{ (item['intitule_intervention']) }}</td>
+<td>{{ (item['nbr_heures']) }}</td>
+<td>{{ (item['date_debut']) }}</td>
+<td>{{ (item['date_fin']) }}</td>
+<td v-if="item['visa_uae'] === 1">Validé</td>
+<td v-else>Non Validé</td>
+ </tr>
 
           </tbody>
         </table>
@@ -92,21 +92,22 @@ export default {
   email: localStorage.getItem('user'),
   data() {
     return {
+      nom_etab:"All",
       responseData: [],
       filterApplied: false,
       etab: "",
-      year: "",
+      year: "All",
       nom_ens: ""
     };
   },
   mounted() {
     const token = localStorage.getItem('accessToken');
-    console.log("token mounted"+token)
-    if(token==null) {
-      this.$router.push('/loginView');
-
-    }
+   console.log("token mounted"+token)
+   if(token==null) {
+     this.$router.push('/loginView');
+   }
     this.fetchData();
+    
   },
 
   methods: {
@@ -131,10 +132,10 @@ export default {
           console.error(error);
         });
     },
-    valider(id) {
+    valid(id) {
       const token = localStorage.getItem('accessToken');
       console.log("token : ",token);
-      axiosClient.put(`president/interventions/valider/${id}`, 
+      axiosClient.put(`president/interventions/valider/${id}`, token,
       {
       headers: {
     'Authorization': 'Bearer ' + token
@@ -142,6 +143,7 @@ export default {
   })
         .then(response => {
           console.log(response.data.status_message);
+          location.reload();
          
         })
         .catch(error => {
@@ -151,7 +153,7 @@ export default {
     Nonvalider(id) {
       const token = localStorage.getItem('accessToken');
       console.log("token : ",token);
-      axiosClient.put(`president/interventions/non_valider/${id}`,
+      axiosClient.put(`president/interventions/non_valider/${id}`,token,
       {
       headers: {
     'Authorization': 'Bearer ' + token
@@ -159,7 +161,7 @@ export default {
   })
         .then(response => {
           console.log(response.data.status_message);
-          
+          location.reload();
 
         })
         .catch(error => {
@@ -239,6 +241,13 @@ export default {
 
 </script>
 <style>
+/* table{
+   overflow-y:scroll;
+   height:100px;
+   width:100%;
+   display:block;
+} */
+
 .choices-list {
   list-style: none;
   padding: 0;
@@ -253,9 +262,6 @@ export default {
 .choices-list li:hover {
   background-color: #f2f2f2;
 }
-
-
-
 
 * {
   box-sizing: border-box;
@@ -377,6 +383,8 @@ body {
   max-width: 100%;
   white-space: nowrap;
   background-color: rgba(255, 255, 255, 0.5);
+  overflow-y:scroll;
+
 
 }
 

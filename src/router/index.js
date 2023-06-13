@@ -18,7 +18,7 @@ import Create_Ens from '../views/Create_Ens.vue';
 import create_interv from '../views/create_interv.vue';
 import list_president from '../views/list_president.vue';
 import list_directeur from '../views/list_directeur.vue';
-import Create_President from '../views/Create_President.vue';
+import Create_President from '../views/create_president.vue';
 import list_admin_etab from '../views/list_admin_etab.vue';
 import Create_Admin_Etab from '../views/Create_Admin_Etab.vue';
 import Mod_interv from '../views/Mod_interv.vue';

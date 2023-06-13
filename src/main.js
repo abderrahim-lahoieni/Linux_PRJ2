@@ -10,6 +10,7 @@ import router from './router';
 import store from '../store';
 import axios from 'axios';
 
+
 // axios.defaults.baseURL = 'http://127.0.0.1:8000/api'; // Remplacez par l'URL de votre API
 
 // axios.interceptors.request.use((config) => {

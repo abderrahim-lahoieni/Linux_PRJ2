@@ -13,16 +13,20 @@
             <router-link to="/admin_univ_interv">interventions</router-link>
            </div>
            <div class="element">
-            <router-link to="/list_president">Les Présidents</router-link>
+            <router-link to="/list_president"> Présidents</router-link>
            </div>
             <div class="element">
-            <router-link to="/list_admin_etab">Les Admin_Etab</router-link>
+            <router-link to="/list_admin_etab">Admins Etablissements</router-link>
            </div>
            <div class="element">
-           <button type="submit" @click.prevent="create_pre()">Creation President</button>
+            <router-link to="/Create_President">Create President</router-link>
+
+           <!-- <button type="submit" @click.prevent="create_pre()">Creation President</button> -->
            </div>
            <div class="element">
-           <button type="submit" @click.prevent="create_adm_etab()">Creation admin etablissement</button>
+            <router-link to="/Create_Admin_etab">Create Admin Etab</router-link>
+
+           <!-- <button type="submit" @click.prevent="create_adm_etab()">Creation admin etablissement</button> -->
            </div>
            <div class="element">
             <a @click="logout" href="#">logout</a>
@@ -105,7 +109,11 @@
    button{
       color:#92badd;
       font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-      font-size:30px; 
+      font-size:20px; 
+      height:auto;
+      width:auto;
+      padding:15px;
+      margin:10px;
     }
     
   

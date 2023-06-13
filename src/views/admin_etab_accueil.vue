@@ -5,20 +5,20 @@
         <img src="../assets/logo_projet.png" alt="Logo">
       </div>
        <div class="element">
-        <router-link to="/admin_etab_accueil">profil</router-link>
+        <router-link to="/admin_etab_accueil">Profil</router-link>
      </div>
      <div class="element">
-        <router-link to="/list_enseignants">liste enseignants</router-link>
+        <router-link to="/list_enseignants">Liste Enseignants</router-link>
         </div >
         
         <div class="element">
           <router-link to="/list_directeur">Liste Directeurs</router-link>
          </div>
         <div class="element">
-        <router-link to="/admin_intervention_Etab">interventions</router-link>
+        <router-link to="/admin_intervention_Etab">Interventions</router-link>
        </div>
        <div class="element">
-            <a @click="logout" href="#">logout</a>
+            <a @click="logout" href="#">Logout</a>
           </div>
     </div>
 
@@ -43,7 +43,7 @@
         </div>
 
       </div>
-      <button type="submit"  @click.prevent="update()" class="fadeIn fourth"  >Modifier les informations</button>
+      <button type="submit"  @click.prevent="update()" class="fadeIn fourth" style="margin:20px"  >Modifier les informations</button>
     </div>
   </div>
 </template>

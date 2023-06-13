@@ -8,7 +8,7 @@
           <router-link to="/president_accueil">profil</router-link>
          </div>
         <div class="element">
-          <router-link to="/president_interv">valider les interventions</router-link>
+          <router-link to="/president_interv">Valider Interventions</router-link>
         </div>
         <div class="element">
             <a @click="logout" href="#">logout</a>
@@ -62,7 +62,7 @@
           console.log(response);
           localStorage.clear();
           this.$router.push('/loginView');
-        })
+        })  
         .catch(error => {
           console.error(error);
         });
