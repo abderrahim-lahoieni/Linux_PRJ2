@@ -14,7 +14,7 @@
        <router-link to="/paiement_Ens">Liste paiement</router-link>
       </div>
         <div class="element">
-          <a @click="logout" href="loginView">logout</a>
+          <a @click="logout" href="#">logout</a>
       </div>
     </div>
 
@@ -69,6 +69,12 @@ export default {
     };
   },
   mounted() {
+    const token = localStorage.getItem('accessToken');
+    console.log("token mounted"+token)
+    if(token==null) {
+      this.$router.push('/loginView');
+
+    }
     this.fetchData();
   },
   computed: {
@@ -81,13 +87,14 @@ export default {
       this.$router.push('/Update_ens');
     },
     logout(){
-            const token = localStorage.getItem('accessToken');
+      const token = localStorage.getItem('accessToken');
     axiosClient
         .post('logout',null,{headers: {
     'Authorization': 'Bearer ' + token}})
         .then(response => {
           console.log(response);
-          this.$router.push('/loginView');
+          localStorage.clear();
+         this.$router.push('/loginView');
         })
         .catch(error => {
           console.error(error);

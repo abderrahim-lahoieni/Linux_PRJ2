@@ -53,16 +53,18 @@
   
   </template>
   <script>
-  window.addEventListener('DOMContentLoaded', function() {
-      var creationProfesseur = document.getElementById('creationProfesseur');
-      creationProfesseur.style.backgroundColor = '#f2f2f2';
-      creationProfesseur.style.padding = '20px';
-      creationProfesseur.style.marginTop = '20px';
-      creationProfesseur.style.borderRadius = '5px';
-      // Ajoutez d'autres styles ici selon vos besoins
-    });
+  
     export default {
       name:'list_president',
+      mounted() {
+   
+    const token = localStorage.getItem('accessToken');
+    console.log("token mounted"+token)
+    if(token==null) {
+      this.$router.push('/loginView');
+    }
+  },
+
     }
   </script>
   <style>

@@ -100,6 +100,12 @@ export default {
     };
   },
   mounted() {
+    const token = localStorage.getItem('accessToken');
+    console.log("token mounted"+token)
+    if(token==null) {
+      this.$router.push('/loginView');
+
+    }
     this.fetchData();
   },
 
@@ -205,22 +211,20 @@ export default {
         });
     },
   
-  logout() {
-    const token = localStorage.getItem('accessToken');
-      console.log("token : ",token);
-    axios.post('/logout', {},
-      {  headers: {
-    'Authorization': 'Bearer ' + token
-      }})
-      .then(response => {
-        console.log(response.data.message);
-        // Faites quelque chose après la déconnexion, par exemple rediriger l'utilisateur vers une page de connexion
-        // window.location.href = '/loginView';
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  },
+    logout(){
+      const token = localStorage.getItem('accessToken');
+    axiosClient
+        .post('logout',null,{headers: {
+    'Authorization': 'Bearer ' + token}})
+        .then(response => {
+          console.log(response);
+          localStorage.clear();
+          this.$router.push('/loginView');
+        })
+        .catch(error => {
+          console.error(error);
+        });
+      },
   toggleChoices() {
     this.showChoices = !this.showChoices;
   },

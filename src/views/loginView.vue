@@ -40,6 +40,14 @@ name:"loginForm",
  components :{
    Accueil
  },
+ mounted() {
+   
+   const token = localStorage.getItem('accessToken');
+   console.log("token mounted"+token)
+   if(token==null) {
+     this.$router.push('/loginView');
+   }
+ },
 data() {
   return {
     email: "",
@@ -62,6 +70,20 @@ data() {
 methods: {
   
   ...mapActions(['updateSharedValues']),
+  logout(){
+      const token = localStorage.getItem('accessToken');
+    axiosClient
+        .post('logout',null,{headers: {
+    'Authorization': 'Bearer ' + token}})
+        .then(response => {
+          console.log(response);
+          localStorage.clear();
+          this.$router.push('/loginView');
+        })
+        .catch(error => {
+          console.error(error);
+        });
+      },
   
   login(){ {
   const url = 'login';

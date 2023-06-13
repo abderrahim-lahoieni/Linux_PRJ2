@@ -61,6 +61,12 @@ export default {
     };
   },
   mounted() {
+    const token = localStorage.getItem('accessToken');
+    console.log("token mounted"+token)
+    if(token==null) {
+      this.$router.push('/loginView');
+
+    }
     this.fetchData();
   },
   

@@ -57,7 +57,13 @@ export default {
     };
   },
   mounted() {
+    const token = localStorage.getItem('accessToken');
+   console.log("token mounted"+token)
+   if(token==null) {
+     this.$router.push('/loginView');
+   }
     this.fetchData();
+    
   },
   methods: {
     fetchData() {
@@ -76,12 +82,13 @@ export default {
         });
     },
     logout(){
-            const token = localStorage.getItem('accessToken');
+      const token = localStorage.getItem('accessToken');
     axiosClient
         .post('logout',null,{headers: {
     'Authorization': 'Bearer ' + token}})
         .then(response => {
           console.log(response);
+          localStorage.clear();
           this.$router.push('/loginView');
         })
         .catch(error => {

@@ -79,17 +79,24 @@ import { mapGetters, mapActions } from 'vuex';
 },
 
     mounted() {
+        const token = localStorage.getItem('accessToken');
+   console.log("token mounted"+token)
+   if(token==null) {
+     this.$router.push('/loginView');
+   }
         this.fetchData();
         const itemId = localStorage.getItem('itemId');
         console.log('ID:', itemId);
   },
     methods: {
         logout(){
+      const token = localStorage.getItem('accessToken');
     axiosClient
         .post('logout',null,{headers: {
-    'Authorization': 'Bearer ' + this.tok}})
+    'Authorization': 'Bearer ' + token}})
         .then(response => {
           console.log(response);
+          localStorage.clear();
           this.$router.push('/loginView');
         })
         .catch(error => {

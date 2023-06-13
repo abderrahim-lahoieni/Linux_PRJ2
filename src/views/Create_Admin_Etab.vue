@@ -65,20 +65,31 @@ export default {
     confpasswd:'',
     
     
-  };},
+  };
+},
+mounted ()
+{  const token = localStorage.getItem('accessToken');
+    console.log("token mounted"+token)
+    if(token==null) {
+      this.$router.push('/loginView');
+
+    }
+  },
   methods: {
     logout(){
-  axiosClient
-      .post('logout',null,{headers: {
-  'Authorization': 'Bearer ' + this.tok}})
-      .then(response => {
-        console.log(response);
-        this.$router.push('/loginView');
-      })
-      .catch(error => {
-        console.error(error);
-      });
-    },
+      const token = localStorage.getItem('accessToken');
+    axiosClient
+        .post('logout',null,{headers: {
+    'Authorization': 'Bearer ' + token}})
+        .then(response => {
+          console.log(response);
+          localStorage.clear();
+          this.$router.push('/loginView');
+        })
+        .catch(error => {
+          console.error(error);
+        });
+      },
     cre_admn_etb(){
       const url = 'administrateur_univ/create/administrateur_etb';
       const data = {

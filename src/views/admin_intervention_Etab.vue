@@ -71,10 +71,30 @@
     };
   },
   mounted() {
+    const token = localStorage.getItem('accessToken');
+    console.log("token mounted"+token)
+    if(token==null) {
+      this.$router.push('/loginView');
+
+    }
     this.fetchData();
   },
 
   methods: {
+    logout(){
+      const token = localStorage.getItem('accessToken');
+    axiosClient
+        .post('logout',null,{headers: {
+    'Authorization': 'Bearer ' + token}})
+        .then(response => {
+          console.log(response);
+          localStorage.clear();
+          this.$router.push('/loginView');
+        })
+        .catch(error => {
+          console.error(error);
+        });
+      },
     Update(itemid){
 localStorage.setItem('itemId',itemid);
 this.$router.push('/Mod_interv');
