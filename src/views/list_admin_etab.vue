@@ -58,7 +58,7 @@
   
   </template>
   <script>
- 
+  import {axiosClient} from '../Network/axios';
     export default {
       name:'list_admin_etab',
       mounted() {

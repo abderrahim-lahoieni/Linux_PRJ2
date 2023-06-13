@@ -64,6 +64,7 @@
 </template>
 
 <script>
+ import {axiosClient} from '../Network/axios';
 import Accueil from '@/components/Accueil.vue'
 export default {
   name: 'About',
