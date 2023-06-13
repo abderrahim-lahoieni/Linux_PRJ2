@@ -1,20 +1,25 @@
 <template>
   <div class="container">
     <div class="sidebare">
-      <div class="logo">
-        <img src="../assets/logo_projet.png" alt="Logo">
+        <div class="logo">
+          <img src="../assets/logo_projet.png" alt="Logo">
+        </div>
+         <div class="element">
+          <router-link to="/admin_etab_accueil">profil</router-link>
+       </div>
+          <div class="element">
+          <router-link to="/admin_univ_interv">interventions</router-link>
+         </div>
+         <div class="element">
+          <router-link to="/list_president">Les Présidents</router-link>
+         </div>
+          <div class="element">
+          <router-link to="/list_admin_etab">Les Admin_Etab</router-link>
+         </div>
+          <div class="element">
+            <a @click="logout" href="loginView">logout</a>
+          </div>
       </div>
-      <div class="element">
-        <router-link to="/president_accueil">profil</router-link>
-      </div>
-      <div class="element">
-        <router-link to="/president_interv">valider les interventions</router-link>
-      </div>
-      <div class="element">
-        <a @click="logout" href="#">logout</a>
-      </div>
-    </div>
-
     <div class="content">
       <h2>Les interventions d'université</h2>
       <hr />
@@ -57,8 +62,8 @@
               <th>Date_début</th>
               <th>Date_Fin</th>
               <th>Etat</th>
-              <th>valider</th>
-              <th>Non valider</th>
+              <th>Valider</th>
+              <th>Non Valider</th>
             </tr>
           </thead>
           <tbody>
@@ -69,9 +74,9 @@
               <td>{{ (item['date_debut']) }}</td>
               <td>{{ (item['date_fin']) }}</td>
               <td v-if="item['visa_uae'] === 1">Validé</td>
-              <td v-if="item['visa_uae'] === 0">Non Validé</td>
-              <td><button type="button" class="btn btn-warning" @click="valider(item.id)">V</button></td>
-              <td><button type="button" class="btn btn-warning" @click="Nonvalider(item.id)">NV</button></td>
+              <td v-else>Non Validé</td>
+              <td><button type="button" class="btn btn-warning" @click="valid(item.id)">V</button></td>
+              <td><button type="button" class="btn btn-warning" @click="Nonvalider(item.id)">NV</button></td>   
             </tr>
 
           </tbody>
@@ -123,8 +128,7 @@ export default {
           console.error(error);
         });
     },
-    
-    valider(id) {
+    valid(id) {
       const token = localStorage.getItem('accessToken');
       console.log("token : ",token);
       axiosClient.put(`president/interventions/valider/${id}`, token,
@@ -136,6 +140,7 @@ export default {
         .then(response => {
           console.log(response.data.status_message);
           location.reload();
+         
         })
         .catch(error => {
           console.error(error);
@@ -144,7 +149,7 @@ export default {
     Nonvalider(id) {
       const token = localStorage.getItem('accessToken');
       console.log("token : ",token);
-      axiosClient.put(`president/interventions/non_valider/${id}`, token,
+      axiosClient.put(`president/interventions/non_valider/${id}`,token,
       {
       headers: {
     'Authorization': 'Bearer ' + token

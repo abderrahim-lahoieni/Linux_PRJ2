@@ -57,10 +57,22 @@ export default {
     
   };},
   methods: {
+    logout(){
+    axiosClient
+        .post('logout',null,{headers: {
+    'Authorization': 'Bearer ' + this.tok}})
+        .then(response => {
+          console.log(response);
+          this.$router.push('/loginView');
+        })
+        .catch(error => {
+          console.error(error);
+        });
+      },
     create_president(){
         const token = localStorage.getItem('accessToken');
       console.log("token : ",token);
-        const url = 'administrateur_univ/register';
+        const url = 'register';
   const data = {
     email: this.email,
     password: this.passw,

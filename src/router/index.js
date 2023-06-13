@@ -22,6 +22,9 @@ import Create_President from '../views/Create_President.vue';
 import list_admin_etab from '../views/list_admin_etab.vue';
 import Create_Admin_Etab from '../views/Create_Admin_Etab.vue';
 import Mod_interv from '../views/Mod_interv.vue';
+import Update_ens from '../views/Update_ens.vue';
+import Update_admn_etb from '../views/Update_admn_etb.vue';
+import Update_ens_adm from '../views/Update_ens_adm.vue';
 import Mod_profil_direct from '../views/Mod_profil_direct.vue';
 import sidebar from '@/components/sidebar.vue';
 import Accueil from '@/components/Accueil.vue';
@@ -53,6 +56,21 @@ const routes = [
       path: '/Mod_interv',
       name: 'Mod_interv',
       component: Mod_interv
+    },
+    {
+      path: '/Update_ens',
+      name: 'Update_ens',
+      component: Update_ens
+    },
+    {
+      path: '/Update_admn_etb',
+      name: 'Update_admn_etb',
+      component: Update_admn_etb
+    },
+    {
+      path: '/Update_ens_adm',
+      name: 'Update_ens_adm',
+      component: Update_ens_adm
     },
     {
       path: '/Mod_profil_direct',

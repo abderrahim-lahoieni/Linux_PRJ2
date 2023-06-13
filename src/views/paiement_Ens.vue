@@ -74,7 +74,20 @@ export default {
         .catch(error => {
           console.error(error);
         });
-    }
+    },
+    logout(){
+            const token = localStorage.getItem('accessToken');
+    axiosClient
+        .post('logout',null,{headers: {
+    'Authorization': 'Bearer ' + token}})
+        .then(response => {
+          console.log(response);
+          this.$router.push('/loginView');
+        })
+        .catch(error => {
+          console.error(error);
+        });
+      },
   }
 }
 </script>

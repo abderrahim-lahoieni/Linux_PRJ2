@@ -72,7 +72,7 @@ methods: {
   }; 
 axiosClient.post(url,data)
 .then((response)=>{
-  localStorage.setItem('user',response.data.items.email);
+  localStorage.setItem('email',response.data.items.email);
   console.log(response.data)
   console.log("==========")
 

@@ -38,7 +38,6 @@
             <th>Nombre heures</th>
             <th>Date_début</th>
             <th>Date_Fin</th>
-            <th>Etat</th>
             <th>Modif</th>
         </tr>
         </thead>
@@ -49,7 +48,6 @@
             <td>{{ (item['nbr_heures']) }}</td>
             <td>{{ (item['date_debut']) }}</td>
             <td>{{ (item['date_fin']) }}</td>
-            <td>{{ (item['visa_etb']) }}</td>
             <td><button type="button" class="btn btn-danger">Delete</button>
                 <button type="button" @click.prevent="Update(item['id'])" class="btn btn-warning">Update</button></td>
         </tr>
