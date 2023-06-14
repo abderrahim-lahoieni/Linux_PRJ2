@@ -107,7 +107,7 @@
   * {
       box-sizing: border-box;
     }
-    body {
+    /* body {
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
@@ -115,8 +115,8 @@
       rgba(60, 149, 244, 0.5),
       rgba(120, 119, 130, 0.5)
     )
-    }
-    .fonction h2{
+    } */
+    /* .fonction h2{
       text-align: center;
       align-content: center;
       padding: 0;
@@ -125,9 +125,9 @@
     }
     .fonction{
       background-color: rgba(255, 255, 255, 0.5);
-    }
+    } */
     
-    .container {
+    /* .container {
       display: flex;
       height: 100vh;
     }
@@ -139,9 +139,9 @@
       transition: width 0.3s;
       overflow: hidden;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    }
+    } */
     
-    .logo {
+    /* .logo {
       padding: 20px;
       text-align: center;
     }
@@ -155,8 +155,8 @@
       padding: 0;
       margin-top: 20px;
     }
-    
-    .sidebar li {
+     */
+    /* .sidebar li {
       padding: 10px 20px;
       cursor: pointer;
       transition: background-color 0.3s;
@@ -170,8 +170,8 @@
       flex: 1;
       padding: 20px;
     }
-    
-    .content h1 {
+     */
+    /* .content h1 {
       font-size: 24px;
       margin-bottom: 20px;
       color: #333;
@@ -194,11 +194,11 @@
       width: 80px;
       color: #555;
     }
-    
-    .info-value {
+     */
+    /* .info-value {
       flex: 1;
       color: #333;
-    }
+    } */
     /* button{
       width: 500px;
       height: 150px;

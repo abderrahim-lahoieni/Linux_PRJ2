@@ -1,30 +1,42 @@
 <template>
   <div class="container">
     <div class="sidebare">
-        <div class="logo">
-          <img src="../assets/logo_projet.png" alt="Logo">
-        </div>
-         <div class="element">
-          <router-link to="/admin_etab_accueil">profil</router-link>
-       </div>
-          <div class="element">
-          <router-link to="/admin_univ_interv">interventions</router-link>
-         </div>
-         <div class="element">
-          <router-link to="/list_president"> Présidents</router-link>
-         </div>
-          <div class="element">
-          <router-link to="/list_admin_etab">Admins Etablissements</router-link>
-         </div>
-         <div class="element">
-            <a @click="logout" href="#">logout</a>
+          <div class="logo">
+            <img src="../assets/logo_projet.png" alt="Logo">
           </div>
-      </div>
+           <div class="element">
+            <router-link to="/admin_etab_accueil">Profil</router-link>
+         </div>
+       
+        
+            <div class="element">
+            <router-link to="/admin_univ_interv">Interventions</router-link>
+           </div>
+           <!-- <div class="element">
+            <router-link to="/list_president"> Présidents</router-link>
+           </div> -->
+            <div class="element">
+            <router-link to="/list_admin_etab">Liste des administrateurs</router-link>
+           </div>
+           <div class="element">
+            <router-link to="/Create_President">Create President</router-link>
+
+           <!-- <button type="submit" @click.prevent="create_pre()">Creation President</button> -->
+           </div>
+           <div class="element">
+            <router-link to="/Create_Admin_etab">Create Admin Etablissement</router-link>
+
+           <!-- <button type="submit" @click.prevent="create_adm_etab()">Creation admin etablissement</button> -->
+           </div>
+           <div class="element">
+            <a @click="logout" href="#">Logout</a>
+          </div>
+        </div>
     <div class="content">
       <h2>Les interventions d'université</h2>
       <hr />
       <button type="button" @click="fetchData()" class="btn" value="Log In">Toutes Les Interventions</button>
-      <hr /> <label for="pet-select">Choose a etab:</label>
+      <hr /> <label class="choose" for="pet-select">Choose a etab:</label>
 
       <select style="width:20%; margin:50px" value="All" v-model="nom_etab" id="filtre_etab">
         <option value="All">All</option>
@@ -35,10 +47,10 @@
         <option value="Medecine">Medecine</option>
         <option value="Encg">Encg</option>
       </select>
-      <button type="button" @click="filtrer_etab" class="fadeIn fourth" value="Log In">GO</button>
-      <!-- <hr /> -->
+      <button type="button" @click="filtrer_etab" class="fadeIn fourth" value="Log In">Search</button>
+     
 
-      <label for="pet-select">Choose a year:</label>
+      <label class="choose" for="pet-select">Choose a year:</label>
       <select style="width:20%" v-model="year" id="filtre_year">
         <option value="All">All</option>
         <option value="2000">2000</option>
@@ -49,7 +61,7 @@
         <option value="2005">2005</option>
       </select>
 
-      <button type="button" @click="filtrer_year" class="fadeIn fourth" value="Log In">GO</button>
+      <button type="button" @click="filtrer_year" class="fadeIn fourth" value="Log In">Search</button>
       <div class="table-wrapper">
 
         <table class="fl-table" v-if="filterApplied">

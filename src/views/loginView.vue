@@ -1,13 +1,12 @@
 <template>
   <div class="background"></div>
- <nav>
+ 
 
       <div class="nav">
-        <router-link to="/loginView">login</router-link> |
-        <router-link :to="{ path: '/' }" :class="{ 'current': $route.path === '/', 'default': $route.path !== '/' }">Accueil</router-link> |
-        <router-link to="/AboutView">About</router-link>
+        
+        <button type="button"  class="btn btn-light btn-lg text-blue"><router-link to="./Accueil">Accueil</router-link></button>
       </div>
-    </nav> 
+    
     <div class="wrapper fadeInDown">
     <div id="formContent">
 
@@ -15,8 +14,8 @@
       <form >
         <input type="text" id="login" class="fadeIn second"  placeholder="login" v-model="email">
         <input type="password" id="password" class="fadeIn third"  placeholder="Mot de passe"  v-model="password">
-        
-        <button type="button"  @click="login" class="fadeIn fourth"  value="Log In">log in</button>
+        <button type="button" @click="login" class="btn btn-light btn-lg text-blue">LOGIN</button>
+        <!-- <button type="button"  @click="login" class="fadeIn fourth"  value="Log In">log in</button> -->
         <div v-if="errors">
       <ul>
         <li v-for="(error, field) in errors" :key="field">{{ error[0] }}</li>
@@ -92,6 +91,7 @@ methods: {
     password: this.password,
     
   }; 
+  
 axiosClient.post(url,data)
 .then((response)=>{
   localStorage.setItem('email',response.data.items.email);
@@ -153,6 +153,9 @@ this.$router.push('/president_accueil');
 
 <style>
   @import url('https://fonts.googleapis.com/css?family=Poppins');
+  .text-blue {
+  color: hsl(240, 90%, 26%,0.5);;
+}
   a {
     color: #92badd;
     display:inline-block;
@@ -160,7 +163,7 @@ this.$router.push('/president_accueil');
     font-weight: 400;
   }
 
-  h2 {
+  /* h2 {
     text-align: center;
     font-size: 30px;
     font-weight: 600;
@@ -168,7 +171,7 @@ this.$router.push('/president_accueil');
     display:inline-block;
     margin: 40px 8px 30px 8px;
     color: #cccccc;
-  }
+  } */
 
   /* STRUCTURE */
 

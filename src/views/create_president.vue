@@ -1,26 +1,37 @@
 <template>
   <div class="container">
     <div class="sidebare">
-        <div class="logo">
-          <img src="../assets/logo_projet.png" alt="Logo">
-        </div>
-         <div class="element">
-          <router-link to="/admin_etab_accueil">profil</router-link>
-       </div>
-       
-          <div class="element">
-          <router-link to="/admin_univ_interv">interventions</router-link>
-         </div>
-         <div class="element">
-          <router-link to="/list_president"> Présidents</router-link>
-         </div>
-          <div class="element">
-          <router-link to="/list_admin_etab">Admins Etablissements</router-link>
-         </div>
-         <div class="element">
-            <a @click="logout" href="#">logout</a>
+          <div class="logo">
+            <img src="../assets/logo_projet.png" alt="Logo">
           </div>
-      </div>
+           <div class="element">
+            <router-link to="/admin_etab_accueil">Profil</router-link>
+         </div>
+       
+        
+            <div class="element">
+            <router-link to="/admin_univ_interv">Interventions</router-link>
+           </div>
+           <!-- <div class="element">
+            <router-link to="/list_president"> Présidents</router-link>
+           </div> -->
+            <div class="element">
+            <router-link to="/list_admin_etab">Liste des administrateurs</router-link>
+           </div>
+           <div class="element">
+            <router-link to="/Create_President">Create President</router-link>
+
+           <!-- <button type="submit" @click.prevent="create_pre()">Creation President</button> -->
+           </div>
+           <div class="element">
+            <router-link to="/Create_Admin_etab">Create Admin Etablissement</router-link>
+
+           <!-- <button type="submit" @click.prevent="create_adm_etab()">Creation admin etablissement</button> -->
+           </div>
+           <div class="element">
+            <a @click="logout" href="#">Logout</a>
+          </div>
+        </div>
 
   <div class="content">
   
@@ -148,7 +159,7 @@ export default {
     font-weight: 400;
   }
   
-  h2 {
+  /* h2 {
     text-align: center;
     font-size: 30px;
     font-weight: 600;
@@ -156,7 +167,7 @@ export default {
     display:inline-block;
     margin: 40px 8px 30px 8px; 
     color: #cccccc;
-  }
+  } */
   
   /* STRUCTURE */
   

@@ -39,9 +39,56 @@
         
         
         </tbody>
+    </table></div>
+    <br><br><br>
+    
+    
+    <div class="table-wrapper2">
+     
+<table class="fl-table1" align="center">
+      <thead>
+      <tr>
+        <th>salaire supplémentaire</th>
+        <th>salaire vacation</th>
+        <th>salaire total</th>
+      </tr>
+    </thead>
+    <tbody> <tr>
+     <td>{{ salaire }}</td>
+     <td>{{ salaire3 }}</td>
+     <td>{{ salaire4 }}</td>
+    </tr></tbody>
     </table>
-</div>
+    <br><br>
       </div>
+      <div class="personal-dat">
+        <!-- <div class="personal-info">
+          <div class="info-label" align="center">Remarque:</div>
+          
+        </div> -->
+        <!-- <div class="personal-info">
+            <div class="info-label">Le salaire supplémentaire</div>
+            <div class="info-value">correspond à la rémunération obtenue par l'enseignement des heures
+     supplémentaires dans l'établissement d'origine. </div>
+          </div>
+          <div class="personal-info">
+            <div class="info-label">saliare vacation:</div>
+            <div class="info-value"> Le salaire de vacation correspond à la rémunération perçue lors d'un enseignement 
+      dispensé dans un établissement différent de celui d'origine. </div>
+          </div> -->
+
+        <div class="personal-info">
+          <div class="info-label">total: </div>
+          <div class="info-value">la rémunération à travers l'enseignement des heures supplémentaires, à condition 
+      que le nombre d'heures supplémentaires ne dépasse pas 200 </div>
+        
+       
+      </div>
+          
+          </div>
+    
+      </div>
+  
     </div>
   
  
@@ -52,7 +99,12 @@ export default {
     name: 'paiment_Ens',
     data() {
     return {
-      responseData: [],
+      salaire:'',
+      salaire3:'',
+      salaire4:'',
+      etab:'',
+      responseData: {},
+      
       
     };
   },
@@ -63,19 +115,70 @@ export default {
      this.$router.push('/loginView');
    }
     this.fetchData();
-    
+    this.fetchData2();
+    this.fetchData3();
+    this.fetchData4();
   },
   methods: {
     fetchData() {
       const token = localStorage.getItem('accessToken');
       console.log("token : ",token);
-      axiosClient.get(`enseignant/payement`,
+      axiosClient.get(`enseignant/paiement/${2022}`,
       {  headers: {
     'Authorization': 'Bearer ' + token
       }})
         .then(response => {
           this.responseData = (response.data)['data'];
           console.log(response.data);
+
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    },
+    fetchData2(){
+      const token = localStorage.getItem('accessToken');
+      console.log("token : ",token);
+      axiosClient.get(`enseignant/paiement/Total/${2022}`,
+      {  headers: {
+    'Authorization': 'Bearer ' + token
+      }})
+        .then(response => {
+          
+          this.salaire = (response.data.data)[0].calculate_salaire_totalnet;
+          console.log(response.data.data);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    },
+    fetchData3(){
+      const token = localStorage.getItem('accessToken');
+      console.log("token : ",token);
+      axiosClient.get(`enseignant/paiement/Total_Supplementaire/${2022}`,
+      {  headers: {
+    'Authorization': 'Bearer ' + token
+      }})
+        .then(response => {
+          
+          this.salaire3 = (response.data.data)[0].calculate_salaire_sup;
+          console.log(response.data.data);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    },
+    fetchData4(){
+      const token = localStorage.getItem('accessToken');
+      console.log("token : ",token);
+      axiosClient.get(`enseignant/paiement/Total_Vacataire/${2022}`,
+      {  headers: {
+    'Authorization': 'Bearer ' + token
+      }})
+        .then(response => {
+          
+          this.salaire4 = (response.data.data)[0].Afficher_Salaire_Vacataire;
+          console.log(response.data.data);
         })
         .catch(error => {
           console.error(error);
@@ -205,6 +308,10 @@ export default {
      margin-top:20000px;
     box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
   }
+  .table-wrapper1{
+     margin-top:20000px;
+    box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+  }
   
   .fl-table {
     border-radius: 5px;
@@ -218,13 +325,34 @@ export default {
     background-color: white;
     
   }
+  .fl-table1 {
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 40%;
+    max-width: 40%;
+    white-space: nowrap;
+    background-color: white;
+    
+  }
   
   .fl-table td, .fl-table th {
     text-align: center;
     padding: 8px;
   }
+  .fl-table1 td, .fl-table1 th {
+    text-align: center;
+    padding: 8px;
+  }
   
   .fl-table td {
+    border-right: 1px solid #f8f8f8;
+    font-size: 12px;
+    height: 40px;
+  }
+  .fl-table1 td {
     border-right: 1px solid #f8f8f8;
     font-size: 12px;
     height: 40px;
@@ -235,14 +363,26 @@ export default {
     background: #7e968f;
     height: 50px;
   }
+  .fl-table1 thead th {
+    color: #ffffff;
+    background: #7e968f;
+    height: 50px;
+  }
   
   
   .fl-table thead th:nth-child(odd) {
     color: #ffffff;
     background: #465360;
   }
+  .fl-table1 thead th:nth-child(odd) {
+    color: #ffffff;
+    background: #465360;
+  }
   
   .fl-table tr:nth-child(even) {
+    background: #F8F8F8;
+  }
+  .fl-table1 tr:nth-child(even) {
     background: #F8F8F8;
   }
   

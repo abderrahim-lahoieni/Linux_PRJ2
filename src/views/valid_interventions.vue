@@ -47,7 +47,7 @@
             <td>{{ (item['date_fin']) }}</td>
             <td v-if="item['visa_etb'] === 1">Validé</td>
               <td v-if="item['visa_etb'] === 0">Non Validé</td>
-            <td><button type="button" class="btn btn-warning" @click="valid(item.id)">V</button></td>
+            <td><button type="button" class="btn btn-warning" @click="valid(item.id)">Valider</button></td>
            
             
         </tr>

@@ -5,13 +5,13 @@
           <img src="../assets/logo_projet.png" alt="Logo">
         </div>
          <div class="element">
-          <router-link to="/president_accueil">profil</router-link>
+          <router-link to="/president_accueil">Profil</router-link>
          </div>
         <div class="element">
-          <router-link to="/president_interv">Valider Interventions</router-link>
+          <router-link to="/president_interv">Valider Les Interventions</router-link>
         </div>
         <div class="element">
-            <a @click="logout" href="#">logout</a>
+            <a @click="logout" href="#">Logout</a>
           </div>
       </div>
   
@@ -74,7 +74,7 @@
      }
   </script>
   <style>
-  * {
+  /* * {
       box-sizing: border-box;
     }
     body {
@@ -168,5 +168,5 @@
     .info-value {
       flex: 1;
       color: #333;
-    }
+    } */
   </style>

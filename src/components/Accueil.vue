@@ -1,37 +1,24 @@
 <template>
 <div class="background"></div>
-<nav>
+
       
       <div class="nav">
-        <router-link to="/loginView">login</router-link> |
-        <router-link :to="{ path: '/' }" :class="{ 'current': $route.path === '/', 'default': $route.path !== '/' }">Accueil</router-link> |
-        <router-link to="/AboutView">About</router-link>
        
+        <button type="button" class="btn btn-light btn-lg"><router-link to="/loginView">LOGIN</router-link></button>
 
       </div>
-    </nav>
+    
+    
 
   <div class="wrapper fadeInDown">
   <div class="Accueil" ></div>
-  <h1 class="fadeIn second">Bienvenue</h1>
+  
     <footer class="text-container">
       
       <p class="fadeIn third">
-        Découvrez notre solution innovante pour une gestion fluide et transparente
-         des vacations et des heures supplémentaires des enseignants.
-          Gagnez du temps, optimisez vos ressources et assurez une rémunération
-           équitable avec notre plateforme intuitive et efficace.
+        <h1 class="fadeIn second">Welcome to university <br>abdelmalek essadi</h1>
       </p>
-      <router-link to="/admin_etab_accueil">admin_Etab</router-link>
-      <br>
-      <router-link to="/direct_accueil">directeur_Etab</router-link>
-       <br>
-      <router-link to="/admin_univ_accueil">admin_univ</router-link>
-        <br>
-     
-      <router-link to="/accueil_Ens">Enseignant</router-link>
-      <br>
-      <router-link to="/president_accueil">presid_univ</router-link>
+      
     </footer>
   </div>
 
@@ -43,20 +30,6 @@ export default {
 }
 </script>
 <style>
-/* .Accueil{
-  
-  position: relative;
--webkit-border-radius: 10px 10px 10px 10px;
-  border-radius: 10px 10px 10px 10px;
-  background: #6a6af7;
-  opacity: 0.5;
-    
-    width:auto;
-
-  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-  text-align: center;
-} */
-
 .current {
 color: #42b983;
 }
@@ -107,7 +80,7 @@ color: #2c3e50;
 
 nav {
   padding: 30px;
- 
+ margin-top: 100px;
 }
 
 nav a {
@@ -130,20 +103,7 @@ h1{
   font-size: 65px;
   -webkit-box-shadow: 0 30px 60px 0 rgba(210, 187, 187, 0.3);
 }
-/* .Accueil{
-  
-  position: relative;
-  -webkit-border-radius: 10px 10px 10px 10px;
-    border-radius: 10px 10px 10px 10px;
-  
-    background-color: rgba(72, 66, 240, 0.5);
-      
-      width:auto;
-   
-    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-    text-align: center;
-  
-} */
+
 .text-container {
   top: 100px;
   position: relative;

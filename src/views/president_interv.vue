@@ -5,26 +5,20 @@
           <img src="../assets/logo_projet.png" alt="Logo">
         </div>
          <div class="element">
-          <router-link to="/admin_etab_accueil">profil</router-link>
-       </div>
-          <div class="element">
-          <router-link to="/admin_univ_interv">interventions</router-link>
+          <router-link to="/president_accueil">Profil</router-link>
          </div>
-         <div class="element">
-          <router-link to="/list_president"> Présidents</router-link>
-         </div>
-          <div class="element">
-          <router-link to="/list_admin_etab">Admins Etablissements</router-link>
-         </div>
-         <div class="element">
-            <a @click="logout" href="#">logout</a>
+        <div class="element">
+          <router-link to="/president_interv">Valider Les Interventions</router-link>
+        </div>
+        <div class="element">
+            <a @click="logout" href="#">Logout</a>
           </div>
       </div>
     <div class="content">
       <h2>Les interventions d'université</h2>
       <hr />
       <button type="button" @click="fetchData()" class="btn" value="Log In">Toutes Les Interventions</button>
-      <hr /> <label for="pet-select">Choose a etab:</label>
+      <hr /> <label class="choose" for="pet-select">Choisir une etablissement:</label>
 
       <select style="width:20%; margin:50px" value="All" v-model="nom_etab" id="filtre_etab">
         <option value="All">All</option>
@@ -35,10 +29,10 @@
         <option value="Medecine">Medecine</option>
         <option value="Encg">Encg</option>
       </select>
-      <button type="button" @click="filtrer_etab" class="fadeIn fourth" value="Log In">GO</button>
+      <button type="button" @click="filtrer_etab" class="fadeIn fourth" value="Log In">Search</button>
       <!-- <hr /> -->
 
-      <label for="pet-select">Choose a year:</label>
+      <label for="pet-select" class="choose">Choisir une année:</label>
       <select style="width:20%" v-model="year" id="filtre_year">
         <option value="All">All</option>
         <option value="2000">2000</option>
@@ -49,7 +43,7 @@
         <option value="2005">2005</option>
       </select>
 
-      <button type="button" @click="filtrer_year" class="fadeIn fourth" value="Log In">GO</button>
+      <button type="button" @click="filtrer_year" class="fadeIn fourth" value="Log In">Search</button>
       <div class="table-wrapper">
 
         <table class="fl-table" v-if="filterApplied">
@@ -75,8 +69,8 @@
               <td>{{ (item['date_fin']) }}</td>
               <td v-if="item['visa_uae'] === 1">Validé</td>
               <td v-else>Non Validé</td>
-              <td><button type="button" class="btn btn-warning" @click="valid(item.id)">V</button></td>
-              <td><button type="button" class="btn btn-warning" @click="Nonvalider(item.id)">NV</button></td>   
+              <td><button type="button" class="btn btn-warning" @click="valid(item.id)">Valider</button></td>
+              <td><button type="button" class="btn btn-warning" @click="Nonvalider(item.id)">Retirer</button></td>   
             </tr>
 
           </tbody>
@@ -250,7 +244,10 @@ export default {
    width:100%;
    display:block;
 } */
-
+.choose {
+  font-size: 30px;
+  color: #cccccc;
+}
 .choices-list {
   list-style: none;
   padding: 0;

@@ -1,28 +1,26 @@
 <template>
   <div class="container">
     <div class="sidebare">
-    <div class="logo">
-      <img src="../assets/logo_projet.png" alt="Logo">
-    </div>
-     <div class="element">
-      <router-link to="/admin_etab_accueil">profil</router-link>
-   </div>
-   <div class="element">
-      <router-link to="/list_enseignants">Liste Enseignants</router-link>
-      </div >
-      <div class="element">
-      <router-link to="/Create_Ens">création</router-link>
+      <div class="logo">
+        <img src="../assets/logo_projet.png" alt="Logo">
       </div>
-      <div class="element">
-        <router-link to="/list_directeur">Liste Directeurs</router-link>
-       </div>
-      <div class="element">
-      <router-link to="/admin_intervention_Etab">interventions</router-link>
+       <div class="element">
+        <router-link to="/admin_etab_accueil">Profil</router-link>
      </div>
      <div class="element">
-            <a @click="logout" href="#">logout</a>
+        <router-link to="/list_enseignants">Liste Enseignants</router-link>
+        </div >
+        <div class="element">
+      <router-link to="/Create_Ens">Création Enseignant</router-link>
+      </div>
+       
+        <div class="element">
+        <router-link to="/admin_intervention_Etab">Interventions</router-link>
+       </div>
+       <div class="element">
+            <a @click="logout" href="#">Logout</a>
           </div>
-  </div>
+    </div>
 
   <div class="content">
   
@@ -177,7 +175,7 @@ const token = localStorage.getItem('accessToken');
     font-weight: 400;
   }
   
-  h2 {
+  /* h2 {
     text-align: center;
     font-size: 30px;
     font-weight: 600;
@@ -186,7 +184,7 @@ const token = localStorage.getItem('accessToken');
     margin: 40px 8px 30px 8px; 
     color: #cccccc;
   }
-  
+   */
   /* STRUCTURE */
   
   .wrapper {

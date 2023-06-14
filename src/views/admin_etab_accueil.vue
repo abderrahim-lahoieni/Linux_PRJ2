@@ -1,6 +1,6 @@
 <template>
 <div class="container">
-    <div class="sidebare">
+  <div class="sidebare">
       <div class="logo">
         <img src="../assets/logo_projet.png" alt="Logo">
       </div>
@@ -10,10 +10,10 @@
      <div class="element">
         <router-link to="/list_enseignants">Liste Enseignants</router-link>
         </div >
-        
         <div class="element">
-          <router-link to="/list_directeur">Liste Directeurs</router-link>
-         </div>
+      <router-link to="/Create_Ens">Création Enseignant</router-link>
+      </div>
+       
         <div class="element">
         <router-link to="/admin_intervention_Etab">Interventions</router-link>
        </div>

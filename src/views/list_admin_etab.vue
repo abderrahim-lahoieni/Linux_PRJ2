@@ -1,51 +1,60 @@
 <template>
     <div class="container">
-        <div class="sidebare">
-        <div class="logo">
-          <img src="../assets/logo_projet.png" alt="Logo">
-        </div>
-         <div class="element">
-          <router-link to="/admin_etab_accueil">profil</router-link>
-       </div>
-      
-          <div class="element">
-          <router-link to="/admin_univ_interv">interventions</router-link>
-         </div>
-         <div class="element">
-          <router-link to="/list_president"> Présidents</router-link>
-         </div>
-          <div class="element">
-          <router-link to="/list_admin_etab">Admins Etablissements</router-link>
-         </div>
-         <div class="element">
-            <a @click="logout" href="#">logout</a>
+      <div class="sidebare">
+          <div class="logo">
+            <img src="../assets/logo_projet.png" alt="Logo">
           </div>
-      </div>
+           <div class="element">
+            <router-link to="/admin_etab_accueil">Profil</router-link>
+         </div>
+       
+        
+            <div class="element">
+            <router-link to="/admin_univ_interv">Interventions</router-link>
+           </div>
+           <!-- <div class="element">
+            <router-link to="/list_president"> Présidents</router-link>
+           </div> -->
+            <div class="element">
+            <router-link to="/list_admin_etab">Liste des administrateurs</router-link>
+           </div>
+           <div class="element">
+            <router-link to="/Create_President">Create President</router-link>
+
+           <!-- <button type="submit" @click.prevent="create_pre()">Creation President</button> -->
+           </div>
+           <div class="element">
+            <router-link to="/Create_Admin_etab">Create Admin Etablissement</router-link>
+
+           <!-- <button type="submit" @click.prevent="create_adm_etab()">Creation admin etablissement</button> -->
+           </div>
+           <div class="element">
+            <a @click="logout" href="#">Logout</a>
+          </div>
+        </div>
       
       
       <div class="content">
         <h2>Liste des Administrateurs</h2>
   <div class="table-wrapper">
-    <button type="button" class="btn btn-primary">Create Admin_Etablissement</button>
+   
       <table class="fl-table">
      
           <thead>
           <tr>
-              <th>ID_admin</th>
-              <th>Nom </th>
+              
+            <th>PPR</th>
               <th>Prénom</th>
-              <th>email</th>
-              <th>Etablissement d'origine</th>
+              <th>Nom </th>
               <th>Modif</th>
           </tr>
           </thead>
           <tbody>
-            <tr  v-for="item in responseData">
-            <td>{{ (item['id']) }}</td>
-            <td>{{ (item['nom']) }}</td>
-            <td>{{ (item['prenom']) }}</td>
-            <td>{{ (item['date_naissance']) }}</td>
-            <td>{{ (item['nom']) }}</td>
+            <tr v-for="item in responseData" >
+            <td>{{ item[0]['ppr'] }}</td>
+            <td>{{ (item[0]['prenom']) }}</td>
+            <td>{{ (item[0]['nom']) }}</td>
+            <!-- <td>{{ responseData2[index].nom }}</td> -->
               <td><button type="button" class="btn btn-danger">Delete</button>
                 <button type="button" class="btn btn-warning">Update</button></td>
           </tr>
@@ -61,12 +70,20 @@
   import {axiosClient} from '../Network/axios';
     export default {
       name:'list_admin_etab',
+      data() {
+    return {
+      responseData: [],
+   
+    };
+  },
+  
       mounted() {
     const token = localStorage.getItem('accessToken');
     console.log("token mounted"+token)
     if(token==null) {
       this.$router.push('/loginView');
-    }},
+    }
+    this.fetchData();},
     methods: {
   logout(){
       const token = localStorage.getItem('accessToken');
@@ -81,7 +98,24 @@
         .catch(error => {
           console.error(error);
         });
-      },}
+      },
+      fetchData() {
+      const token = localStorage.getItem('accessToken');
+      axiosClient
+        .get('administrateur_univ/administrateur_etb/all',{headers: {
+    'Authorization': 'Bearer ' + token}})
+        .then(response => {
+          console.log(response);
+          this.responseData= (response.data)['administrateur_etb'];
+        console.log(JSON.parse(JSON.stringify(this.responseData)));
+        
+        
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
+    }
     }
   </script>
   <style>
@@ -208,7 +242,12 @@
   .fl-table td, .fl-table th {
     text-align: center;
     padding: 8px;
+    
   }
+  /* .fl-table tbody td {
+   color: #222;
+    
+  } */
   
   .fl-table td {
     border-right: 1px solid #f8f8f8;

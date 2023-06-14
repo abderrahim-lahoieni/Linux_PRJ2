@@ -40,8 +40,12 @@
           </thead>
           <tbody>
           <tr>
-              <td>Content 1</td>
-              <td>Content 1</td>
+            <tr v-for="item in responseData.filter(item => item.etat )" >
+            <td>{{ (item['id']) }}</td>
+            <td>{{ (item['nom']) }}</td>
+            <td>{{ (item['prenom']) }}</td>
+            <td>{{ (item['date_naissance']) }}</td>
+              </tr>
               
               <td><button type="button" class="btn btn-danger">Delete</button>
                 <button type="button" class="btn btn-warning">Update</button></td>
@@ -80,7 +84,23 @@
         .catch(error => {
           console.error(error);
         });
-      },}
+      },
+      fetchData() {
+      const token = localStorage.getItem('accessToken');
+      console.log("token : ",token);
+      axiosClient.get('administrateur_univ/president',
+      {  headers: {
+    'Authorization': 'Bearer ' + token
+      }})
+        .then(response => {
+          
+          this.responseData = (response.data)['data'];
+          console.log(this.responseData);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }}
 
     }
   </script>

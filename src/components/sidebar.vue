@@ -11,7 +11,7 @@
  .sidebare {
    background-color:#3d525e;
     color: #fff;
-    width: 250px;
+    width: 350px;
     transition: width 0.3s;
     overflow: hidden;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -38,6 +38,7 @@
     padding: 10px 20px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-left: 60 px;
   }
   
   .sidebar li:hover {

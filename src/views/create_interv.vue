@@ -1,28 +1,26 @@
 <template>
   <div class="container">
     <div class="sidebare">
-    <div class="logo">
-      <img src="../assets/logo_projet.png" alt="Logo">
-    </div>
-     <div class="element">
-      <router-link to="/admin_etab_accueil">profil</router-link>
-   </div>
-   <div class="element">
-      <router-link to="/list_enseignants">Liste Enseignants</router-link>
-      </div >
-      <div class="element">
-      <router-link to="/Create_Ens">création</router-link>
+      <div class="logo">
+        <img src="../assets/logo_projet.png" alt="Logo">
       </div>
-      <div class="element">
-        <router-link to="/list_directeur">Liste Directeurs</router-link>
-       </div>
-      <div class="element">
-      <router-link to="/admin_intervention_Etab">interventions</router-link>
+       <div class="element">
+        <router-link to="/admin_etab_accueil">profil</router-link>
      </div>
      <div class="element">
+        <router-link to="/list_enseignants">Liste Enseignants</router-link>
+        </div >
+        <div class="element">
+      <router-link to="/Create_Ens">création</router-link>
+      </div>
+       
+        <div class="element">
+        <router-link to="/admin_intervention_Etab">interventions</router-link>
+       </div>
+       <div class="element">
             <a @click="logout" href="#">logout</a>
           </div>
-  </div>
+    </div>
 
   <div class="content">
   
@@ -40,7 +38,8 @@
 
         <input type="date" id="email" class="fadeIn third" name="login" placeholder="date_fin" v-model="date_fin">
 
-        <input type="number" id="password" class="fadeIn third" name="login" placeholder="nbr_heures" v-model="nbr_heures">
+        <input type="text" id="password" class="fadeIn second" name="login" placeholder="nbr_heures" v-model="nbr_heures">
+        
         <input type="text" id="rpassword" class="fadeIn third" name="login" placeholder="ppr_enseignant" v-model="ppr_enseignant">
         <!-- <input type="text" class="fadeIn third" name="login" placeholder="designation" v-model="grade"> -->
      
@@ -172,7 +171,7 @@ const token = localStorage.getItem('accessToken');
     font-weight: 400;
   }
   
-  h2 {
+  /* h2 {
     text-align: center;
     font-size: 30px;
     font-weight: 600;
@@ -180,7 +179,7 @@ const token = localStorage.getItem('accessToken');
     display:inline-block;
     margin: 40px 8px 30px 8px; 
     color: #cccccc;
-  }
+  } */
   
   /* STRUCTURE */
   

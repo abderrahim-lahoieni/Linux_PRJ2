@@ -5,18 +5,18 @@
             <img src="../assets/logo_projet.png" alt="Logo">
           </div>
            <div class="element">
-            <router-link to="/admin_etab_accueil">profil</router-link>
+            <router-link to="/admin_etab_accueil">Profil</router-link>
          </div>
        
         
             <div class="element">
-            <router-link to="/admin_univ_interv">interventions</router-link>
+            <router-link to="/admin_univ_interv">Interventions</router-link>
            </div>
-           <div class="element">
+           <!-- <div class="element">
             <router-link to="/list_president"> Présidents</router-link>
-           </div>
+           </div> -->
             <div class="element">
-            <router-link to="/list_admin_etab">Admins Etablissements</router-link>
+            <router-link to="/list_admin_etab">Liste des administrateurs</router-link>
            </div>
            <div class="element">
             <router-link to="/Create_President">Create President</router-link>
@@ -24,15 +24,17 @@
            <!-- <button type="submit" @click.prevent="create_pre()">Creation President</button> -->
            </div>
            <div class="element">
-            <router-link to="/Create_Admin_etab">Create Admin Etab</router-link>
+            <router-link to="/Create_Admin_etab">Create Admin Etablissement</router-link>
 
            <!-- <button type="submit" @click.prevent="create_adm_etab()">Creation admin etablissement</button> -->
            </div>
            <div class="element">
-            <a @click="logout" href="#">logout</a>
+            <a @click="logout" href="#">Logout</a>
           </div>
         </div>
         <div class="content">
+          <div classe="fonction">
+            <h2 classe="h">Administrateur Université</h2></div>
           <div class="personal-dat">
         <div class="personal-info">
             <div class="info-label">Email:</div>
@@ -109,7 +111,7 @@
    button{
       color:#92badd;
       font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-      font-size:20px; 
+      font-size:30px; 
       height:auto;
       width:auto;
       padding:15px;

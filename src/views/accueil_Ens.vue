@@ -14,7 +14,7 @@
        <router-link to="/paiement_Ens">Liste paiement</router-link>
       </div>
       <div class="element">
-            <a @click="logout" href="#">logout</a>
+            <a @click="logout" href="#">Logout</a>
           </div>
     </div>
 
@@ -45,8 +45,9 @@
         
        
       </div>
-          <button type="submit"  @click.prevent="Update()" class="fadeIn fourth"  >Modifier les informations</button>
+          
           </div>
+          <button type="submit"  @click.prevent="Update()" class="fadeIn fourth"  >Modifier les informations</button>
       </div>
   </div>
 </template>

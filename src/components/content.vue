@@ -60,7 +60,8 @@
     border-radius: 5px;
     padding: 20px;
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
- 
+ margin-left: 250px;
+ margin-right: 250px;
   }
   
   .personal-info {

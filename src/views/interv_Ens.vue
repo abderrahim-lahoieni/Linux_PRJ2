@@ -33,7 +33,7 @@
             <th>Année université</th>
             <th>Date_début</th>
             <th>Date_Fin</th>
-            <th>Etat</th>
+            
             <th>Nombre heures</th>
         </tr>
         </thead>
@@ -45,7 +45,7 @@
             <td>{{ (item['annee_univ']) }}</td>
             <td>{{ (item['date_debut']) }}</td>
             <td>{{ (item['date_fin']) }}</td>
-            <td>{{ (item['visa_etb']) }}</td>
+           
             <td>{{ (item['nbr_heures']) }}</td>
            
         </tr>

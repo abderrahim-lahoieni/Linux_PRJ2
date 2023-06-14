@@ -11,11 +11,9 @@
         <router-link to="/list_enseignants">Liste Enseignants</router-link>
         </div >
         <div class="element">
-        <router-link to="/Create_Ens">création</router-link>
-        </div>
-        <div class="element">
-          <router-link to="/list_directeur">Liste Directeurs</router-link>
-         </div>
+      <router-link to="/Create_Ens">création</router-link>
+      </div>
+       
         <div class="element">
         <router-link to="/admin_intervention_Etab">interventions</router-link>
        </div>
