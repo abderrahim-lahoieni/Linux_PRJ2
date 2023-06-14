@@ -46,7 +46,7 @@
             <th>PPR</th>
               <th>Prénom</th>
               <th>Nom </th>
-              <th>Modif</th>
+            
           </tr>
           </thead>
           <tbody>
@@ -55,8 +55,7 @@
             <td>{{ (item[0]['prenom']) }}</td>
             <td>{{ (item[0]['nom']) }}</td>
             <!-- <td>{{ responseData2[index].nom }}</td> -->
-              <td><button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-warning">Update</button></td>
+              
           </tr>
           
           </tbody>

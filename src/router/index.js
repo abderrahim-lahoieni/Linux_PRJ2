@@ -24,6 +24,8 @@ import Create_Admin_Etab from '../views/Create_Admin_Etab.vue';
 import Mod_interv from '../views/Mod_interv.vue';
 import Update_ens from '../views/Update_ens.vue';
 import Update_admn_etb from '../views/Update_admn_etb.vue';
+import forget_password from '../views/forget_password.vue';
+import reset from '../views/reset.vue';
 import Update_ens_adm from '../views/Update_ens_adm.vue';
 import Mod_profil_direct from '../views/Mod_profil_direct.vue';
 import sidebar from '@/components/sidebar.vue';
@@ -45,6 +47,16 @@ const routes = [
       path: '/AboutView',
       name: 'AboutView',
       component: AboutView
+    },
+    {
+      path: '/reset',
+      name: 'reset',
+      component: reset
+    },
+    {
+      path: '/forget_password',
+      name: 'forget_password',
+      component: forget_password
     },
     
     {

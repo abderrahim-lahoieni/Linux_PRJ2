@@ -1,12 +1,13 @@
 <template>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <div class="background"></div>
  
 
-      <div class="nav">
+      <!-- <div class="nav">
         
-        <button type="button"  class="btn btn-light btn-lg text-blue"><router-link to="./Accueil">Accueil</router-link></button>
+        <button  type="button"  class="btn btn-light"><router-link to="">Accueil</router-link></button>
       </div>
-    
+     -->
     <div class="wrapper fadeInDown">
     <div id="formContent">
 
@@ -14,13 +15,18 @@
       <form >
         <input type="text" id="login" class="fadeIn second"  placeholder="login" v-model="email">
         <input type="password" id="password" class="fadeIn third"  placeholder="Mot de passe"  v-model="password">
-        <button type="button" @click="login" class="btn btn-light btn-lg text-blue">LOGIN</button>
-        <!-- <button type="button"  @click="login" class="fadeIn fourth"  value="Log In">log in</button> -->
+        <router-link to="/reset">oublier mot de passe ?</router-link><br>
+        
+        <button type="button" @click="login()" class="btn btn-light btn-lg text-blue">LOGIN</button>
+        
         <div v-if="errors">
-      <ul>
-        <li v-for="(error, field) in errors" :key="field">{{ error[0] }}</li>
-      </ul>
-    </div>
+          <ul>
+            <li v-for="(error, field) in errors" :key="field">{{ error[0] }}</li>
+          </ul>
+        </div>
+        <div>
+
+        </div>
 
       </form>
     </div>
@@ -31,44 +37,27 @@
 <script>
 import Accueil from '@/components/Accueil.vue';
 import {axiosClient} from '../Network/axios';
-import { mapGetters, mapActions } from 'vuex';
-
 
 export default {
 name:"loginForm",
  components :{
    Accueil
  },
- mounted() {
-   
-   const token = localStorage.getItem('accessToken');
-   console.log("token mounted"+token)
-   if(token==null) {
-     this.$router.push('/loginView');
-   }
- },
+
 data() {
   return {
     email: "",
     password: "",
+    // forget:false,
     
     
   };},
-  computed: {
-    ...mapGetters(['getSharedValues']),
-  id() {
-    return this.getSharedValues.id;
-  },
-  emailaddr() {
-    return this.getSharedValues.emailaddr;
-  },
-  idgr() {
-    return this.getSharedValues.idgr;
-  },
-},
+  mounted() {
+ },
 methods: {
-  
-  ...mapActions(['updateSharedValues']),
+// forget_passwd(){
+// this.$router.push('/reset);
+// },
   logout(){
       const token = localStorage.getItem('accessToken');
     axiosClient
@@ -85,12 +74,24 @@ methods: {
       },
   
   login(){ {
+    const etuEmailPattern = /^[A-Za-z0-9._%+-]+@etu\.uae\.ac\.ma$/;
+        const uaeEmailPattern = /^[A-Za-z0-9._%+-]+@uae\.ac\.ma$/;
+
+        if (!this.email.match(etuEmailPattern) && !this.email.match(uaeEmailPattern)) {
+          // Email format is invalid
+          console.log('Invalid email format');
+          // toast('Invalid email format', {
+          //   autoClose: 3000,
+          // });
+          return; // Stop further execution
+        } 
   const url = 'login';
   const data = {
     email: this.email,
     password: this.password,
     
-  }; 
+  };
+  
   
 axiosClient.post(url,data)
 .then((response)=>{
@@ -130,11 +131,13 @@ this.$router.push('/president_accueil');
 }
 })
 .catch((error) => {
-        if (error.response && error.response.status === 422) {
-          // Afficher les erreurs de validation
-          this.errors = error.response.data.errors;
-        }
-      });
+              if (error.response && error.response.status === 422) {
+                // Afficher les erreurs de validation
+                this.errors = error.response.data.errors;
+                console.log(this.errors);
+                toast(this.errors);
+              }
+            });
 }}
   
       //if(response.data.role ==='Enseignant')
@@ -186,6 +189,11 @@ this.$router.push('/president_accueil');
     padding: 20px;
 
   }
+  /* .but{
+    
+    background-color: #92badd;
+    border: 1px solid #92badd;
+  } */
 
   #formContent {
     -webkit-border-radius: 10px 10px 10px 10px;
